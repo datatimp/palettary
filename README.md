@@ -1,8 +1,8 @@
-# Palletary
+# Palettary
 
 **Curated Color Primitives for Figma**
 
-Palletary is a web app that helps designers organize, sort, and select Color Primitives for Figma. Similar to [Lospec](https://lospec.com/palette-list) for pixel artists, Palletary provides a collection of beautifully named color primitive collections that you can browse, preview, and export directly to Figma's Variables panel.
+Palettary is a web app that helps designers organize, sort, and select Color Primitives for Figma. Similar to [Lospec](https://lospec.com/palette-list) for pixel artists, Palettary provides a collection of beautifully named color primitive collections that you can browse, preview, and export directly to Figma's Variables panel.
 
 ## Features
 
@@ -55,14 +55,14 @@ Each swatch shows:
 
 ## Deploying to GitHub Pages
 
-Since you already have a GitHub Pages site, here's how to add Palletary:
+Since you already have a GitHub Pages site, here's how to add Palettary:
 
 ### Option 1: As Your Main Site
 
 1. **Push to GitHub**:
    ```bash
    git add .
-   git commit -m "Add Palletary color primitives app"
+   git commit -m "Add Palettary color primitives app"
    git push origin main
    ```
 
@@ -75,10 +75,10 @@ Since you already have a GitHub Pages site, here's how to add Palletary:
 
 ### Option 2: As a Subdirectory
 
-If you want to keep your existing homepage and add Palletary as a section:
+If you want to keep your existing homepage and add Palettary as a section:
 
 1. Create a `palettary` folder in your existing GitHub Pages repo
-2. Copy all Palletary files into that folder
+2. Copy all Palettary files into that folder
 3. Access it at `https://yourusername.github.io/palettary/`
 
 ## Adding Your Own Palettes
