@@ -41,6 +41,34 @@
       "description": "Cool blues and whites with subtle gradients for clean, modern interfaces",
       "file": "arctic-aurora.json",
       "dateAdded": "2025-12-20"
+    },
+    {
+      "id": "japanese-woodblock",
+      "name": "Japanese Woodblock",
+      "description": "A collection of colors based on muted tones from Japanese woodblock prints",
+      "file": "japanese-woodblock.json",
+      "dateAdded": "2026-01-02"
+    },
+    {
+      "id": "couch-surfing",
+      "name": "Couch Surfing",
+      "description": "Cool oceanic teals and turquoise balanced with warm honey accents for a welcoming, laid-back feel.",
+      "file": "couch-surfing.json",
+      "dateAdded": "2026-01-02"
+    },
+    {
+      "id": "top-pops",
+      "name": "Top Pops",
+      "description": "Vibrant cyan and hot pink accents over cool teal bases for energetic, eye-catching designs",
+      "file": "top-pops.json",
+      "dateAdded": "2026-01-02"
+    },
+    {
+      "id": "cooper-craft",
+      "name": "Cooper Craft",
+      "description": "Give one",
+      "file": "cooper-craft.json",
+      "dateAdded": "2026-01-02"
     }
   ]
 }

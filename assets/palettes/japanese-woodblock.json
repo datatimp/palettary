@@ -1,0 +1,229 @@
+{
+  "id": "japanese-woodblock",
+  "name": "Japanese Woodblock",
+  "description": "A collection of colors based on muted tones from Japanese woodblock prints",
+  "colors": {
+    "neutral": [
+      {
+        "name": "neutral-0",
+        "hex": "#FFFFFF"
+      },
+      {
+        "name": "neutral-100",
+        "hex": "#F8F8F8"
+      },
+      {
+        "name": "neutral-200",
+        "hex": "#F5F5F5"
+      },
+      {
+        "name": "neutral-300",
+        "hex": "#EDEDED"
+      },
+      {
+        "name": "neutral-400",
+        "hex": "#E5E5E5"
+      },
+      {
+        "name": "neutral-500",
+        "hex": "#CBCBCB"
+      },
+      {
+        "name": "neutral-600",
+        "hex": "#A5A5A5"
+      },
+      {
+        "name": "neutral-700",
+        "hex": "#7F7F7F"
+      },
+      {
+        "name": "neutral-800",
+        "hex": "#515151"
+      },
+      {
+        "name": "neutral-900",
+        "hex": "#222323"
+      },
+      {
+        "name": "neutral-1000",
+        "hex": "#191919"
+      }
+    ],
+    "red": [
+      {
+        "name": "red-100",
+        "hex": "#E8BDC2"
+      },
+      {
+        "name": "red-300",
+        "hex": "#D98890"
+      },
+      {
+        "name": "red-500",
+        "hex": "#C85460"
+      },
+      {
+        "name": "red-700",
+        "hex": "#B03A48"
+      },
+      {
+        "name": "red-900",
+        "hex": "#7A2630"
+      }
+    ],
+    "orange": [
+      {
+        "name": "orange-100",
+        "hex": "#ECD3B8"
+      },
+      {
+        "name": "orange-300",
+        "hex": "#E0A87A"
+      },
+      {
+        "name": "orange-500",
+        "hex": "#D4804D"
+      },
+      {
+        "name": "orange-700",
+        "hex": "#B86638"
+      },
+      {
+        "name": "orange-900",
+        "hex": "#8A4A28"
+      }
+    ],
+    "brown": [
+      {
+        "name": "brown-100",
+        "hex": "#E3CFB4"
+      },
+      {
+        "name": "brown-300",
+        "hex": "#D9AC8B"
+      },
+      {
+        "name": "brown-500",
+        "hex": "#624C3C"
+      },
+      {
+        "name": "brown-700",
+        "hex": "#2B2821"
+      },
+      {
+        "name": "brown-900",
+        "hex": "#1A1612"
+      }
+    ],
+    "yellow": [
+      {
+        "name": "yellow-100",
+        "hex": "#F2EAC8"
+      },
+      {
+        "name": "yellow-300",
+        "hex": "#E8D89A"
+      },
+      {
+        "name": "yellow-500",
+        "hex": "#E0C872"
+      },
+      {
+        "name": "yellow-700",
+        "hex": "#C4A550"
+      },
+      {
+        "name": "yellow-900",
+        "hex": "#9A7A35"
+      }
+    ],
+    "green": [
+      {
+        "name": "green-100",
+        "hex": "#C2D3CA"
+      },
+      {
+        "name": "green-300",
+        "hex": "#8AA896"
+      },
+      {
+        "name": "green-500",
+        "hex": "#5A8872"
+      },
+      {
+        "name": "green-700",
+        "hex": "#3E6958"
+      },
+      {
+        "name": "green-900",
+        "hex": "#2A4A3D"
+      }
+    ],
+    "teal": [
+      {
+        "name": "teal-100",
+        "hex": "#C0D3D0"
+      },
+      {
+        "name": "teal-300",
+        "hex": "#8AADA8"
+      },
+      {
+        "name": "teal-500",
+        "hex": "#5E8C88"
+      },
+      {
+        "name": "teal-700",
+        "hex": "#416B68"
+      },
+      {
+        "name": "teal-900",
+        "hex": "#2D4A4A"
+      }
+    ],
+    "blue": [
+      {
+        "name": "blue-100",
+        "hex": "#A8C5CA"
+      },
+      {
+        "name": "blue-300",
+        "hex": "#5C8B93"
+      },
+      {
+        "name": "blue-500",
+        "hex": "#5D7275"
+      },
+      {
+        "name": "blue-700",
+        "hex": "#243D5C"
+      },
+      {
+        "name": "blue-900",
+        "hex": "#1A2A3D"
+      }
+    ],
+    "violet": [
+      {
+        "name": "violet-100",
+        "hex": "#D3CAC3"
+      },
+      {
+        "name": "violet-300",
+        "hex": "#AA9DA3"
+      },
+      {
+        "name": "violet-500",
+        "hex": "#8A7580"
+      },
+      {
+        "name": "violet-700",
+        "hex": "#6B5465"
+      },
+      {
+        "name": "violet-900",
+        "hex": "#4A3A4A"
+      }
+    ]
+  }
+}

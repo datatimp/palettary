@@ -47,7 +47,25 @@ function populateDropdown() {
 
     if (!paletteManifest) return;
 
-    paletteManifest.forEach(palette => {
+    // Add Random option
+    const randomOption = document.createElement('option');
+    randomOption.value = 'random';
+    randomOption.textContent = '🎲 Random';
+    dropdown.appendChild(randomOption);
+
+    // Add separator
+    const separator = document.createElement('option');
+    separator.disabled = true;
+    separator.textContent = '──────────';
+    dropdown.appendChild(separator);
+
+    // Sort palettes alphabetically by name
+    const sortedPalettes = [...paletteManifest].sort((a, b) =>
+        a.name.localeCompare(b.name)
+    );
+
+    // Add all palettes
+    sortedPalettes.forEach(palette => {
         const option = document.createElement('option');
         option.value = palette.id;
         option.textContent = palette.name;
@@ -92,13 +110,25 @@ async function createPaletteCard(paletteInfo) {
         return card;
     }
 
-    // Get first 5-6 colors from the palette for preview
+    // Get up to 6 colors for preview, excluding neutral if there are 6+ other hues
+    const hues = Object.keys(palette.colors);
+    const nonNeutralHues = hues.filter(hue => hue !== 'neutral');
+
+    // Decide which hues to use for preview
+    let huesToDisplay;
+    if (nonNeutralHues.length >= 6) {
+        // Skip neutral if we have 6+ other hues
+        huesToDisplay = nonNeutralHues.slice(0, 6);
+    } else {
+        // Use all hues up to 6
+        huesToDisplay = hues.slice(0, 6);
+    }
+
     const previewColors = [];
-    Object.values(palette.colors).forEach(hueColors => {
-        if (previewColors.length < 6) {
-            const midIndex = Math.floor(hueColors.length / 2);
-            previewColors.push(hueColors[midIndex].hex);
-        }
+    huesToDisplay.forEach(hueName => {
+        const hueColors = palette.colors[hueName];
+        const midIndex = Math.floor(hueColors.length / 2);
+        previewColors.push(hueColors[midIndex].hex);
     });
 
     const colorsHTML = previewColors.map(color =>
@@ -126,7 +156,14 @@ function setupEventListeners() {
     // Dropdown change listener
     document.getElementById('palette-select').addEventListener('change', (e) => {
         if (e.target.value) {
-            selectPalette(e.target.value);
+            if (e.target.value === 'random') {
+                // Select a random palette from the manifest
+                const randomIndex = Math.floor(Math.random() * paletteManifest.length);
+                const randomPalette = paletteManifest[randomIndex];
+                selectPalette(randomPalette.id);
+            } else {
+                selectPalette(e.target.value);
+            }
         }
     });
 

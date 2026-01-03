@@ -1,0 +1,145 @@
+{
+  "id": "top-pops",
+  "name": "Top Pops",
+  "description": "Vibrant cyan and hot pink accents over cool teal bases for energetic, eye-catching designs",
+  "colors": {
+    "primary": [
+      {
+        "name": "primary-50",
+        "hex": "#E9FBFC"
+      },
+      {
+        "name": "primary-100",
+        "hex": "#D2F7F9"
+      },
+      {
+        "name": "primary-200",
+        "hex": "#A6EEF2"
+      },
+      {
+        "name": "primary-300",
+        "hex": "#79E6EC"
+      },
+      {
+        "name": "primary-400",
+        "hex": "#4CDEE6"
+      },
+      {
+        "name": "primary-500",
+        "hex": "#20D6DF"
+      },
+      {
+        "name": "primary-600",
+        "hex": "#19ABB3"
+      },
+      {
+        "name": "primary-700",
+        "hex": "#138086"
+      },
+      {
+        "name": "primary-800",
+        "hex": "#0D5559"
+      },
+      {
+        "name": "primary-900",
+        "hex": "#062B2D"
+      },
+      {
+        "name": "primary-950",
+        "hex": "#031516"
+      }
+    ],
+    "secondary": [
+      {
+        "name": "secondary-50",
+        "hex": "#F2F2F2"
+      },
+      {
+        "name": "secondary-100",
+        "hex": "#E6E6E6"
+      },
+      {
+        "name": "secondary-200",
+        "hex": "#CCCCCC"
+      },
+      {
+        "name": "secondary-300",
+        "hex": "#B3B3B3"
+      },
+      {
+        "name": "secondary-400",
+        "hex": "#999999"
+      },
+      {
+        "name": "secondary-500",
+        "hex": "#808080"
+      },
+      {
+        "name": "secondary-600",
+        "hex": "#666666"
+      },
+      {
+        "name": "secondary-700",
+        "hex": "#4D4D4D"
+      },
+      {
+        "name": "secondary-800",
+        "hex": "#333333"
+      },
+      {
+        "name": "secondary-900",
+        "hex": "#1A1A1A"
+      },
+      {
+        "name": "secondary-950",
+        "hex": "#0D0D0D"
+      }
+    ],
+    "accent": [
+      {
+        "name": "accent-50",
+        "hex": "#FAEAF1"
+      },
+      {
+        "name": "accent-100",
+        "hex": "#F5D6E4"
+      },
+      {
+        "name": "accent-200",
+        "hex": "#EBADC9"
+      },
+      {
+        "name": "accent-300",
+        "hex": "#E184AE"
+      },
+      {
+        "name": "accent-400",
+        "hex": "#D75B93"
+      },
+      {
+        "name": "accent-500",
+        "hex": "#CD3278"
+      },
+      {
+        "name": "accent-600",
+        "hex": "#A42860"
+      },
+      {
+        "name": "accent-700",
+        "hex": "#7B1E48"
+      },
+      {
+        "name": "accent-800",
+        "hex": "#521430"
+      },
+      {
+        "name": "accent-900",
+        "hex": "#290A18"
+      },
+      {
+        "name": "accent-950",
+        "hex": "#15050C"
+      }
+    ]
+  }
+}

@@ -1,0 +1,145 @@
+{
+  "id": "couch-surfing",
+  "name": "Couch Surfing",
+  "description": "Cool oceanic teals and turquoise balanced with warm honey accents for a welcoming, laid-back feel",
+  "colors": {
+    "primary": [
+      {
+        "name": "primary-50",
+        "hex": "#EDF5F7"
+      },
+      {
+        "name": "primary-100",
+        "hex": "#DBECF0"
+      },
+      {
+        "name": "primary-200",
+        "hex": "#B8D9E0"
+      },
+      {
+        "name": "primary-300",
+        "hex": "#94C6D1"
+      },
+      {
+        "name": "primary-400",
+        "hex": "#70B3C2"
+      },
+      {
+        "name": "primary-500",
+        "hex": "#4DA0B3"
+      },
+      {
+        "name": "primary-600",
+        "hex": "#3D808F"
+      },
+      {
+        "name": "primary-700",
+        "hex": "#2E606B"
+      },
+      {
+        "name": "primary-800",
+        "hex": "#1F4047"
+      },
+      {
+        "name": "primary-900",
+        "hex": "#0F2024"
+      },
+      {
+        "name": "primary-950",
+        "hex": "#081012"
+      }
+    ],
+    "secondary": [
+      {
+        "name": "secondary-50",
+        "hex": "#ECF7F9"
+      },
+      {
+        "name": "secondary-100",
+        "hex": "#D8EFF3"
+      },
+      {
+        "name": "secondary-200",
+        "hex": "#B2DFE6"
+      },
+      {
+        "name": "secondary-300",
+        "hex": "#8BCFDA"
+      },
+      {
+        "name": "secondary-400",
+        "hex": "#65BFCD"
+      },
+      {
+        "name": "secondary-500",
+        "hex": "#3EAFC1"
+      },
+      {
+        "name": "secondary-600",
+        "hex": "#328C9A"
+      },
+      {
+        "name": "secondary-700",
+        "hex": "#256974"
+      },
+      {
+        "name": "secondary-800",
+        "hex": "#19464D"
+      },
+      {
+        "name": "secondary-900",
+        "hex": "#0C2327"
+      },
+      {
+        "name": "secondary-950",
+        "hex": "#061213"
+      }
+    ],
+    "accent": [
+      {
+        "name": "accent-50",
+        "hex": "#FAF5EB"
+      },
+      {
+        "name": "accent-100",
+        "hex": "#F4EBD7"
+      },
+      {
+        "name": "accent-200",
+        "hex": "#EAD8AE"
+      },
+      {
+        "name": "accent-300",
+        "hex": "#DFC486"
+      },
+      {
+        "name": "accent-400",
+        "hex": "#D4B15E"
+      },
+      {
+        "name": "accent-500",
+        "hex": "#C99D36"
+      },
+      {
+        "name": "accent-600",
+        "hex": "#A17E2B"
+      },
+      {
+        "name": "accent-700",
+        "hex": "#795E20"
+      },
+      {
+        "name": "accent-800",
+        "hex": "#513F15"
+      },
+      {
+        "name": "accent-900",
+        "hex": "#281F0B"
+      },
+      {
+        "name": "accent-950",
+        "hex": "#141005"
+      }
+    ]
+  }
+}
