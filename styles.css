@@ -11,7 +11,7 @@
     --text-dark: #1f2937;
     --text-light: #6b7280;
     --border-color: #e5e7eb;
-    --bg-light: #f9fafb;
+    --background-light: #f9fafb;
     --white: #ffffff;
     --shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
     --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
@@ -22,13 +22,25 @@ body {
     font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Helvetica', 'Arial', sans-serif;
     line-height: 1.6;
     color: var(--text-dark);
-    background-color: var(--bg-light);
+    background-color: var(--background-light);
 }
 
 .container {
     max-width: 1200px;
     margin: 0 auto;
     padding: 0 20px;
+}
+
+a:link {
+    color:#239346;
+}
+
+a:hover {
+    color: var(--text-dark);
+}
+
+a:visited {
+    color: var(--text-dark);
 }
 
 /* Header */
@@ -294,15 +306,15 @@ main {
 
 /* Footer */
 footer {
-    background-color: var(--text-dark);
-    color: var(--white);
+    background-color: var(--background-light);
+    color: var(--text-dark);
     padding: 30px 0;
     margin-top: 80px;
     text-align: center;
 }
 
 footer p {
-    opacity: 0.8;
+    opacity: 1;
 }
 
 /* Responsive Design */
