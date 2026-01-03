@@ -394,6 +394,10 @@ footer .divider {
         text-align: center;
     }
 
+    footer img {
+        align-self: center;
+    }
+
     .gallery-title {
         font-size: 1.5rem;
     }
