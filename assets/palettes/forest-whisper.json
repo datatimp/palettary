@@ -1,0 +1,43 @@
+{
+  "id": "forest-whisper",
+  "name": "Forest Whisper",
+  "description": "Natural greens and earth tones for organic, grounded designs",
+  "colors": {
+    "primary": [
+      { "name": "primary-50", "hex": "#f0fdf4" },
+      { "name": "primary-100", "hex": "#dcfce7" },
+      { "name": "primary-200", "hex": "#bbf7d0" },
+      { "name": "primary-300", "hex": "#86efac" },
+      { "name": "primary-400", "hex": "#4ade80" },
+      { "name": "primary-500", "hex": "#22c55e" },
+      { "name": "primary-600", "hex": "#16a34a" },
+      { "name": "primary-700", "hex": "#15803d" },
+      { "name": "primary-800", "hex": "#166534" },
+      { "name": "primary-900", "hex": "#14532d" }
+    ],
+    "secondary": [
+      { "name": "secondary-50", "hex": "#f7fee7" },
+      { "name": "secondary-100", "hex": "#ecfccb" },
+      { "name": "secondary-200", "hex": "#d9f99d" },
+      { "name": "secondary-300", "hex": "#bef264" },
+      { "name": "secondary-400", "hex": "#a3e635" },
+      { "name": "secondary-500", "hex": "#84cc16" },
+      { "name": "secondary-600", "hex": "#65a30d" },
+      { "name": "secondary-700", "hex": "#4d7c0f" },
+      { "name": "secondary-800", "hex": "#3f6212" },
+      { "name": "secondary-900", "hex": "#365314" }
+    ],
+    "neutral": [
+      { "name": "neutral-50", "hex": "#fafaf9" },
+      { "name": "neutral-100", "hex": "#f5f5f4" },
+      { "name": "neutral-200", "hex": "#e7e5e4" },
+      { "name": "neutral-300", "hex": "#d6d3d1" },
+      { "name": "neutral-400", "hex": "#a8a29e" },
+      { "name": "neutral-500", "hex": "#78716c" },
+      { "name": "neutral-600", "hex": "#57534e" },
+      { "name": "neutral-700", "hex": "#44403c" },
+      { "name": "neutral-800", "hex": "#292524" },
+      { "name": "neutral-900", "hex": "#1c1917" }
+    ]
+  }
+}

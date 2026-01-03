@@ -1,0 +1,55 @@
+{
+  "id": "sunset-glow",
+  "name": "Sunset Glow",
+  "description": "Warm, vibrant oranges and pinks for energetic interfaces",
+  "colors": {
+    "primary": [
+      { "name": "primary-50", "hex": "#fff7ed" },
+      { "name": "primary-100", "hex": "#ffedd5" },
+      { "name": "primary-200", "hex": "#fed7aa" },
+      { "name": "primary-300", "hex": "#fdba74" },
+      { "name": "primary-400", "hex": "#fb923c" },
+      { "name": "primary-500", "hex": "#f97316" },
+      { "name": "primary-600", "hex": "#ea580c" },
+      { "name": "primary-700", "hex": "#c2410c" },
+      { "name": "primary-800", "hex": "#9a3412" },
+      { "name": "primary-900", "hex": "#7c2d12" }
+    ],
+    "secondary": [
+      { "name": "secondary-50", "hex": "#fdf2f8" },
+      { "name": "secondary-100", "hex": "#fce7f3" },
+      { "name": "secondary-200", "hex": "#fbcfe8" },
+      { "name": "secondary-300", "hex": "#f9a8d4" },
+      { "name": "secondary-400", "hex": "#f472b6" },
+      { "name": "secondary-500", "hex": "#ec4899" },
+      { "name": "secondary-600", "hex": "#db2777" },
+      { "name": "secondary-700", "hex": "#be185d" },
+      { "name": "secondary-800", "hex": "#9f1239" },
+      { "name": "secondary-900", "hex": "#831843" }
+    ],
+    "accent": [
+      { "name": "accent-50", "hex": "#fefce8" },
+      { "name": "accent-100", "hex": "#fef9c3" },
+      { "name": "accent-200", "hex": "#fef08a" },
+      { "name": "accent-300", "hex": "#fde047" },
+      { "name": "accent-400", "hex": "#facc15" },
+      { "name": "accent-500", "hex": "#eab308" },
+      { "name": "accent-600", "hex": "#ca8a04" },
+      { "name": "accent-700", "hex": "#a16207" },
+      { "name": "accent-800", "hex": "#854d0e" },
+      { "name": "accent-900", "hex": "#713f12" }
+    ],
+    "neutral": [
+      { "name": "neutral-50", "hex": "#fafaf9" },
+      { "name": "neutral-100", "hex": "#f5f5f4" },
+      { "name": "neutral-200", "hex": "#e7e5e4" },
+      { "name": "neutral-300", "hex": "#d6d3d1" },
+      { "name": "neutral-400", "hex": "#a8a29e" },
+      { "name": "neutral-500", "hex": "#78716c" },
+      { "name": "neutral-600", "hex": "#57534e" },
+      { "name": "neutral-700", "hex": "#44403c" },
+      { "name": "neutral-800", "hex": "#292524" },
+      { "name": "neutral-900", "hex": "#1c1917" }
+    ]
+  }
+}

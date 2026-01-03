@@ -1,18 +1,53 @@
 // App State
 let currentPalette = null;
+let paletteManifest = null;
+let paletteCache = {};
 
 // Initialize the app
-document.addEventListener('DOMContentLoaded', () => {
+document.addEventListener('DOMContentLoaded', async () => {
+    await loadManifest();
     populateDropdown();
     displayPaletteCards();
     setupEventListeners();
 });
 
+// Load the palette manifest
+async function loadManifest() {
+    try {
+        const response = await fetch('assets/palettes/manifest.json');
+        const data = await response.json();
+        paletteManifest = data.palettes;
+    } catch (error) {
+        console.error('Error loading palette manifest:', error);
+        paletteManifest = [];
+    }
+}
+
+// Load a specific palette from JSON file
+async function loadPalette(paletteId) {
+    // Check cache first
+    if (paletteCache[paletteId]) {
+        return paletteCache[paletteId];
+    }
+
+    try {
+        const response = await fetch(`assets/palettes/${paletteId}.json`);
+        const palette = await response.json();
+        paletteCache[paletteId] = palette;
+        return palette;
+    } catch (error) {
+        console.error(`Error loading palette ${paletteId}:`, error);
+        return null;
+    }
+}
+
 // Populate the palette dropdown
 function populateDropdown() {
     const dropdown = document.getElementById('palette-select');
 
-    palettes.forEach(palette => {
+    if (!paletteManifest) return;
+
+    paletteManifest.forEach(palette => {
         const option = document.createElement('option');
         option.value = palette.id;
         option.textContent = palette.name;
@@ -24,17 +59,38 @@ function populateDropdown() {
 function displayPaletteCards() {
     const cardsContainer = document.getElementById('palette-cards');
 
-    palettes.forEach(palette => {
-        const card = createPaletteCard(palette);
+    if (!paletteManifest) return;
+
+    // Sort palettes by dateAdded in descending order (newest first)
+    const sortedPalettes = [...paletteManifest].sort((a, b) => {
+        return new Date(b.dateAdded) - new Date(a.dateAdded);
+    });
+
+    sortedPalettes.forEach(async (paletteInfo) => {
+        const card = await createPaletteCard(paletteInfo);
         cardsContainer.appendChild(card);
     });
 }
 
 // Create a palette card element
-function createPaletteCard(palette) {
+async function createPaletteCard(paletteInfo) {
     const card = document.createElement('div');
     card.className = 'palette-card';
-    card.onclick = () => selectPalette(palette.id);
+    card.onclick = () => selectPalette(paletteInfo.id);
+
+    // Load the palette to get preview colors
+    const palette = await loadPalette(paletteInfo.id);
+
+    if (!palette) {
+        // Fallback if palette fails to load
+        card.innerHTML = `
+            <div class="palette-card-info">
+                <h3 class="palette-card-name">${paletteInfo.name}</h3>
+                <p class="palette-card-description">${paletteInfo.description}</p>
+            </div>
+        `;
+        return card;
+    }
 
     // Get first 5-6 colors from the palette for preview
     const previewColors = [];
@@ -86,8 +142,8 @@ function setupEventListeners() {
 }
 
 // Select and display a palette
-function selectPalette(paletteId) {
-    const palette = palettes.find(p => p.id === paletteId);
+async function selectPalette(paletteId) {
+    const palette = await loadPalette(paletteId);
     if (!palette) return;
 
     currentPalette = palette;
@@ -182,15 +238,15 @@ function exportPalette(palette, format) {
             filename = `${palette.id}-figma.json`;
             mimeType = 'application/json';
             break;
+        case 'css':
+            content = generateCSS(palette);
+            filename = `${palette.id}.css`;
+            mimeType = 'text/css';
+            break;
         case 'txt':
             content = generateTXT(palette);
             filename = `${palette.id}.txt`;
             mimeType = 'text/plain';
-            break;
-        case 'md':
-            content = generateMarkdown(palette);
-            filename = `${palette.id}.md`;
-            mimeType = 'text/markdown';
             break;
     }
 
@@ -200,40 +256,45 @@ function exportPalette(palette, format) {
 
 // Generate Figma-compatible JSON for Variables
 function generateFigmaJSON(palette) {
-    const variables = {};
+    const figmaData = {};
 
     // Convert palette colors to Figma variable format
     Object.entries(palette.colors).forEach(([hueName, colors]) => {
-        colors.forEach(color => {
-            const variableName = `${hueName}/${color.name}`;
+        // Capitalize the hue name for the group (e.g., "primary" -> "Primary")
+        const groupName = hueName.charAt(0).toUpperCase() + hueName.slice(1);
 
-            // Convert hex to RGB for Figma
+        figmaData[groupName] = {};
+
+        colors.forEach(color => {
+            // Extract shade number from color name (e.g., "primary-50" -> "50")
+            const shadeMatch = color.name.match(/-(\d+)$/);
+            const shade = shadeMatch ? shadeMatch[1] : '500';
+
+            // Convert hex to RGB components (0-1 range)
             const rgb = hexToRgb(color.hex);
 
-            variables[variableName] = {
-                type: 'color',
-                value: {
-                    r: rgb.r / 255,
-                    g: rgb.g / 255,
-                    b: rgb.b / 255,
-                    a: 1
+            figmaData[groupName][shade] = {
+                "$type": "color",
+                "$value": {
+                    "colorSpace": "srgb",
+                    "components": [
+                        rgb.r / 255,
+                        rgb.g / 255,
+                        rgb.b / 255
+                    ],
+                    "alpha": 1,
+                    "hex": color.hex.toUpperCase()
                 },
-                description: `${palette.name} - ${hueName} - ${color.name}`,
-                hexValue: color.hex
+                "$extensions": {
+                    "com.figma.variableId": `VariableID:${groupName}:${shade}`,
+                    "com.figma.scopes": ["ALL_SCOPES"],
+                    "com.figma.codeSyntax": {
+                        "WEB": `--color-${hueName}-${shade}`
+                    }
+                }
             };
         });
     });
-
-    const figmaData = {
-        name: palette.name,
-        description: palette.description,
-        variables: variables,
-        metadata: {
-            exportedFrom: 'Palletary',
-            exportedAt: new Date().toISOString(),
-            paletteId: palette.id
-        }
-    };
 
     return JSON.stringify(figmaData, null, 2);
 }
@@ -256,24 +317,27 @@ function generateTXT(palette) {
     return content;
 }
 
-// Generate Markdown format
-function generateMarkdown(palette) {
-    let content = `# ${palette.name}\n\n`;
-    content += `${palette.description}\n\n`;
-    content += `---\n\n`;
+// Generate CSS format with CSS custom properties
+function generateCSS(palette) {
+    let content = `/* ${palette.name} */\n`;
+    content += `/* ${palette.description} */\n`;
+    content += `/* Exported from Palettary on ${new Date().toLocaleDateString()} */\n\n`;
+    content += `:root {\n`;
 
+    // Generate CSS custom properties in --color-[group]-[number] format
     Object.entries(palette.colors).forEach(([hueName, colors]) => {
-        content += `## ${hueName.charAt(0).toUpperCase() + hueName.slice(1)}\n\n`;
-        content += `| Name | Hex | Color |\n`;
-        content += `|------|-----|-------|\n`;
+        content += `  /* ${hueName.charAt(0).toUpperCase() + hueName.slice(1)} */\n`;
         colors.forEach(color => {
-            content += `| ${color.name} | \`${color.hex}\` | ![](https://via.placeholder.com/30/${color.hex.slice(1)}/000000?text=+) |\n`;
+            // Extract shade number from color name (e.g., "primary-50" -> "50")
+            const shadeMatch = color.name.match(/-(\d+)$/);
+            const shade = shadeMatch ? shadeMatch[1] : '500';
+
+            content += `  --color-${hueName}-${shade}: ${color.hex};\n`;
         });
         content += '\n';
     });
 
-    content += `---\n\n`;
-    content += `*Exported from Palletary on ${new Date().toLocaleDateString()}*\n`;
+    content += `}\n`;
 
     return content;
 }

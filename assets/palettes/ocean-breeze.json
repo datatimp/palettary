@@ -1,0 +1,43 @@
+{
+  "id": "ocean-breeze",
+  "name": "Ocean Breeze",
+  "description": "Calm, refreshing blues and teals for serene designs",
+  "colors": {
+    "primary": [
+      { "name": "primary-50", "hex": "#ecfeff" },
+      { "name": "primary-100", "hex": "#cffafe" },
+      { "name": "primary-200", "hex": "#a5f3fc" },
+      { "name": "primary-300", "hex": "#67e8f9" },
+      { "name": "primary-400", "hex": "#22d3ee" },
+      { "name": "primary-500", "hex": "#06b6d4" },
+      { "name": "primary-600", "hex": "#0891b2" },
+      { "name": "primary-700", "hex": "#0e7490" },
+      { "name": "primary-800", "hex": "#155e75" },
+      { "name": "primary-900", "hex": "#164e63" }
+    ],
+    "secondary": [
+      { "name": "secondary-50", "hex": "#f0fdfa" },
+      { "name": "secondary-100", "hex": "#ccfbf1" },
+      { "name": "secondary-200", "hex": "#99f6e4" },
+      { "name": "secondary-300", "hex": "#5eead4" },
+      { "name": "secondary-400", "hex": "#2dd4bf" },
+      { "name": "secondary-500", "hex": "#14b8a6" },
+      { "name": "secondary-600", "hex": "#0d9488" },
+      { "name": "secondary-700", "hex": "#0f766e" },
+      { "name": "secondary-800", "hex": "#115e59" },
+      { "name": "secondary-900", "hex": "#134e4a" }
+    ],
+    "neutral": [
+      { "name": "neutral-50", "hex": "#f8fafc" },
+      { "name": "neutral-100", "hex": "#f1f5f9" },
+      { "name": "neutral-200", "hex": "#e2e8f0" },
+      { "name": "neutral-300", "hex": "#cbd5e1" },
+      { "name": "neutral-400", "hex": "#94a3b8" },
+      { "name": "neutral-500", "hex": "#64748b" },
+      { "name": "neutral-600", "hex": "#475569" },
+      { "name": "neutral-700", "hex": "#334155" },
+      { "name": "neutral-800", "hex": "#1e293b" },
+      { "name": "neutral-900", "hex": "#0f172a" }
+    ]
+  }
+}

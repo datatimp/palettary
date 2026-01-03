@@ -1,0 +1,43 @@
+{
+  "id": "midnight-canvas",
+  "name": "Midnight Canvas",
+  "description": "Deep, sophisticated tones for elegant interfaces",
+  "colors": {
+    "primary": [
+      { "name": "primary-50", "hex": "#eef2ff" },
+      { "name": "primary-100", "hex": "#e0e7ff" },
+      { "name": "primary-200", "hex": "#c7d2fe" },
+      { "name": "primary-300", "hex": "#a5b4fc" },
+      { "name": "primary-400", "hex": "#818cf8" },
+      { "name": "primary-500", "hex": "#6366f1" },
+      { "name": "primary-600", "hex": "#4f46e5" },
+      { "name": "primary-700", "hex": "#4338ca" },
+      { "name": "primary-800", "hex": "#3730a3" },
+      { "name": "primary-900", "hex": "#312e81" }
+    ],
+    "secondary": [
+      { "name": "secondary-50", "hex": "#faf5ff" },
+      { "name": "secondary-100", "hex": "#f3e8ff" },
+      { "name": "secondary-200", "hex": "#e9d5ff" },
+      { "name": "secondary-300", "hex": "#d8b4fe" },
+      { "name": "secondary-400", "hex": "#c084fc" },
+      { "name": "secondary-500", "hex": "#a855f7" },
+      { "name": "secondary-600", "hex": "#9333ea" },
+      { "name": "secondary-700", "hex": "#7e22ce" },
+      { "name": "secondary-800", "hex": "#6b21a8" },
+      { "name": "secondary-900", "hex": "#581c87" }
+    ],
+    "neutral": [
+      { "name": "neutral-50", "hex": "#fafafa" },
+      { "name": "neutral-100", "hex": "#f4f4f5" },
+      { "name": "neutral-200", "hex": "#e4e4e7" },
+      { "name": "neutral-300", "hex": "#d4d4d8" },
+      { "name": "neutral-400", "hex": "#a1a1aa" },
+      { "name": "neutral-500", "hex": "#71717a" },
+      { "name": "neutral-600", "hex": "#52525b" },
+      { "name": "neutral-700", "hex": "#3f3f46" },
+      { "name": "neutral-800", "hex": "#27272a" },
+      { "name": "neutral-900", "hex": "#18181b" }
+    ]
+  }
+}

@@ -1,0 +1,46 @@
+{
+  "palettes": [
+    {
+      "id": "midnight-canvas",
+      "name": "Midnight Canvas",
+      "description": "Deep, sophisticated tones for elegant interfaces",
+      "file": "midnight-canvas.json",
+      "dateAdded": "2026-01-02"
+    },
+    {
+      "id": "ocean-breeze",
+      "name": "Ocean Breeze",
+      "description": "Calm, refreshing blues and teals for serene designs",
+      "file": "ocean-breeze.json",
+      "dateAdded": "2026-01-01"
+    },
+    {
+      "id": "sunset-glow",
+      "name": "Sunset Glow",
+      "description": "Warm, vibrant oranges and pinks for energetic interfaces",
+      "file": "sunset-glow.json",
+      "dateAdded": "2025-12-30"
+    },
+    {
+      "id": "forest-whisper",
+      "name": "Forest Whisper",
+      "description": "Natural greens and earth tones for organic, grounded designs",
+      "file": "forest-whisper.json",
+      "dateAdded": "2025-12-28"
+    },
+    {
+      "id": "cherry-blossom",
+      "name": "Cherry Blossom",
+      "description": "Soft pinks and purples for delicate, feminine designs",
+      "file": "cherry-blossom.json",
+      "dateAdded": "2025-12-25"
+    },
+    {
+      "id": "arctic-aurora",
+      "name": "Arctic Aurora",
+      "description": "Cool blues and whites with subtle gradients for clean, modern interfaces",
+      "file": "arctic-aurora.json",
+      "dateAdded": "2025-12-20"
+    }
+  ]
+}

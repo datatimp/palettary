@@ -5,11 +5,12 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Palettary - Color Primitives for Figma</title>
     <link rel="stylesheet" href="styles.css">
+    <link rel="shortcut icon" type="image/png" href="assets/images/favicon-palette.png">
 </head>
 <body>
     <header>
         <div class="container">
-            <h1>Palettary</h1>
+            <img src="assets/images/palettary-logo-color-reversed.svg">
             <p class="tagline">Curated Color Primitives for Figma</p>
         </div>
     </header>
@@ -40,19 +41,19 @@
                         </svg>
                         Figma JSON
                     </button>
+                    <button class="export-btn" data-format="css">
+                        <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M8 11L4 7H6V3H10V7H12L8 11Z" fill="currentColor"/>
+                            <path d="M3 13H13V14H3V13Z" fill="currentColor"/>
+                        </svg>
+                        CSS
+                    </button>
                     <button class="export-btn" data-format="txt">
                         <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
                             <path d="M8 11L4 7H6V3H10V7H12L8 11Z" fill="currentColor"/>
                             <path d="M3 13H13V14H3V13Z" fill="currentColor"/>
                         </svg>
                         TXT
-                    </button>
-                    <button class="export-btn" data-format="md">
-                        <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
-                            <path d="M8 11L4 7H6V3H10V7H12L8 11Z" fill="currentColor"/>
-                            <path d="M3 13H13V14H3V13Z" fill="currentColor"/>
-                        </svg>
-                        MD
                     </button>
                 </div>
             </div>
@@ -64,7 +65,7 @@
 
         <!-- Palette Gallery -->
         <section class="palette-gallery">
-            <h2 class="gallery-title">Popular Palettes</h2>
+            <h2 class="gallery-title">Newest Palettes</h2>
             <div id="palette-cards" class="palette-cards">
                 <!-- Palette cards will be dynamically inserted here -->
             </div>
@@ -73,11 +74,10 @@
 
     <footer>
         <div class="container">
-            <p>© 2026 Palettary</p>
+            <p>Made with ❤️ for designers by <a href="https://github.com/datatimp">datatimp</a></p> © 2026
         </div>
     </footer>
 
-    <script src="palettes.js"></script>
     <script src="app.js"></script>
 </body>
 </html>
