@@ -3,20 +3,21 @@
     margin: 0;
     padding: 0;
     box-sizing: border-box;
+    font-size: 16px;
 }
 
 :root {
-    --brand-primary: #355f42;
-    --brand-primary-light: #4b7157;
+    --brand-primary: rgb(81, 122, 92);
+    --brand-primary-light: rgb(53, 95, 66, .9);
     --brand-secondary: #df99a6;
     --brand-tertiary: #eebc4e   ;
     --primary-color: var(--brand-primary);
-    --primary-hover: var(--brand-primary-light);
+    --primary-hover: var(--brand-tertiary);
     --text-dark: #1f2937;
     --text-light: #6b7280;
     --border-color: #e5e7eb;
     --background-light: #f9fafb;
-    --brackground-grey: #eff0f5;
+    --background-grey: #f1f1f1;
     --white: #ffffff;
     --shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
     --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
@@ -52,7 +53,7 @@ a:visited {
 header {
     background-color: var(--background-light);
     color: var(--text-dark);
-    padding: 12px 0px;
+    padding: 20px 0px 10px 0px;
     border-bottom: 1px solid var(--border-color);
     /* box-shadow: var(--shadow-md); */
 }
@@ -64,8 +65,7 @@ header .container {
 }
 
 header img {
-    width: 25%;
-    height: 25%;
+    width: 200px;
 }
 
 header h1 {
@@ -86,6 +86,45 @@ main {
     padding: 40px 20px;
 }
 
+.highlight {
+    z-index: 5;
+    position: relative;
+    display: inline-flex;
+    flex-direction: column;
+    justify-content: flex-end;
+}
+
+.highlight::before {
+    content:"";
+    height: 50%;
+    width: 100%;
+    display: block;
+    z-index: -5;
+    opacity: 30%;
+    position: absolute;
+    background: linear-gradient(180deg, transparent 50%, var(--brand-tertiary)50%)
+}
+
+/*About Section*/
+.about-section {
+    margin-top: 40px;
+    margin-bottom: 40px;
+}
+
+.about-wrapper {
+    background: var(--background-grey);
+    padding: 20px 30px 30px 30px;
+    border-radius: 12px;
+    color: var(--text-dark);
+}
+
+.about-heading h2 {
+    color: var(--brand-primary);
+    font-size: 1.8rem;
+    opacity: 100%;
+    padding-bottom: 1.5rem;
+}
+
 /* Selector Section */
 .selector-section {
     margin-top: 40px;
@@ -94,7 +133,7 @@ main {
 
 .selector-wrapper {
     background: var(--white);
-    padding: 30px;
+    padding: 20px 30px 30px 30px;
     border-radius: 12px;
     box-shadow: var(--shadow-md);
 }
@@ -150,6 +189,12 @@ main {
     font-size: 2rem;
     margin-bottom: 8px;
     color: var(--text-dark);
+    cursor: pointer;
+    transition: color 0.2s ease;
+}
+
+.palette-info h2:hover {
+    color: var(--primary-color);
 }
 
 .palette-info p {
@@ -260,10 +305,10 @@ main {
     margin-top: 60px;
 }
 
-.gallery-title {
+.palette-gallery h2 {
     font-size: 1.8rem;
-    margin-bottom: 24px;
-    color: var(--text-dark);
+    padding-bottom: 1.5rem;
+    color: var(--brand-primary);
 }
 
 .palette-cards {
@@ -321,26 +366,22 @@ main {
 /* Footer */
 footer {
     display: flex;
+    max-width: 1200px;
+    /* align-items: center;
+    text-align: center; */
     flex-direction: column;
-    text-align: center;
-    background-color: var(--brackground-grey);
+    background-color: var(--background-grey);
     color: var(--text-dark);
-    border-radius: 10px;
-    padding: 30px 20px;
+    border-radius: 12px;
+    padding: 30px;
     margin-top: 80px;
     margin-bottom: 40px;
-    max-width: 1200px;
     margin-left: auto;
     margin-right: auto;
 }
 
 footer img {
     width: 150px;
-}
-
-
-footer p {
-    opacity: 1;
 }
 
 .footer-col-head {
@@ -359,7 +400,6 @@ footer p {
     font-size: 1rem;
     width: 100%;
     white-space: nowrap;
-    background-color: transparent;
     text-decoration: none;
     color: var(--brand-primary);
     line-height: 2;
@@ -382,7 +422,7 @@ footer .divider {
     }
 
     header img {
-        width: 250px;
+        width: 150px;
     }
 
     header h1 {
@@ -390,7 +430,7 @@ footer .divider {
     }
 
     header .tagline {
-        font-size: 1.2rem;
+        font-size: 1.1rem;
         text-align: center;
     }
 
@@ -398,7 +438,11 @@ footer .divider {
         align-self: center;
     }
 
-    .gallery-title {
+    .about-heading h2 {
+        font-size: 1.5rem;
+    }
+
+    .palette-gallery h2 {
         font-size: 1.5rem;
     }
     

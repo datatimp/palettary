@@ -94,6 +94,7 @@ function displayPaletteCards() {
 async function createPaletteCard(paletteInfo) {
     const card = document.createElement('div');
     card.className = 'palette-card';
+    card.dataset.paletteId = paletteInfo.id;
     card.onclick = () => selectPalette(paletteInfo.id);
 
     // Load the palette to get preview colors
@@ -167,6 +168,19 @@ function setupEventListeners() {
         }
     });
 
+    // Palette name click to collapse
+    document.getElementById('palette-name').addEventListener('click', () => {
+        if (currentPalette) {
+            document.getElementById('palette-display').style.display = 'none';
+            currentPalette = null;
+            document.getElementById('palette-select').value = '';
+            // Show all palette cards again
+            document.querySelectorAll('.palette-card').forEach(card => {
+                card.style.display = '';
+            });
+        }
+    });
+
     // Export button listeners
     document.querySelectorAll('.export-btn').forEach(btn => {
         btn.addEventListener('click', (e) => {
@@ -183,6 +197,14 @@ async function selectPalette(paletteId) {
     const palette = await loadPalette(paletteId);
     if (!palette) return;
 
+    // Show the previously selected palette's card (if any)
+    if (currentPalette) {
+        const previousCard = document.querySelector(`.palette-card[data-palette-id="${currentPalette.id}"]`);
+        if (previousCard) {
+            previousCard.style.display = '';
+        }
+    }
+
     currentPalette = palette;
 
     // Update dropdown
@@ -196,10 +218,17 @@ async function selectPalette(paletteId) {
     displayColorSwatches(palette);
 
     // Show the palette display section
-    document.getElementById('palette-display').style.display = 'block';
+    const paletteDisplay = document.getElementById('palette-display');
+    paletteDisplay.style.display = 'block';
+
+    // Hide the selected palette's card from the gallery
+    const selectedCard = document.querySelector(`.palette-card[data-palette-id="${paletteId}"]`);
+    if (selectedCard) {
+        selectedCard.style.display = 'none';
+    }
 
     // Scroll to palette display
-    document.getElementById('palette-display').scrollIntoView({ behavior: 'smooth', block: 'start' });
+    paletteDisplay.scrollIntoView({ behavior: 'smooth', block: 'start' });
 }
 
 // Display color swatches organized by hue
