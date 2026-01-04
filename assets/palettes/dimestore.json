@@ -19,40 +19,6 @@
         "hex": "#7F9CF5"
       }
     ],
-    "brand": [
-      {
-        "name": "brand-100",
-        "hex": "#E9FBF3"
-      },
-      {
-        "name": "brand-200",
-        "hex": "#31A449"
-      },
-      {
-        "name": "brand-300",
-        "hex": "#288B3D"
-      },
-      {
-        "name": "brand-400",
-        "hex": "#A3A3A3"
-      },
-      {
-        "name": "brand-500",
-        "hex": "#676767"
-      },
-      {
-        "name": "brand-600",
-        "hex": "#404040"
-      },
-      {
-        "name": "brand-700",
-        "hex": "#202020"
-      },
-      {
-        "name": "brand-050",
-        "hex": "#FFFFFF"
-      }
-    ],
     "green": [
       {
         "name": "green-100",
