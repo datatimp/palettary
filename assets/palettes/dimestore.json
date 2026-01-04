@@ -1,0 +1,164 @@
+{
+  "id": "dimestore",
+  "name": "Dimestore",
+  "description": "Classic variety of practical colors balancing warm reds and oranges with cool greens and neutrals",
+  "colors": {
+    "black": [
+      {
+        "name": "black-1000",
+        "hex": "#000000"
+      }
+    ],
+    "blue": [
+      {
+        "name": "blue-100",
+        "hex": "#EBF4FF"
+      },
+      {
+        "name": "blue-500",
+        "hex": "#7F9CF5"
+      }
+    ],
+    "brand": [
+      {
+        "name": "brand-100",
+        "hex": "#E9FBF3"
+      },
+      {
+        "name": "brand-200",
+        "hex": "#31A449"
+      },
+      {
+        "name": "brand-300",
+        "hex": "#288B3D"
+      },
+      {
+        "name": "brand-400",
+        "hex": "#A3A3A3"
+      },
+      {
+        "name": "brand-500",
+        "hex": "#676767"
+      },
+      {
+        "name": "brand-600",
+        "hex": "#404040"
+      },
+      {
+        "name": "brand-700",
+        "hex": "#202020"
+      },
+      {
+        "name": "brand-050",
+        "hex": "#FFFFFF"
+      }
+    ],
+    "green": [
+      {
+        "name": "green-100",
+        "hex": "#E9FBF3"
+      },
+      {
+        "name": "green-500",
+        "hex": "#31A449"
+      },
+      {
+        "name": "green-600",
+        "hex": "#288B3D"
+      },
+      {
+        "name": "green-700",
+        "hex": "#1F7131"
+      },
+      {
+        "name": "green-800",
+        "hex": "#165824"
+      },
+      {
+        "name": "green-900",
+        "hex": "#0D3E18"
+      }
+    ],
+    "neutral": [
+      {
+        "name": "neutral-50",
+        "hex": "#F5F5F5"
+      },
+      {
+        "name": "neutral-100",
+        "hex": "#D9D9D9"
+      },
+      {
+        "name": "neutral-300",
+        "hex": "#A3A3A3"
+      },
+      {
+        "name": "neutral-400",
+        "hex": "#8F8F8F"
+      },
+      {
+        "name": "neutral-500",
+        "hex": "#7B7B7B"
+      },
+      {
+        "name": "neutral-600",
+        "hex": "#676767"
+      },
+      {
+        "name": "neutral-700",
+        "hex": "#404040"
+      },
+      {
+        "name": "neutral-900",
+        "hex": "#202020"
+      }
+    
+    ],
+    "orange": [
+      {
+        "name": "orange-100",
+        "hex": "#F9F1E6"
+      },
+      {
+        "name": "orange-500",
+        "hex": "#E99116"
+      },
+      {
+        "name": "orange-900",
+        "hex": "#A26003"
+      }
+    ],
+    "red": [
+      {
+        "name": "red-100",
+        "hex": "#FFF3F3"
+      },
+      {
+        "name": "red-500",
+        "hex": "#B82727"
+      },
+      {
+        "name": "red-600",
+        "hex": "#A21D1F"
+      },
+      {
+        "name": "red-700",
+        "hex": "#8B1417"
+      },
+      {
+        "name": "red-800",
+        "hex": "#750A0E"
+      },
+      {
+        "name": "red-900",
+        "hex": "#5E0006"
+      }
+    ],
+    "white": [
+      {
+        "name": "white-1000",
+        "hex": "#FFFFFF"
+      }
+    ]
+  }
+}

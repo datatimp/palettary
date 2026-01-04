@@ -1,7 +1,7 @@
 {
   "id": "cherry-blossom",
   "name": "Cherry Blossom",
-  "description": "Soft pinks and purples for delicate, feminine designs",
+  "description": "Soft pinks and purples for delicate designs",
   "colors": {
     "primary": [
       { "name": "primary-50", "hex": "#fdf2f8" },

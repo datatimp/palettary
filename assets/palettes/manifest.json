@@ -69,6 +69,13 @@
       "description": "Give one",
       "file": "cooper-craft.json",
       "dateAdded": "2026-01-02"
+    },
+    {
+      "id": "dimestore",
+      "name": "Dimestore",
+      "description": "Give one",
+      "file": "dimestore.json",
+      "dateAdded": "2026-01-03"
     }
   ]
 }
