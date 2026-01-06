@@ -1,3 +1,6 @@
+/* Import Typefaces */
+@import url('https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap');
+
 /* Global Styles */
 * {
     margin: 0;
@@ -25,7 +28,7 @@
 }
 
 body {
-    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Helvetica', 'Arial', sans-serif;
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Helvetica', 'Arial', sans-serif;
     line-height: 1.6;
     color: var(--text-dark);
     background-color: var(--background-light);
@@ -65,7 +68,7 @@ header .container {
 }
 
 header img {
-    width: 200px;
+    width: 300px;
 }
 
 header h1 {
@@ -76,8 +79,9 @@ header h1 {
 
 .tagline {
     font-size: 1.1rem;
+    color: var(--brand-primary);
     font-weight: 600;
-    opacity: 0.9;
+    opacity: 0.6;
     margin: 0;
 }
 
