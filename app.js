@@ -154,6 +154,42 @@ async function createPaletteCard(paletteInfo) {
 
 // Setup event listeners
 function setupEventListeners() {
+    // Navigation menu toggle
+    const navTrigger = document.querySelector('.nav-trigger');
+    const navMenu = document.querySelector('.nav-menu');
+    const navDropdown = document.querySelector('.nav-dropdown');
+    const navOverlay = document.querySelector('.nav-overlay');
+
+    if (navTrigger) {
+        navTrigger.addEventListener('click', (e) => {
+            e.stopPropagation();
+            navMenu.classList.toggle('active');
+        });
+    }
+
+    // Close menu when clicking on overlay
+    if (navOverlay) {
+        navOverlay.addEventListener('click', () => {
+            navMenu.classList.remove('active');
+        });
+    }
+
+    // Close menu when clicking outside
+    document.addEventListener('click', (e) => {
+        if (!navMenu.contains(e.target)) {
+            navMenu.classList.remove('active');
+        }
+    });
+
+    // Close menu when clicking a menu item
+    if (navDropdown) {
+        navDropdown.querySelectorAll('a').forEach(link => {
+            link.addEventListener('click', () => {
+                navMenu.classList.remove('active');
+            });
+        });
+    }
+
     // Dropdown change listener
     document.getElementById('palette-select').addEventListener('change', (e) => {
         if (e.target.value) {
