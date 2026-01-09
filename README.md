@@ -1,8 +1,10 @@
-# Palettary
 
-**Curated Color Primitives for Figma**
+[<img alt="Palettary logo" width="50%" src="assets/images/palettary-wordmark-brand-primary1a.svg" />](https://github.com/datatimp/palettary/blob/main/assets/images/palettary-wordmark-brand-primary1b.svg)
 
-Palettary is a web app that helps designers organize, sort, and select Color Primitives for Figma. Similar to [Lospec](https://lospec.com/palette-list) for pixel artists, Palettary provides a collection of beautifully named color primitive collections that you can browse, preview, and export directly to Figma's Variables panel.
+
+**Color Primitives & Thumbnail Generator for Figma**
+
+Palettary is a collection of web apps that aims to solve workflow bottlenecks I often encounter: choosing a starting palette of primitives and generating file thumbnails. First, Palettary aims to help designers organize, sort, and select Color Primitives for Figma. Similar to [Lospec](https://lospec.com/palette-list) for pixel artists, Palettary provides a collection of beautifully named color primitive collections that you can browse, preview, and export directly to Figma's Variables panel. Second, automating the generation of file thumbnails reduces a mundane, time-consuming task down to few clicks, letting you get back to the important work.
 
 ## Features
 
