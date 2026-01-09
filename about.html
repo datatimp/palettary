@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Palettary - Color Primitives & Figma Thumbnail Generator</title>
-    <link rel="stylesheet" href="css/palettes.css">
+    <link rel="stylesheet" href="css/about.css">
     <link rel="shortcut icon" type="image/png" href="assets/images/favicon.png">
 </head>
 
@@ -40,64 +40,38 @@
     </header>
 
     <main class="container">
-        <div class="page-title highlight-green">Color Primitive Palettes</div>
 
-
-        <!-- Palette Selector -->
-        <section class="selector-section">
-            <div class="selector-wrapper">
-                <label for="palette-select">Choose a collection:</label>
-                <select id="palette-select" class="palette-dropdown">
-                    <option value="">Select a palette...</option>
-                </select>
-            </div>
-        </section>
-
-        <!-- Selected Palette Display -->
-        <section id="palette-display" class="palette-display" style="display: none;">
-            <div class="palette-header">
-                <div class="palette-info">
-                    <h2 id="palette-name"></h2>
-                    <p id="palette-description"></p>
+        <!--About Section-->
+        <section class="about-section">
+            <div class="about-wrapper">
+                <div class="about-heading">
+                    <h2 class="highlight-gold">What is Palettary?</h2>
                 </div>
-                <div class="export-buttons">
-                    <button class="export-btn" data-format="json">
-                        <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
-                            <path d="M8 11L4 7H6V3H10V7H12L8 11Z" fill="currentColor" />
-                            <path d="M3 13H13V14H3V13Z" fill="currentColor" />
-                        </svg>
-                        Figma JSON
-                    </button>
-                    <button class="export-btn" data-format="css">
-                        <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
-                            <path d="M8 11L4 7H6V3H10V7H12L8 11Z" fill="currentColor" />
-                            <path d="M3 13H13V14H3V13Z" fill="currentColor" />
-                        </svg>
-                        CSS
-                    </button>
-                    <button class="export-btn" data-format="txt">
-                        <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
-                            <path d="M8 11L4 7H6V3H10V7H12L8 11Z" fill="currentColor" />
-                            <path d="M3 13H13V14H3V13Z" fill="currentColor" />
-                        </svg>
-                        TXT
-                    </button>
+                <div class="about-body">
+                    <p>Palettary features a curated collection of color palettes that includes color scales across multiple
+                        hues, making it easy to establish consistent, accessible color foundations for your projects.
+                        Import the <code>.json</code> into Figma as color primitives, or download as <code>.css</code>
+                        or plain <code>.txt</code> for use in any design tool or codebase.</p>
+                </div>
+                <div class="about-heading">
+                    <h2 class="highlight-gold">Thumbail Generator?</h2>
+                </div>
+                <div class="about-body">
+                    <p>Figma projects often contain many design files leading to a cluttered environment. This is especially problematic when working with teams. Figma allows you to set a thumbnail for each file and common practice is to include the file contents in a quick, scannable format. Palettary's thumbnail generator gives you plenty of options and allows you to export as a <code>.png</code> or <code>.svg</code> file. Simply create a page in the Figma design file called <code>Cover</code>, upload your image and set it as the file thumbnail.</p>
+                </div>
+                <div class="about-heading">
+                    <h2 class="highlight-gold">Can I Contribute?</h2>
+                </div>
+                <div class="about-body">
+                    <p>Absolutely! If you'd like to submit a palette, or an idea, use <a href="https://forms.gle/xqpEMTbqkQMFyp1v6">this Google Form</a>. For bug reports, visit <a href="https://github.com/datatimp/palettary">github repository</a>.
+
+                    </p>
                 </div>
             </div>
-
-            <div id="color-swatches" class="color-swatches">
-                <!-- Color swatches will be dynamically inserted here -->
             </div>
         </section>
 
-        <!-- Palette Gallery -->
-        <section class="palette-gallery">
-            <h2 class="highlight-gold">Newest Palettes</h2>
-            <div id="palette-cards" class="palette-cards">
-                <!-- Palette cards will be dynamically inserted here -->
-            </div>
-        </section>
-
+        <!--Footer Section-->
         <footer>
             <a href="#top"><img src="assets/images/palettary-logo-brand-primary-square.svg"></a>
             <div class="divider"></div>
