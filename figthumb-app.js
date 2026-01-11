@@ -115,9 +115,7 @@ function generateThumbnails() {
     downloadBtn.onclick = downloadThumbnail;
     updateDownloadButtonState();
 
-    // Add click handler for thumbnail selection
-    const thumbnail = grid.querySelector('.thumbnail');
-    thumbnail.addEventListener('click', selectThumbnail);
+
 
     // Calculate and apply scale based on actual container width
     updateThumbnailScale();
@@ -136,11 +134,7 @@ function updateThumbnailScale() {
     }
 }
 
-function selectThumbnail(e) {
-    const thumbnail = e.currentTarget;
-    document.querySelectorAll('.thumbnail').forEach(t => t.classList.remove('selected'));
-    thumbnail.classList.add('selected');
-}
+
 
 async function downloadThumbnail() {
     const thumbnail = document.getElementById('generatedThumbnail');

@@ -73,7 +73,7 @@
     --color-background-teal-dark: rgb(28, 95, 83);
     --color-background-disabled: rgb(217, 217, 217);
 
-    --gradient-purple-orange-01: linear-gradient(91deg, rgba(83, 6, 190, 1) 0.6%, rgba(204, 121, 86, 1) 99.06%)
+    --gradient-purple-orange-01: linear-gradient(91deg, rgba(83, 6, 190, 1) 0.6%, rgba(204, 121, 86, 1) 99.06%);
 
     /* Elevation Variables */
     --shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.05);

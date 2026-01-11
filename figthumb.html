@@ -52,78 +52,107 @@
         </div>
 
 
-        <div class="controls">
-            <!-- File Name (required, standalone) -->
-            <div class="control-row">
-                <label for="fileName">File Name*</label>
-                <input type="text" id="fileName" value="File Name" placeholder="Enter file name" required>
+        <div class="generator-layout">
+            <div class="controls">
+                <!-- File Name (required, standalone) -->
+                <div class="control-row">
+                    <label for="fileName">File Name*</label>
+                    <input type="text" id="fileName" value="File Name" placeholder="Enter file name" required>
+                </div>
+
+                <!-- Optional fields with inline toggles -->
+                <div class="control-table">
+                    <div class="control-table-row">
+                        <label for="designSystemName">Design System</label>
+                        <input type="checkbox" id="showDesignSystemName" checked>
+                        <input type="text" id="designSystemName" value="Design System Name"
+                            placeholder="Enter design system name">
+                    </div>
+                    <div class="control-table-row">
+                        <label for="projectType">Project Type</label>
+                        <input type="checkbox" id="showProjectType" checked>
+                        <input type="text" id="projectType" value="Project Type" placeholder="Enter project type">
+                    </div>
+                    <div class="control-table-row">
+                        <label for="description">Description</label>
+                        <input type="checkbox" id="showDescription" checked>
+                        <input type="text" id="description" value="Description" placeholder="Enter description">
+                    </div>
+                </div>
+
+                <!-- Status (standalone) -->
+                <div class="control-row">
+                    <label for="status">Status</label>
+                    <select id="status">
+                        <option value="" disabled selected>Select a status...</option>
+                        <option value="in-progress">In Progress</option>
+                        <option value="review">Review</option>
+                        <option value="paused">Paused</option>
+                        <option value="dev">Ready For Dev</option>
+                        <option value="completed">Completed</option>
+                        <option value="archived">Archived</option>
+                        <option value="deprecated">Deprecated</option>
+                    </select>
+                </div>
+
+                <!-- OS toggle chips -->
+                <div class="control-row">
+                    <label>OS</label>
+                    <div class="chip-group">
+                        <label class="chip" title="iOS">
+                            <input type="checkbox" id="osIos">
+                            <img src="assets/icons/icon-os-ios-on-light.svg" class="icon-light" alt="iOS">
+                            <img src="assets/icons/icon-os-ios-on-dark.svg" class="icon-dark" alt="iOS">
+                        </label>
+                        <label class="chip" title="Android">
+                            <input type="checkbox" id="osAndroid">
+                            <img src="assets/icons/icon-os-android-on-light.svg" class="icon-light" alt="Android">
+                            <img src="assets/icons/icon-os-android-on-dark.svg" class="icon-dark" alt="Android">
+                        </label>
+                    </div>
+                </div>
+
+                <!-- Platform toggle chips -->
+                <div class="control-row">
+                    <label>Platforms</label>
+                    <div class="chip-group">
+                        <label class="chip" title="Watch">
+                            <input type="checkbox" id="platformWatch">
+                            <img src="assets/icons/icon-platform-watch-on-light.svg" class="icon-light" alt="Watch">
+                            <img src="assets/icons/icon-platform-watch-on-dark.svg" class="icon-dark" alt="Watch">
+                        </label>
+                        <label class="chip" title="Mobile">
+                            <input type="checkbox" id="platformMobile" checked>
+                            <img src="assets/icons/icon-platform-mobile-on-light.svg" class="icon-light" alt="Mobile">
+                            <img src="assets/icons/icon-platform-mobile-on-dark.svg" class="icon-dark" alt="Mobile">
+                        </label>
+                        <label class="chip" title="Laptop">
+                            <input type="checkbox" id="platformLaptop" checked>
+                            <img src="assets/icons/icon-platform-laptopon-light.svg" class="icon-light" alt="Laptop">
+                            <img src="assets/icons/icon-platform-laptop-on-dark.svg" class="icon-dark" alt="Laptop">
+                        </label>
+                        <label class="chip" title="Desktop">
+                            <input type="checkbox" id="platformDesktop" checked>
+                            <img src="assets/icons/icon-platform-desktop-on-light.svg" class="icon-light" alt="Desktop">
+                            <img src="assets/icons/icon-platform-desktop-on-dark.svg" class="icon-dark" alt="Desktop">
+                        </label>
+                    </div>
+                </div>
             </div>
 
-            <!-- Optional fields with inline toggles -->
-            <div class="control-table">
-                <div class="control-table-row">
-                    <label for="designSystemName">Design System</label>
-                    <input type="checkbox" id="showDesignSystemName" checked>
-                    <input type="text" id="designSystemName" value="Design System Name" placeholder="Enter design system name">
+            <div class="preview-panel">
+                <div class="action-bar">
+                    <select id="exportFormat" class="export-select">
+                        <option value="" disabled selected>Choose export format...</option>
+                        <option value="png">PNG</option>
+                        <option value="svg">SVG</option>
+                    </select>
+                    <button id="downloadBtn" class="btn btn-primary" disabled>Download Thumbnail</button>
                 </div>
-                <div class="control-table-row">
-                    <label for="projectType">Project Type</label>
-                    <input type="checkbox" id="showProjectType" checked>
-                    <input type="text" id="projectType" value="Project Type" placeholder="Enter project type">
-                </div>
-                <div class="control-table-row">
-                    <label for="description">Description</label>
-                    <input type="checkbox" id="showDescription" checked>
-                    <input type="text" id="description" value="Description" placeholder="Enter description">
-                </div>
-            </div>
 
-            <!-- Status (standalone) -->
-            <div class="control-row">
-                <label for="status">Status</label>
-                <select id="status">
-                    <option value="" disabled selected>Select a status...</option>
-                    <option value="in-progress">In Progress</option>
-                    <option value="review">Review</option>
-                    <option value="paused">Paused</option>
-                    <option value="dev">Ready For Dev</option>
-                    <option value="completed">Completed</option>
-                    <option value="archived">Archived</option>
-                    <option value="deprecated">Deprecated</option>
-                </select>
-            </div>
-
-            <!-- OS toggle chips -->
-            <div class="control-row">
-                <label>OS</label>
-                <div class="chip-group">
-                    <label class="chip"><input type="checkbox" id="osIos"><span>iOS</span></label>
-                    <label class="chip"><input type="checkbox" id="osAndroid"><span>Android</span></label>
-                </div>
-            </div>
-
-            <!-- Platform toggle chips -->
-            <div class="control-row">
-                <label>Platforms</label>
-                <div class="chip-group">
-                    <label class="chip"><input type="checkbox" id="platformWatch"><span>Watch</span></label>
-                    <label class="chip"><input type="checkbox" id="platformMobile" checked><span>Mobile</span></label>
-                    <label class="chip"><input type="checkbox" id="platformLaptop" checked><span>Laptop</span></label>
-                    <label class="chip"><input type="checkbox" id="platformDesktop" checked><span>Desktop</span></label>
-                </div>
+                <div class="thumbnail-grid" id="thumbnailGrid"></div>
             </div>
         </div>
-
-        <div class="action-bar">
-            <select id="exportFormat" class="export-select">
-                <option value="" disabled selected>Choose export format...</option>
-                <option value="png">PNG</option>
-                <option value="svg">SVG</option>
-            </select>
-            <button id="downloadBtn" class="btn btn-primary" disabled>Download Thumbnail</button>
-        </div>
-
-        <div class="thumbnail-grid" id="thumbnailGrid"></div>
 
         <!--Footer Section-->
         <footer>
