@@ -2,8 +2,6 @@
   <img src="https://raw.githubusercontent.com/datatimp/palettary/main/assets/images/palettary-wordmark-brand-primary1a.svg" width="200" alt="Palettary Logo" />
   
   <br />
-
-  <h1>Palettary</h1>
   <p><strong>Essential Design Tools for Figma</strong></p>
 
   <p>
@@ -26,7 +24,7 @@
   <tr>
     <td align="center" width="50%">
       <h3>🎨 Color Primitives</h3>
-      <p>Browse, preview, and export curated color palette collections directly to Figma. Perfect for setting up your design system's foundation.</p>
+      <p style="text-align: left;">Browse, preview, and export curated color palette collections directly to Figma. Perfect for setting up your design system's foundation.</p>
       <br />
       <a href="https://datatimp.github.io/palettary/">
         <img src="https://img.shields.io/badge/Launch_App-Color_Primitives-blue?style=for-the-badge" alt="Launch Color App" />
@@ -40,7 +38,7 @@
     </td>
     <td align="center" width="50%">
       <h3>🖼️ Thumbnail Generator</h3>
-      <p>Create professional file cover thumbnails for your Figma projects in seconds. Keep your team organized with consistent visuals.</p>
+      <p style="text-align: left;">Create professional file cover thumbnails for your Figma projects in seconds. Keep your team organized with consistent visuals.</p>
       <br />
       <a href="https://datatimp.github.io/palettary/figthumb.html/">
         <img src="https://img.shields.io/badge/Launch_App-Thumbnail_Generator-purple?style=for-the-badge" alt="Launch Thumbnail App" />
@@ -61,15 +59,14 @@
   <h2>What are Color Primitives?</h2>
 </div>
 
-Color primitives are the **raw color values** in your design system (e.g., `blue-500: #2563EB). They describe what a color *is*.
+Color primitives are the **raw color values** in your design system (e.g., `blue-500: #2563EB`). They describe what a color *is*.
 
 **Semantic tokens** describe a color's *purpose* (e.g., `color-text-primary`). By referencing primitives, you create a flexible abstraction layer.
 
-```mermaid
-graph LR
-    A[Primitive: blue-600] -->|#2563EB| B(Semantic: color-link-default)
-    style A fill:#e6f3ff,stroke:#333,stroke-width:2px
-    style B fill:#f9f9f9,stroke:#333,stroke-width:2px
+```
+Primitive:        blue-600 → #2563EB
+                      ↑
+Semantic token:   color-link-default → blue-600
 ```
 
 1.  **Start with Primitives**: Use Palettary as your foundation.
