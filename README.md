@@ -1,61 +1,87 @@
----
-title: "Palettary"
-date: "2023-01-12"
-link: "https://github.com/datatimp/palettary"
-tags: ["design", "figma", "tools", "color", "ui", "ux", "web app"]
----
+<div align="center">
+  <img src="https://raw.githubusercontent.com/datatimp/palettary/main/assets/images/palettary-wordmark-brand-primary1a.svg" width="200" alt="Palettary Logo" />
+  
+  <br />
 
-[<img alt="Palettary logo" width="50%" src="assets/images/palettary-wordmark-brand-primary1a.svg" />](https://github.com/datatimp/palettary/blob/main/assets/images/palettary-wordmark-brand-primary1a.svg)
+  <h1>Palettary</h1>
+  <p><strong>Essential Design Tools for Figma</strong></p>
 
+  <p>
+    <a href="https://github.com/datatimp/palettary/blob/main/LICENSE">
+      <img src="https://img.shields.io/badge/License-MIT-blue.svg?style=flat-square" alt="License" />
+    </a>
+    <img src="https://img.shields.io/badge/Status-Active-success.svg?style=flat-square" alt="Status" />
+    <img src="https://img.shields.io/badge/Figma-Compatible-purple.svg?style=flat-square&logo=figma&logoColor=white" alt="Figma Compatible" />
+  </p>
 
-**A Suite of Design Tools for Figma**
+  <p>
+    <strong>No accounts. No subscriptions. No bloat.</strong><br />
+    Just simple, lightweight tools that do one thing well.
+  </p>
+</div>
 
-Palettary is a collection of lightweight web apps built to solve common workflow bottlenecks designers face every day. No accounts, no subscriptions, no bloat - just simple tools that do one thing well.
+<hr />
 
-## Apps
+<table align="center" style="border: none;">
+  <tr>
+    <td align="center" width="50%">
+      <h3>🎨 Color Primitives</h3>
+      <p>Browse, preview, and export curated color palette collections directly to Figma. Perfect for setting up your design system's foundation.</p>
+      <br />
+      <a href="https://datatimp.github.io/palettary/">
+        <img src="https://img.shields.io/badge/Launch_App-Color_Primitives-blue?style=for-the-badge" alt="Launch Color App" />
+      </a>
+      <br /><br />
+      <ul align="left">
+        <li>Browse palettes with evocative names</li>
+        <li>One-click hex copy</li>
+        <li>Export to Figma JSON, TXT, or MD</li>
+      </ul>
+    </td>
+    <td align="center" width="50%">
+      <h3>🖼️ Thumbnail Generator</h3>
+      <p>Create professional file cover thumbnails for your Figma projects in seconds. Keep your team organized with consistent visuals.</p>
+      <br />
+      <a href="https://datatimp.github.io/figthumb/">
+        <img src="https://img.shields.io/badge/Launch_App-Thumbnail_Generator-purple?style=for-the-badge" alt="Launch Thumbnail App" />
+      </a>
+      <br /><br />
+      <ul align="left">
+        <li>Customizable project status & types</li>
+        <li>Toggle platform icons (iOS, Android, etc.)</li>
+        <li>Export as PNG or SVG</li>
+      </ul>
+    </td>
+  </tr>
+</table>
 
-### Color Primitive Palettes
-Browse, preview, and export curated color palette collections directly to Figma. Similar to [Lospec](https://lospec.com/palette-list) for pixel artists, Palettary provides beautifully named color primitive sets ready for your Variables panel.
+<hr />
 
-- Browse curated palettes with evocative names
-- Click any swatch to copy its hex code
-- Export to Figma JSON, TXT, or Markdown
+<div align="center">
+  <h2>What are Color Primitives?</h2>
+</div>
 
-#### What Are Color Primitives?
+Color primitives are the **raw color values** in your design system (e.g., `blue-500: #3B82F6`). They describe what a color *is*.
 
-Color primitives are the raw color values in your design system - the actual hex codes organized by hue and shade (e.g., `blue-500: #3B82F6`). They describe *what* a color is, not *how* it's used.
+**Semantic tokens** describe a color's *purpose* (e.g., `color-text-primary`). By referencing primitives, you create a flexible abstraction layer.
 
-**Semantic tokens**, on the other hand, describe a color's *purpose* (e.g., `color-text-primary`, `color-background-error`). Semantic tokens reference primitives, creating a layer of abstraction that makes your design system flexible and maintainable.
-
+```mermaid
+graph LR
+    A[Primitive: blue-600] -->|#2563EB| B(Semantic: color-link-default)
+    style A fill:#e6f3ff,stroke:#333,stroke-width:2px
+    style B fill:#f9f9f9,stroke:#333,stroke-width:2px
 ```
-Primitive:        blue-600 → #2563EB
-                      ↑
-Semantic token:   color-link-default → blue-600
-```
 
-This separation lets you swap entire color schemes by changing which primitives your semantic tokens point to - without touching every component in your design system.
+1.  **Start with Primitives**: Use Palettary as your foundation.
+2.  **Mix & Match**: Combine palettes freely.
+3.  **Create Semantics**: Map primitives to semantic tokens in Figma variables.
 
-#### Tips for Designers
+<hr />
 
-1. **Start with Primitives**: Use these palettes as a foundation, then create semantic tokens in Figma
-2. **Mix and Match**: You can combine colors from multiple palettes
-3. **Test Accessibility**: Always check color contrast ratios for text
-4. **Organize in Figma**: After importing, organize variables into collections and modes
-
-
-### Figma Thumbnail Generator
-Create professional file cover thumbnails for your Figma projects in seconds. Help your team navigate large projects by giving every file a consistent, informative cover.
-
-- Customize file name, design system, project type, and description
-- Set file status (In Progress, Review, Ready for Dev, Completed, etc.)
-- Toggle OS and platform icons
-- Export as PNG or SVG
-
-
-## License
-
-Free to use for personal and commercial projects.
-
----
-
-**Happy designing!**
+<div align="center">
+  <p>Happy Designing!</p>
+  <p>
+    <a href="https://github.com/datatimp/palettary">GitHub</a> • 
+    <a href="https://datatimp.github.io/palettary/">Website</a>
+  </p>
+</div>
