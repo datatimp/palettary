@@ -2,7 +2,6 @@
 @import url('https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Fira+Code:wght@300..700&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100..900;1,100..900&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Open+Sans:wdth,wght@75..100,300..800&display=swap');
 
 /** MARK: Global
 */
@@ -18,10 +17,8 @@
     /* Typeface Variables */
     --font-default-body: 'Inter';
     --font-default-mono: 'Fira Code';
-    --font-default-small: 'Open Sans';
     --font-thumb-body: 'Roboto';
     --font-thumb-mono: 'Fira Code';
-    --font-thumb-condensed: 'Open Sans';
 
     /* Color Primitives */
     --color-neutral-0: #ffffff;
