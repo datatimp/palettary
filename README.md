@@ -15,7 +15,7 @@
   </p>
 
   <p>
-    <strong>No accounts. No subscriptions. No bloat.</strong><br />
+    <strong>No accounts. No subscriptions.</strong><br />
     Just simple, lightweight tools that do one thing well.
   </p>
 </div>
@@ -42,7 +42,7 @@
       <h3>🖼️ Thumbnail Generator</h3>
       <p>Create professional file cover thumbnails for your Figma projects in seconds. Keep your team organized with consistent visuals.</p>
       <br />
-      <a href="https://datatimp.github.io/figthumb/">
+      <a href="https://datatimp.github.io/palettary/figthumb.html/">
         <img src="https://img.shields.io/badge/Launch_App-Thumbnail_Generator-purple?style=for-the-badge" alt="Launch Thumbnail App" />
       </a>
       <br /><br />
@@ -61,7 +61,7 @@
   <h2>What are Color Primitives?</h2>
 </div>
 
-Color primitives are the **raw color values** in your design system (e.g., `blue-500: #3B82F6`). They describe what a color *is*.
+Color primitives are the **raw color values** in your design system (e.g., `blue-500: #2563EB). They describe what a color *is*.
 
 **Semantic tokens** describe a color's *purpose* (e.g., `color-text-primary`). By referencing primitives, you create a flexible abstraction layer.
 
