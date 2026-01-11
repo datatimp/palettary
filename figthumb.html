@@ -82,9 +82,9 @@
 
                 <!-- Status (standalone) -->
                 <div class="control-row">
-                    <label for="status">Status</label>
-                    <select id="status">
-                        <option value="" disabled selected>Select a status...</option>
+                    <label for="status">Status*</label>
+                    <select id="status" required>
+                        <option value="" selected>Select a status...</option>
                         <option value="in-progress">In Progress</option>
                         <option value="review">Review</option>
                         <option value="paused">Paused</option>
@@ -101,13 +101,13 @@
                     <div class="chip-group">
                         <label class="chip" title="iOS">
                             <input type="checkbox" id="osIos">
-                            <img src="assets/icons/icon-os-ios-on-light.svg" class="icon-light" alt="iOS">
-                            <img src="assets/icons/icon-os-ios-on-dark.svg" class="icon-dark" alt="iOS">
+                            <img src="assets/icons/icon-nosquare-apple-dark.svg" class="icon-dark" alt="iOS">
+                            <img src="assets/icons/icon-nosquare-apple-white.svg" class="icon-white" alt="iOS">
                         </label>
                         <label class="chip" title="Android">
                             <input type="checkbox" id="osAndroid">
-                            <img src="assets/icons/icon-os-android-on-light.svg" class="icon-light" alt="Android">
-                            <img src="assets/icons/icon-os-android-on-dark.svg" class="icon-dark" alt="Android">
+                            <img src="assets/icons/icon-nosquare-android-dark.svg" class="icon-dark" alt="Android">
+                            <img src="assets/icons/icon-nosquare-android-white.svg" class="icon-white" alt="Android">
                         </label>
                     </div>
                 </div>
@@ -116,25 +116,25 @@
                 <div class="control-row">
                     <label>Platforms</label>
                     <div class="chip-group">
-                        <label class="chip" title="Watch">
-                            <input type="checkbox" id="platformWatch">
-                            <img src="assets/icons/icon-platform-watch-on-light.svg" class="icon-light" alt="Watch">
-                            <img src="assets/icons/icon-platform-watch-on-dark.svg" class="icon-dark" alt="Watch">
-                        </label>
-                        <label class="chip" title="Mobile">
-                            <input type="checkbox" id="platformMobile" checked>
-                            <img src="assets/icons/icon-platform-mobile-on-light.svg" class="icon-light" alt="Mobile">
-                            <img src="assets/icons/icon-platform-mobile-on-dark.svg" class="icon-dark" alt="Mobile">
+                        <label class="chip" title="Desktop">
+                            <input type="checkbox" id="platformDesktop" checked>
+                            <img src="assets/icons/icon-nosquare-desktop-dark.svg" class="icon-dark" alt="Desktop">
+                            <img src="assets/icons/icon-nosquare-desktop-white.svg" class="icon-white" alt="Desktop">
                         </label>
                         <label class="chip" title="Laptop">
                             <input type="checkbox" id="platformLaptop" checked>
-                            <img src="assets/icons/icon-platform-laptopon-light.svg" class="icon-light" alt="Laptop">
-                            <img src="assets/icons/icon-platform-laptop-on-dark.svg" class="icon-dark" alt="Laptop">
+                            <img src="assets/icons/icon-nosquare-laptop-dark.svg" class="icon-dark" alt="Laptop">
+                            <img src="assets/icons/icon-nosquare-laptop-white.svg" class="icon-white" alt="Laptop">
                         </label>
-                        <label class="chip" title="Desktop">
-                            <input type="checkbox" id="platformDesktop" checked>
-                            <img src="assets/icons/icon-platform-desktop-on-light.svg" class="icon-light" alt="Desktop">
-                            <img src="assets/icons/icon-platform-desktop-on-dark.svg" class="icon-dark" alt="Desktop">
+                        <label class="chip" title="Mobile">
+                            <input type="checkbox" id="platformMobile" checked>
+                            <img src="assets/icons/icon-nosquare-mobile-dark.svg" class="icon-dark" alt="Mobile">
+                            <img src="assets/icons/icon-nosquare-mobile-white.svg" class="icon-white" alt="Mobile">
+                        </label>
+                        <label class="chip" title="Watch">
+                            <input type="checkbox" id="platformWatch">
+                            <img src="assets/icons/icon-nosquare-watch-dark.svg" class="icon-dark" alt="Watch">
+                            <img src="assets/icons/icon-nosquare-watch-white.svg" class="icon-white" alt="Watch">
                         </label>
                     </div>
                 </div>
@@ -142,8 +142,8 @@
 
             <div class="preview-panel">
                 <div class="action-bar">
-                    <select id="exportFormat" class="export-select">
-                        <option value="" disabled selected>Choose export format...</option>
+                    <select id="exportFormat" class="export-select" required>
+                        <option value="" selected>Choose export format...</option>
                         <option value="png">PNG</option>
                         <option value="svg">SVG</option>
                     </select>

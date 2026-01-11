@@ -69,18 +69,18 @@ function generateThumbnails() {
         iconsHtml += `<div class="thumb-platform-icon"><img src="${iconPaths.os.android}" alt="Android"></div>`;
     }
 
-    // Build platform icons HTML
-    if (showWatch) {
-        iconsHtml += `<div class="thumb-platform-icon"><img src="${iconPaths.platform.watch}" alt="Watch"></div>`;
-    }
-    if (showMobile) {
-        iconsHtml += `<div class="thumb-platform-icon"><img src="${iconPaths.platform.mobile}" alt="Mobile"></div>`;
+    // Build platform icons HTML (largest to smallest)
+    if (showDesktop) {
+        iconsHtml += `<div class="thumb-platform-icon"><img src="${iconPaths.platform.desktop}" alt="Desktop"></div>`;
     }
     if (showLaptop) {
         iconsHtml += `<div class="thumb-platform-icon"><img src="${iconPaths.platform.laptop}" alt="Laptop"></div>`;
     }
-    if (showDesktop) {
-        iconsHtml += `<div class="thumb-platform-icon"><img src="${iconPaths.platform.desktop}" alt="Desktop"></div>`;
+    if (showMobile) {
+        iconsHtml += `<div class="thumb-platform-icon"><img src="${iconPaths.platform.mobile}" alt="Mobile"></div>`;
+    }
+    if (showWatch) {
+        iconsHtml += `<div class="thumb-platform-icon"><img src="${iconPaths.platform.watch}" alt="Watch"></div>`;
     }
 
     grid.innerHTML = `
