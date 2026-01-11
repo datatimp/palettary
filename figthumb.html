@@ -41,9 +41,89 @@
 
     <main class="container">
         <div class="page-title">Figma Thumbnail Generator</div>
+        <p class="subtitle">Generate professional Figma file thumbnails to help your team navigate projects</p>
 
-        <!--Thumbnail Generoator Section-->
 
+        <div class="info-box">
+            <h3>💡 How to Use</h3>
+            <p>Customize the fields above to generate thumbnail designs. Choose export format then download. Use these
+                as Figma file covers to help your dev team quickly identify file types, status, and projects at a
+                glance.</p>
+        </div>
+
+
+        <div class="controls">
+            <!-- File Name (required, standalone) -->
+            <div class="control-row">
+                <label for="fileName">File Name*</label>
+                <input type="text" id="fileName" value="File Name" placeholder="Enter file name" required>
+            </div>
+
+            <!-- Optional fields with inline toggles -->
+            <div class="control-table">
+                <div class="control-table-row">
+                    <label for="designSystemName">Design System</label>
+                    <input type="checkbox" id="showDesignSystemName" checked>
+                    <input type="text" id="designSystemName" value="Design System Name" placeholder="Enter design system name">
+                </div>
+                <div class="control-table-row">
+                    <label for="projectType">Project Type</label>
+                    <input type="checkbox" id="showProjectType" checked>
+                    <input type="text" id="projectType" value="Project Type" placeholder="Enter project type">
+                </div>
+                <div class="control-table-row">
+                    <label for="description">Description</label>
+                    <input type="checkbox" id="showDescription" checked>
+                    <input type="text" id="description" value="Description" placeholder="Enter description">
+                </div>
+            </div>
+
+            <!-- Status (standalone) -->
+            <div class="control-row">
+                <label for="status">Status</label>
+                <select id="status">
+                    <option value="" disabled selected>Select a status...</option>
+                    <option value="in-progress">In Progress</option>
+                    <option value="review">Review</option>
+                    <option value="paused">Paused</option>
+                    <option value="dev">Ready For Dev</option>
+                    <option value="completed">Completed</option>
+                    <option value="archived">Archived</option>
+                    <option value="deprecated">Deprecated</option>
+                </select>
+            </div>
+
+            <!-- OS toggle chips -->
+            <div class="control-row">
+                <label>OS</label>
+                <div class="chip-group">
+                    <label class="chip"><input type="checkbox" id="osIos"><span>iOS</span></label>
+                    <label class="chip"><input type="checkbox" id="osAndroid"><span>Android</span></label>
+                </div>
+            </div>
+
+            <!-- Platform toggle chips -->
+            <div class="control-row">
+                <label>Platforms</label>
+                <div class="chip-group">
+                    <label class="chip"><input type="checkbox" id="platformWatch"><span>Watch</span></label>
+                    <label class="chip"><input type="checkbox" id="platformMobile" checked><span>Mobile</span></label>
+                    <label class="chip"><input type="checkbox" id="platformLaptop" checked><span>Laptop</span></label>
+                    <label class="chip"><input type="checkbox" id="platformDesktop" checked><span>Desktop</span></label>
+                </div>
+            </div>
+        </div>
+
+        <div class="action-bar">
+            <select id="exportFormat" class="export-select">
+                <option value="" disabled selected>Choose export format...</option>
+                <option value="png">PNG</option>
+                <option value="svg">SVG</option>
+            </select>
+            <button id="downloadBtn" class="btn btn-primary" disabled>Download Thumbnail</button>
+        </div>
+
+        <div class="thumbnail-grid" id="thumbnailGrid"></div>
 
         <!--Footer Section-->
         <footer>
@@ -61,14 +141,15 @@
             </div>
             <div class="divider"></div>
             <div class="authorship-data">
-                <p>Made with ☕ for designers by <a href="https://datatimp.github.com/">datatimp</a></p>
+                <p>Made with ☕ for designers by <a href="https://datatimp.github.io">datatimp</a></p>
                 <small style="opacity: 40%;">© 2026</small>
             </div>
         </footer>
 
-     </main>
+    </main>
 
-    <script src="app.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+    <script src="figthumb-app.js"></script>
 </body>
 
 </html>

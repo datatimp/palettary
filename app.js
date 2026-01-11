@@ -214,6 +214,8 @@ function setupEventListeners() {
             document.querySelectorAll('.palette-card').forEach(card => {
                 card.style.display = '';
             });
+            // Scroll back to selector
+            document.querySelector('.selector-section').scrollIntoView({ behavior: 'smooth', block: 'start' });
         }
     });
 

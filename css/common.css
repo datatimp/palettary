@@ -1,7 +1,7 @@
 /* Import Typefaces */
 @import url('https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Fira+Code:wght@300..700&display=swap');
-
+@import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100..900;1,100..900&display=swap');
 
 /** MARK: Global
 */
@@ -13,49 +13,96 @@
     font-size: 16px;
 }
 
-:root {
-    --brand-primary: rgb(81, 122, 92);
-    --brand-primary-dark: rgb(27, 58, 34);
-    --brand-secondary: rgb(238, 188, 78);
-    --brand-secondary-dark: rgb(219, 137, 39);
-    --brand-tertiary: rgb(224, 153, 166);
-    --primary-color: var(--brand-primary);
-    --primary-hover: var(--brand-tertiary);
-    --text-dark: #1f2937;
-    --text-light: #6b7280;
-    --border-color: #e5e7eb;
-    --background-light: #f9fafb;
-    --background-grey: #f1f1f1;
-    --white: #ffffff;
+:root {    
+    /* Typeface Variables */
+    --font-default-body: 'Inter';
+    --font-default-mono: 'Fira Code';
+    --font-thumb-body: 'Roboto';
+    --font-thumb-mono: 'Fira Code';
+
+    /* Color Primitives */
+    --color-neutral-0: #ffffff;
+    --color-neutral-100: #f9fafb;
+    --color-neutral-200: #f1f1f1;
+
+    /* Color Variables */
+    --color-text-default-primary: rgb(31, 41, 55);
+    --color-text-default-secondary: rgb(107, 114, 128);
+    --color-text-white: var(--color-neutral-0);
+    --color-text-neutral-light: rgb(237, 237, 237);
+    --color-text-neutral-medium: rgb(81, 81, 81);
+    --color-text-neutral-dark: rgb(49, 49, 49);
+    --color-text-disabled: rgb(163, 163, 163);
+
+    --color-border-default: #e5e7eb;
+
+    --color-brand-primary: rgb(81, 122, 92);
+    --color-brand-primary-dark: rgb(27, 58, 34);
+    --color-brand-secondary: rgb(238, 188, 78);
+    --color-brand-secondary-dark: rgb(219, 137, 39);
+    --color-brand-tertiary: rgb(224, 153, 166);
+    --color-primary-default: var(--color-brand-primary);
+    --color-primary-hover: var(--color-brand-tertiary);
+
+    --color-background-white: var(--color-neutral-0);
+    --color-background-default-primary: var(--color-neutral-100);
+    --color-background-default-secondary: var(--color-neutral-200);
+    --color-background-neutral-light: rgb(229, 229, 229);
+    --color-background-neutral-medium: rgb(165, 165, 165);
+    --color-background-neutral-dark: rgb(81, 81, 81);
+    --color-background-success-light: rgb(178, 238, 179); 
+    --color-background-success-medium: rgb(42, 139, 43);
+    --color-background-success-dark: rgb(22, 101, 52);
+    --color-background-alert-light: rgb(248, 237, 197); 
+    --color-background-alert-medium: rgb(224, 200, 114);
+    --color-background-alert-dark: rgb(154, 122, 53); 
+    --color-background-warning-light: rgb(250, 172, 117);
+    --color-background-warning-medium: rgb(217, 116, 44);
+    --color-background-warning-dark: rgb(121, 51, 0);
+    --color-background-danger-light:  rgb(251, 184, 184);
+    --color-background-danger-medium: rgb(193, 36, 36);
+    --color-background-danger-dark:  rgb(97, 7, 7);
+    --color-background-purple-light: rgb(229, 186, 252);
+    --color-background-purple-medium: rgb(139, 35, 179);
+    --color-background-purple-dark: rgb(65, 0, 100);
+    --color-background-blue-light: rgb(212, 249, 255);
+    --color-background-blue-medium: rgb(59, 130, 246);
+    --color-background-blue-dark: rgb(30, 58, 138);
+    --color-background-teal-light: rgb(179, 246, 234);
+    --color-background-teal-medium: rgb(133, 199, 187);
+    --color-background-teal-dark: rgb(28, 95, 83);
+    --color-background-disabled: rgb(217, 217, 217);
+
+    --gradient-purple-orange-01: linear-gradient(91deg, rgba(83, 6, 190, 1) 0.6%, rgba(204, 121, 86, 1) 99.06%)
+
+    /* Elevation Variables */
     --shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
     --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
     --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
-    --font-body: 'Inter';
-    --font-monospace: 'Fira Code';
 }
 
 body {
-    font-family: var(--font-body), -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Helvetica', 'Arial', sans-serif;
+    font-family: var(--font-default-body), -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Helvetica', 'Arial', sans-serif;
     line-height: 1.7;
-    color: var(--text-dark);
-    background-color: var(--background-light);
+    color: var(--color-text-default-primary);
+    background-color: var(--color-background-default-primary);
     padding-top: 100px;
 }
 
 a:link {
-    color: var(--brand-primary);
+    color: var(--color-brand-primary);
 }
 
 a:hover {
-    color: var(--brand-tertiary);
+    color: var(--color-brand-tertiary);
 }
 
 a:visited {
-    color: var(--text-dark);
+    color: var(--color-text-default-primary);
 }
 
 code {
-    font-family: var(--font-monospace), monospace;
+    font-family: var(--font-default-mono), monospace;
     padding: 2px 5px 2px 5px;
     border: solid 1.5px rgb(199, 199, 199, 80%);
     border-radius: 6px;
@@ -79,10 +126,10 @@ header {
     top: 0;
     left: 0;
     right: 0;
-    background-color: var(--background-light);
-    color: var(--text-dark);
+    background-color: var(--color-background-default-primary);
+    color: var(--color-text-default-primary);
     padding: 20px 0px 10px 0px;
-    border-bottom: 1px solid var(--border-color);
+    border-bottom: 1px solid var(--color-border-default);
     z-index: 1000;
 }
 
@@ -93,7 +140,7 @@ header .container {
 }
 
 header img {
-    width: 150px;
+    width: 200px;
 }
 
 header h1 {
@@ -115,7 +162,7 @@ header h1 {
 
 .nav-trigger {
     font-size: 1.1rem;
-    color: var(--brand-primary);
+    color: var(--color-brand-primary);
     font-weight: 600;
     cursor: pointer;
     user-select: none;
@@ -125,7 +172,15 @@ header h1 {
 }
 
 .menu-text {
+    padding: 4px 10px 4px 10px;
+    border-radius: 8px;
+    border: 1px solid var(--color-border-default);
+    background-color: var(--color-background-default-primary);
     display: inline-block;
+}
+
+.menu-text:hover {
+    background-color: var(--color-background-default-secondary);
 }
 
 .hamburger-icon {
@@ -140,7 +195,7 @@ header h1 {
     display: block;
     width: 100%;
     height: 2px;
-    background-color: var(--brand-primary);
+    background-color: var(--color-brand-primary);
     transition: all 0.3s ease;
 }
 
@@ -149,7 +204,7 @@ header h1 {
     top: 100%;
     right: 0;
     margin-top: 8px;
-    background: var(--white);
+    background: var(--color-background-white);
     border-radius: 8px;
     box-shadow: var(--shadow-lg);
     padding: 12px 0;
@@ -173,7 +228,7 @@ header h1 {
     font-family: Inter;
     font-weight: 600;
     font-size: 1rem;
-    color: var(--brand-primary);
+    color: var(--color-brand-primary);
     text-decoration: none;
     text-align: left;
     white-space: nowrap;
@@ -181,15 +236,15 @@ header h1 {
 }
 
 .nav-dropdown a:hover {
-    color: var(--brand-secondary);
+    color: var(--color-brand-secondary);
 }
 
 .nav-dropdown a:visited {
-    color: var(--brand-primary);
+    color: var(--color-brand-primary);
 }
 
 .nav-dropdown a:hover:visited {
-    color: var(--brand-secondary);
+    color: var(--color-brand-secondary);
 }
 
 .nav-logo {
@@ -230,7 +285,14 @@ main {
 .page-title {
     font-size: 3rem;
     font-weight: 700;
-    color: var(--brand-primary)
+    color: var(--color-brand-primary)
+}
+
+.subtitle {
+    color: var(--color-text-default-secondary);
+    margin-bottom: 32px;
+    font-size: 1rem;
+    text-align: left;
 }
 
 .highlight-gold {
@@ -249,7 +311,7 @@ main {
     z-index: -5;
     opacity: 30%;
     position: absolute;
-    background: linear-gradient(180deg, transparent 50%, var(--brand-secondary) 50%);
+    background: linear-gradient(180deg, transparent 50%, var(--color-brand-secondary) 50%);
 }
 
 
@@ -259,8 +321,8 @@ main {
 footer {
     display: flex;
     flex-direction: column;
-    background-color: var(--background-grey);
-    color: var(--text-dark);
+    background-color: var(--color-background-default-secondary);
+    color: var(--color-text-default-primary);
     border-radius: 12px;
     padding: 30px;
     margin-top: 80px;
@@ -276,7 +338,7 @@ footer img {
 .footer-col-head {
     font-size: .9rem;
     font-weight: 600;
-    color: var(--text-dark);
+    color: var(--color-text-default-primary);
     opacity: 50%;
 }
 
@@ -290,14 +352,14 @@ footer img {
     width: 100%;
     white-space: nowrap;
     text-decoration: none;
-    color: var(--brand-primary);
+    color: var(--color-brand-primary);
     line-height: 2;
 }
 
 footer .divider {
     width: 100%;
     height: 1px;
-    background-color: var(--text-dark);
+    background-color: var(--color-text-neutral-dark);
     opacity: 10%;
     margin-top: 1rem;
     margin-bottom: 1rem;
@@ -311,8 +373,8 @@ footer .divider {
     position: fixed;
     bottom: 30px;
     right: 30px;
-    background-color: var(--text-dark);
-    color: var(--white);
+    background-color: var(--color-background-neutral-dark);
+    color: var(--color-background-white);
     padding: 12px 24px;
     border-radius: 8px;
     box-shadow: var(--shadow-lg);
