@@ -1,3 +1,9 @@
+---
+title: "Palettary"
+date: "2023-01-12"
+link: "https://github.com/datatimp/palettary"
+tags: ["design", "figma", "tools", "color", "ui", "ux", "web app"]
+---
 
 [<img alt="Palettary logo" width="50%" src="assets/images/palettary-wordmark-brand-primary1a.svg" />](https://github.com/datatimp/palettary/blob/main/assets/images/palettary-wordmark-brand-primary1a.svg)
 
