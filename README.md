@@ -2,173 +2,49 @@
 [<img alt="Palettary logo" width="50%" src="assets/images/palettary-wordmark-brand-primary1a.svg" />](https://github.com/datatimp/palettary/blob/main/assets/images/palettary-wordmark-brand-primary1a.svg)
 
 
-**Color Primitives & Thumbnail Generator for Figma**
+**A Suite of Design Tools for Figma**
 
-Palettary is a collection of web apps that aims to solve workflow bottlenecks I often encounter: choosing a starting palette of primitives and generating file thumbnails. First, Palettary aims to help designers organize, sort, and select Color Primitives for Figma. Similar to [Lospec](https://lospec.com/palette-list) for pixel artists, Palettary provides a collection of beautifully named color primitive collections that you can browse, preview, and export directly to Figma's Variables panel. Second, by automating Figma file thumbnail creation, Palettary's thumbnail generator reduces a mundane, time-consuming task down to few clicks, letting you get back to the important work.
+Palettary is a collection of lightweight web apps built to solve common workflow bottlenecks designers face every day. No accounts, no subscriptions, no bloat - just simple tools that do one thing well.
 
-## Features
+## Apps
 
-- **Browse Color Palettes**: View a curated collection of color primitive sets with evocative names
-- **Interactive Preview**: See colors organized by hue with hex codes displayed on each swatch
-- **Multiple Export Formats**:
-  - **Figma JSON**: Ready to import into Figma's Variables panel
-  - **TXT**: Simple text format with color names and hex codes
-  - **Markdown**: Formatted documentation with color swatches
-- **Click to Copy**: Click any color swatch to copy its hex code to clipboard
-- **Fully Static**: No backend required, perfect for GitHub Pages hosting
+### Color Primitive Palettes
+Browse, preview, and export curated color palette collections directly to Figma. Similar to [Lospec](https://lospec.com/palette-list) for pixel artists, Palettary provides beautifully named color primitive sets ready for your Variables panel.
 
-## How to Use
+- Browse curated palettes with evocative names
+- Click any swatch to copy its hex code
+- Export to Figma JSON, TXT, or Markdown
 
-### Browsing Palettes
+#### What Are Color Primitives?
 
-1. **View Popular Palettes**: Scroll down to see palette cards showing preview colors
-2. **Click a Card**: Click any palette card to view its full color collection
-3. **Use the Dropdown**: Select a palette from the dropdown menu at the top
+Color primitives are the raw color values in your design system - the actual hex codes organized by hue and shade (e.g., `blue-500: #3B82F6`). They describe *what* a color is, not *how* it's used.
 
-### Viewing Colors
-
-When you select a palette, colors are displayed in rows organized by hue:
-- **Primary**: Main brand colors
-- **Secondary**: Supporting colors
-- **Accent**: Highlight colors (some palettes)
-- **Neutral**: Grays and neutrals
-
-Each swatch shows:
-- The color itself
-- Its variable name (e.g., `primary-500`)
-- Its hex code (e.g., `#6366f1`)
-
-### Exporting to Figma
-
-1. Select the palette you want to use
-2. Click the **"Figma JSON"** export button
-3. Save the JSON file
-4. In Figma:
-   - Open the Variables panel (right sidebar)
-   - Click the menu icon (•••)
-   - Select "Import variables"
-   - Choose your downloaded JSON file
-   - Your color primitives are now ready to use!
-
-### Other Export Formats
-
-- **TXT**: Plain text format, great for documentation or sharing
-- **MD**: Markdown format with tables, perfect for project documentation
-
-## Deploying to GitHub Pages
-
-Since you already have a GitHub Pages site, here's how to add Palettary:
-
-### Option 1: As Your Main Site
-
-1. **Push to GitHub**:
-   ```bash
-   git add .
-   git commit -m "Add Palettary color primitives app"
-   git push origin main
-   ```
-
-2. **Enable GitHub Pages**:
-   - Go to your repository settings
-   - Scroll to "Pages" section
-   - Under "Source", select your main branch
-   - Click "Save"
-   - Your site will be live at `https://yourusername.github.io/palettary`
-
-### Option 2: As a Subdirectory
-
-If you want to keep your existing homepage and add Palettary as a section:
-
-1. Create a `palettary` folder in your existing GitHub Pages repo
-2. Copy all Palettary files into that folder
-3. Access it at `https://yourusername.github.io/palettary/`
-
-## Adding Your Own Palettes
-
-To add custom color primitive collections, edit `palettes.js`:
-
-```javascript
-{
-    id: 'your-palette-id',
-    name: 'Your Palette Name',
-    description: 'A description that evokes the feeling of your colors',
-    colors: {
-        primary: [
-            { name: 'primary-50', hex: '#f0f9ff' },
-            { name: 'primary-100', hex: '#e0f2fe' },
-            // ... more shades
-        ],
-        secondary: [
-            { name: 'secondary-50', hex: '#fdf2f8' },
-            // ... more shades
-        ],
-        neutral: [
-            { name: 'neutral-50', hex: '#fafafa' },
-            // ... more shades
-        ],
-    },
-}
-```
-
-### Palette Naming Tips
-
-Choose names that evoke feelings or imagery related to your colors:
-- ✅ "Midnight Canvas", "Ocean Breeze", "Sunset Glow"
-- ❌ "Color Primitives", "UI Colors", "Brand Palette"
-
-## File Structure
+**Semantic tokens**, on the other hand, describe a color's *purpose* (e.g., `color-text-primary`, `color-background-error`). Semantic tokens reference primitives, creating a layer of abstraction that makes your design system flexible and maintainable.
 
 ```
-palettary/
-├── index.html          # Main HTML structure
-├── styles.css          # All styling
-├── app.js              # Application logic and exports
-├── palettes.js         # Palette data
-└── README.md           # This file
+Primitive:        blue-600 → #2563EB
+                      ↑
+Semantic token:   color-link-default → blue-600
 ```
 
-## Technology Stack
+This separation lets you swap entire color schemes by changing which primitives your semantic tokens point to - without touching every component in your design system.
 
-- **Pure HTML/CSS/JavaScript**: No frameworks, no build process
-- **Responsive Design**: Works on desktop, tablet, and mobile
-- **Modern CSS**: Uses CSS Grid, Flexbox, and CSS variables
-- **ES6+ JavaScript**: Clean, modern JavaScript
-
-## Browser Support
-
-Works in all modern browsers:
-- Chrome/Edge (latest)
-- Firefox (latest)
-- Safari (latest)
-- Mobile browsers
-
-## Customization
-
-### Changing Colors
-
-Edit CSS variables in `styles.css`:
-
-```css
-:root {
-    --primary-color: #6366f1;
-    --primary-hover: #4f46e5;
-    /* ... more variables */
-}
-```
-
-### Modifying Layout
-
-All layout styles are in `styles.css`. The design uses:
-- CSS Grid for palette cards
-- Flexbox for color swatches
-- Responsive breakpoints at 768px
-
-## Tips for Designers
+#### Tips for Designers
 
 1. **Start with Primitives**: Use these palettes as a foundation, then create semantic tokens in Figma
 2. **Mix and Match**: You can combine colors from multiple palettes
 3. **Test Accessibility**: Always check color contrast ratios for text
 4. **Organize in Figma**: After importing, organize variables into collections and modes
+
+
+### Figma Thumbnail Generator
+Create professional file cover thumbnails for your Figma projects in seconds. Help your team navigate large projects by giving every file a consistent, informative cover.
+
+- Customize file name, design system, project type, and description
+- Set file status (In Progress, Review, Ready for Dev, Completed, etc.)
+- Toggle OS and platform icons
+- Export as PNG or SVG
+
 
 ## License
 
@@ -176,4 +52,4 @@ Free to use for personal and commercial projects.
 
 ---
 
-**Happy designing! 🎨**
+**Happy designing!**
