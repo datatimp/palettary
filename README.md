@@ -1,5 +1,5 @@
 
-[<img alt="Palettary logo" width="50%" src="assets/images/palettary-wordmark-brand-primary1a.svg" />](https://github.com/datatimp/palettary/blob/main/assets/images/palettary-wordmark-brand-primary1b.svg)
+[<img alt="Palettary logo" width="50%" src="assets/images/palettary-wordmark-brand-primary1a.svg" />](https://github.com/datatimp/palettary/blob/main/assets/images/palettary-wordmark-brand-primary1a.svg)
 
 
 **Color Primitives & Thumbnail Generator for Figma**
