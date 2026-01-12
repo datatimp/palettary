@@ -521,11 +521,16 @@ footer .divider {
         font-size: 1.1rem;
     }
 
-    footer img {
-        align-self: center;
+    .page-title {
+        font-size: 1.5rem;
     }
 
     .about-body {
         line-height: 1.8rem;
     }
+
+    footer img {
+        align-self: center;
+    }
+
 }
