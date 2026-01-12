@@ -524,4 +524,8 @@ footer .divider {
     footer img {
         align-self: center;
     }
+
+    .about-body {
+        line-height: 1.8rem;
+    }
 }
