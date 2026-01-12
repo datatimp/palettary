@@ -8,6 +8,45 @@ const statusConfig = {
     'deprecated': { label: 'Deprecated', cssClass: 'thumb-badge--deprecated' }
 };
 
+// Custom logo state
+let customLogoBase64 = null;
+let customLogoDimensions = { width: 0, height: 0, ratio: 0 };
+
+// Header Config State
+let headerConfig = {
+    type: 'gradient', // gradient, solid, none
+    // Default gradient values
+    value: { id: 'default', stops: [{ offset: '0.6%', color: '#5306BE' }, { offset: '99.06%', color: '#CC7956' }] }
+};
+
+const headerPresets = [
+    {
+        id: 'default',
+        label: 'Purple/Orange',
+        stops: [{ offset: '0%', color: '#5306BE' }, { offset: '100%', color: '#CC7956' }]
+    },
+    {
+        id: 'blue',
+        label: 'Blue/Cyan',
+        stops: [{ offset: '0%', color: '#1E3A8A' }, { offset: '100%', color: '#06B6D4' }]
+    },
+    {
+        id: 'green',
+        label: 'Green/Emerald',
+        stops: [{ offset: '0%', color: '#064E3B' }, { offset: '100%', color: '#10B981' }]
+    },
+    {
+        id: 'dark',
+        label: 'Neutral Dark',
+        stops: [{ offset: '0%', color: '#1F2937' }, { offset: '100%', color: '#4B5563' }]
+    },
+    {
+        id: 'sunset',
+        label: 'Red/Yellow',
+        stops: [{ offset: '0%', color: '#BE123C' }, { offset: '100%', color: '#F59E0B' }]
+    }
+];
+
 // Icon paths for OS and Platform types (light theme)
 const iconPaths = {
     os: {
@@ -88,7 +127,9 @@ function generateThumbnails() {
             <div class="thumb-content">
                 <div class="thumb-top-container">
                     <div class="thumb-header">
-                        <span class="thumb-logo">logo</span>
+                        <div class="thumb-logo">
+                            ${customLogoBase64 ? `<img src="${customLogoBase64}" alt="Logo">` : ''}
+                        </div>
                     </div>
                     <div class="thumb-text-group">
                         ${showDesignSystemName ? `<div class="thumb-ds-name">${designSystemName}</div>` : ''}
@@ -119,6 +160,27 @@ function generateThumbnails() {
 
     // Calculate and apply scale based on actual container width
     updateThumbnailScale();
+    
+    // Apply header style to preview
+    updatePreviewHeader();
+}
+
+function updatePreviewHeader() {
+    const thumbHeader = document.querySelector('.thumb-header');
+    if (!thumbHeader) return;
+
+    if (headerConfig.type === 'none') {
+        thumbHeader.style.background = 'transparent';
+        thumbHeader.style.border = 'none'; 
+    } else if (headerConfig.type === 'solid') {
+        thumbHeader.style.background = headerConfig.value;
+        thumbHeader.style.border = 'none';
+    } else {
+        // Gradient
+        const stops = headerConfig.value.stops.map(s => `${s.color} ${s.offset}`).join(', ');
+        thumbHeader.style.background = `linear-gradient(91deg, ${stops})`;
+        thumbHeader.style.border = 'none';
+    }
 }
 
 function updateThumbnailScale() {
@@ -283,24 +345,43 @@ function downloadAsSVG(filename, downloadBtn, originalText) {
     const badgeWidth = (badgeText.length * badgeCharWidth) + badgePadding;
     const badgeHeight = 80; // 20px padding top/bottom + ~40px text
 
+    // SVG Header Definition
+    let headerDefs = '';
+    let headerFill = '';
+
+    if (headerConfig.type === 'none') {
+        headerFill = 'none'; 
+        // Optional: add a stroke for "none" state? Currently sticking to transparent.
+    } else if (headerConfig.type === 'solid') {
+        headerFill = headerConfig.value;
+    } else {
+        // Gradient
+        const stopsSvg = headerConfig.value.stops.map(s => 
+            `<stop offset="${s.offset}" stop-color="${s.color}"/>`
+        ).join('\n            ');
+        
+        headerDefs = `
+    <defs>
+        <linearGradient id="headerGradient" x1="0%" y1="50%" x2="100%" y2="50%">
+            ${stopsSvg}
+        </linearGradient>
+    </defs>`;
+        headerFill = 'url(#headerGradient)';
+    }
+
     // Create SVG with native elements
     const svg = `<?xml version="1.0" encoding="UTF-8"?>
 <svg width="1920" height="1080" viewBox="0 0 1920 1080" xmlns="http://www.w3.org/2000/svg">
-    <defs>
-        <linearGradient id="headerGradient" x1="0%" y1="50%" x2="100%" y2="50%">
-            <stop offset="0.006" stop-color="#5306BE"/>
-            <stop offset="0.9906" stop-color="#CC7956"/>
-        </linearGradient>
-    </defs>
+    ${headerDefs}
 
     <!-- Background -->
     <rect width="1920" height="1080" fill="white"/>
 
     <!-- Header bar with gradient -->
-    <rect x="90" y="64" width="1740" height="154" rx="20" fill="url(#headerGradient)"/>
+    <rect x="90" y="64" width="1740" height="154" rx="20" fill="${headerFill}"/>
 
-    <!-- Logo text -->
-    <text x="120" y="160" font-family="Afacad, sans-serif" font-weight="400" font-size="72" fill="white">logo</text>
+    <!-- Logo -->
+    ${getSvgLogoMarkup()}
 
     <!-- Text group -->
     ${textElements.join('\n    ')}
@@ -428,3 +509,102 @@ document.getElementById('exportFormat').addEventListener('change', updateDownloa
 
 // Initial generation
 generateThumbnails();
+
+// Header Color Logic
+function initHeaderControls() {
+    const container = document.getElementById('colorPresets');
+    
+    // Create Preset Buttons
+    headerPresets.forEach(preset => {
+        const btn = document.createElement('div');
+        btn.className = 'color-swatch';
+        btn.title = preset.label;
+        if (preset.id === 'default') btn.classList.add('active');
+        
+        const stops = preset.stops.map(s => `${s.color} ${s.offset}`).join(', ');
+        btn.style.background = `linear-gradient(135deg, ${stops})`;
+        
+        btn.onclick = () => {
+            setHeaderState('gradient', preset);
+            updateSwatchUI(btn);
+        };
+        container.appendChild(btn);
+    });
+
+    const customInput = document.getElementById('customColorInput');
+    customInput.addEventListener('input', (e) => {
+        setHeaderState('solid', e.target.value);
+        updateSwatchUI(null); // Clear presets
+    });
+
+    const clearBtn = document.getElementById('clearHeaderColorBtn');
+    clearBtn.addEventListener('click', () => {
+        setHeaderState('none', null);
+        updateSwatchUI(null);
+    });
+}
+
+function setHeaderState(type, value) {
+    headerConfig.type = type;
+    headerConfig.value = value;
+    generateThumbnails();
+}
+
+function updateSwatchUI(activeBtn) {
+    document.querySelectorAll('.color-swatch').forEach(btn => btn.classList.remove('active'));
+    if (activeBtn) activeBtn.classList.add('active');
+}
+
+// Initialize
+initHeaderControls();
+const logoInput = document.getElementById('logoUpload');
+const clearLogoBtn = document.getElementById('clearLogoBtn');
+
+logoInput.addEventListener('change', function(e) {
+    const file = e.target.files[0];
+    if (file) {
+        document.getElementById('logoFileName').textContent = file.name;
+        const reader = new FileReader();
+        reader.onload = function(event) {
+            customLogoBase64 = event.target.result;
+            
+            // Get dimensions for SVG export
+            const img = new Image();
+            img.onload = function() {
+                customLogoDimensions.width = img.naturalWidth;
+                customLogoDimensions.height = img.naturalHeight;
+                customLogoDimensions.ratio = img.naturalWidth / img.naturalHeight;
+                generateThumbnails();
+            };
+            img.src = customLogoBase64;
+        };
+        reader.readAsDataURL(file);
+    }
+});
+
+clearLogoBtn.addEventListener('click', function() {
+    logoInput.value = ''; // Clear input
+    document.getElementById('logoFileName').textContent = 'No file chosen';
+    customLogoBase64 = null;
+    customLogoDimensions = { width: 0, height: 0, ratio: 0 };
+    generateThumbnails();
+});
+
+function getSvgLogoMarkup() {
+    if (!customLogoBase64) return '';
+
+    // Calculate dimensions to fit within 94px height (154px header - 30px padding * 2)
+    // while maintaining aspect ratio
+    const maxHeight = 94;
+    
+    // Use the stored ratio
+    let width = maxHeight * customLogoDimensions.ratio;
+    let height = maxHeight;
+
+    // Center vertically in the header (y=64, height=154). 
+    // Logo padding is 30px, so it starts at y=94.
+    const x = 120; // 30px padding left of header (x=90) -> 90+30=120
+    const y = 94;  // 30px padding top of header (y=64) -> 64+30=94
+
+    return `<image x="${x}" y="${y}" width="${width}" height="${height}" href="${customLogoBase64}" />`;
+}

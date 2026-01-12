@@ -44,16 +44,53 @@
         <p class="subtitle">Generate professional Figma file thumbnails to help your team navigate projects</p>
 
 
-        <div class="info-box">
+        <!-- <div class="info-box">
             <h3>💡 How to Use</h3>
             <p>Customize the fields above to generate thumbnail designs. Choose export format then download. Use these
                 as Figma file covers to help your dev team quickly identify file types, status, and projects at a
                 glance.</p>
-        </div>
+        </div> -->
 
 
         <div class="generator-layout">
             <div class="controls">
+                <!-- Header Color -->
+                <div class="control-row">
+                    <label>Header Color</label>
+                    <div class="header-color-controls">
+                        <div id="colorPresets" class="color-swatch-group">
+                            <!-- Presets injected by JS -->
+                        </div>
+                        <div class="color-divider"></div>
+                        <div class="custom-color-wrapper">
+                            <input type="color" id="customColorInput" value="#6B7280" title="Custom Solid Color">
+                            <label for="customColorInput" class="btn btn-small btn-icon-only" title="Custom Color">
+                                <img src="assets/icons/icon-nosquare-pen-dark.svg"
+                                    style="width: 16px; height: 16px; opacity: 0.6;">
+                            </label>
+                        </div>
+                        <button id="clearHeaderColorBtn" class="btn btn-small" title="No Color" style="padding: 0 8px;">
+                            <img src="assets/icons/icon-nosquare-close-dark.svg"
+                                style="width: 16px; height: 16px; opacity: 0.6;">
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Logo Upload -->
+                <div class="control-row">
+                    <label>Logo</label>
+                    <div style="grid-column: 2 / -1; display: flex; gap: 8px; width: 100%; align-items: center;">
+                        <input type="file" id="logoUpload" accept="image/png, image/jpeg, image/svg+xml"
+                            style="display: none;">
+                        <label for="logoUpload" class="btn btn-small" style="cursor: pointer; margin: 0;">Choose
+                            File</label>
+                        <span id="logoFileName"
+                            style="font-size: 0.85rem; color: var(--color-text-default-secondary); flex: 1; white-space: nowrap; overflow: hidden; text-overflow: ellipsis;">No
+                            file chosen</span>
+                        <button id="clearLogoBtn" class="btn btn-small">Clear</button>
+                    </div>
+                </div>
+
                 <!-- File Name (required, standalone) -->
                 <div class="control-row">
                     <label for="fileName">File Name*</label>
@@ -178,7 +215,8 @@
     </main>
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
-    <script src="figthumb-app.js"></script>
+    <script src="js/figthumb.js"></script>
+    <script src="js/common.js"></script>
 </body>
 
 </html>

@@ -12,6 +12,79 @@
     width: 100%;
 }
 
+/* Header Color Controls Layout */
+.header-color-controls {
+    grid-column: 2 / -1;
+    display: flex;
+    gap: 12px;
+    align-items: center;
+    flex-wrap: nowrap;
+    /* Prevent wrapping to keep controls on one line */
+    overflow-x: auto;
+    /* Allow scroll if absolutely necessary on tiny screens */
+    padding: 4px;
+    /* For focus rings/shadows not to be cut off */
+    box-sizing: border-box;
+    width: 100%;
+}
+
+/* Color Controls */
+.color-swatch-group {
+    display: flex;
+    gap: 8px;
+}
+
+.color-swatch {
+    width: 24px;
+    height: 24px;
+    border-radius: 50%;
+    border: 2px solid transparent;
+    /* default border */
+    cursor: pointer;
+    transition: all 0.2s;
+    position: relative;
+    box-shadow: inset 0 0 0 1px rgba(0, 0, 0, 0.1);
+}
+
+.color-swatch:hover {
+    transform: scale(1.1);
+}
+
+.color-swatch.active {
+    border-color: var(--color-brand-primary);
+    box-shadow: 0 0 0 2px var(--color-background-white), 0 0 0 4px var(--color-brand-primary);
+}
+
+.color-divider {
+    width: 1px;
+    height: 24px;
+    background-color: var(--color-border-default);
+}
+
+.custom-color-wrapper {
+    position: relative;
+    display: flex;
+    align-items: center;
+}
+
+.custom-color-wrapper input[type="color"] {
+    position: absolute;
+    opacity: 0;
+    width: 100%;
+    height: 100%;
+    cursor: pointer;
+    z-index: 2;
+}
+
+.btn-icon-only {
+    width: 36px;
+    padding: 0;
+}
+
+.btn-small:hover img {
+    opacity: 1 !important;
+}
+
 .btn {
     padding: 12px 24px;
     border: none;
@@ -22,7 +95,21 @@
     transition: all 0.2s;
     display: flex;
     align-items: center;
+    display: flex;
+    align-items: center;
     gap: 8px;
+}
+
+.btn-small {
+    padding: 0 12px;
+    height: 36px;
+    font-size: 0.8rem;
+    background: var(--color-background-neutral-light);
+    white-space: nowrap;
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    color: var(--color-text-default-primary);
 }
 
 .btn:disabled {
@@ -56,6 +143,7 @@
     display: flex;
     flex-direction: column;
     gap: 48px;
+    margin-top: 64px;
     margin-bottom: 64px;
 }
 
@@ -97,6 +185,7 @@
 }
 
 .control-row input[type="text"] {
+    width: 100%;
     padding: 10px 12px;
     border: 2px solid var(--color-border-default);
     border-radius: 8px;
@@ -135,9 +224,11 @@
     height: 18px;
     cursor: pointer;
     justify-self: center;
+    accent-color: var(--color-brand-primary);
 }
 
 .control-table-row input[type="text"] {
+    width: 100%;
     padding: 10px 12px;
     border: 2px solid var(--color-border-default);
     border-radius: 8px;
@@ -270,11 +361,18 @@
 }
 
 .thumb-logo {
-    font-family: var(--font-thumb-body), sans-serif;
-    font-weight: 400;
-    font-size: 72px;
-    color: var(--color-text-white);
+    display: flex;
     padding: 30px;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+    box-sizing: border-box;
+}
+
+.thumb-logo img {
+    height: 100%;
+    width: auto;
+    object-fit: contain;
 }
 
 /* Text group */
@@ -455,25 +553,44 @@
         grid-column: 1;
     }
 
+    /* Updated Checkbox Row Layout for Mobile */
+    /* Label on Top, Checkbox + Input below side-by-side */
     .control-table-row {
-        grid-template-columns: 1fr auto;
-        gap: 8px;
+        display: grid;
+        grid-template-columns: 32px 1fr;
+        grid-template-rows: auto auto;
+        align-items: center;
+        gap: 8px 0px;
+        /* Gap between rows, no gap needed between cols if width handles it */
     }
 
-    .control-table-row label {
+    .control-table-row>label:first-child {
         grid-column: 1 / -1;
+        grid-row: 1;
+        margin-bottom: 4px;
+        text-align: left;
     }
 
     .control-table-row input[type="checkbox"] {
-        order: -1;
+        grid-column: 1;
+        grid-row: 2;
+        width: 18px;
+        height: 18px;
+        margin: 0;
+        justify-self: start;
     }
 
     .control-table-row input[type="text"] {
-        grid-column: 1 / -1;
+        grid-column: 2;
+        grid-row: 2;
+        width: 100%;
+        margin-top: 0;
     }
 
     .chip-group {
-        justify-content: center;
+        justify-content: flex-start;
+        flex-wrap: wrap;
+        /* Ensure wrapping on very small screens */
     }
 
     .thumbnail-grid {
@@ -486,11 +603,17 @@
         gap: 16px;
     }
 
-    .btn {
-        justify-content: center;
+    /* Mobile/Tablet Responsive Styles */
+    .generator-layout {
+        display: flex;
+        flex-direction: column-reverse;
+        /* Preview on top */
+        gap: 48px;
+        margin-top: 32px;
+        grid-template-columns: 1fr;
+        /* Override grid if applicable */
+        align-items: stretch;
     }
-
-
 }
 
 /* Desktop Side-by-Side Layout */

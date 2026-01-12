@@ -154,55 +154,22 @@ async function createPaletteCard(paletteInfo) {
 
 // Setup event listeners
 function setupEventListeners() {
-    // Navigation menu toggle
-    const navTrigger = document.querySelector('.nav-trigger');
-    const navMenu = document.querySelector('.nav-menu');
-    const navDropdown = document.querySelector('.nav-dropdown');
-    const navOverlay = document.querySelector('.nav-overlay');
-
-    if (navTrigger) {
-        navTrigger.addEventListener('click', (e) => {
-            e.stopPropagation();
-            navMenu.classList.toggle('active');
-        });
-    }
-
-    // Close menu when clicking on overlay
-    if (navOverlay) {
-        navOverlay.addEventListener('click', () => {
-            navMenu.classList.remove('active');
-        });
-    }
-
-    // Close menu when clicking outside
-    document.addEventListener('click', (e) => {
-        if (!navMenu.contains(e.target)) {
-            navMenu.classList.remove('active');
-        }
-    });
-
-    // Close menu when clicking a menu item
-    if (navDropdown) {
-        navDropdown.querySelectorAll('a').forEach(link => {
-            link.addEventListener('click', () => {
-                navMenu.classList.remove('active');
-            });
-        });
-    }
-
     // Dropdown change listener
-    document.getElementById('palette-select').addEventListener('change', (e) => {
-        if (e.target.value) {
-            if (e.target.value === 'random') {
-                // Select a random palette from the manifest
-                const randomIndex = Math.floor(Math.random() * paletteManifest.length);
-                const randomPalette = paletteManifest[randomIndex];
-                selectPalette(randomPalette.id);
-            } else {
-                selectPalette(e.target.value);
+    const paletteSelect = document.getElementById('palette-select');
+    if (paletteSelect) {
+        paletteSelect.addEventListener('change', (e) => {
+            if (e.target.value) {
+                if (e.target.value === 'random') {
+                    // Select a random palette from the manifest
+                    const randomIndex = Math.floor(Math.random() * paletteManifest.length);
+                    const randomPalette = paletteManifest[randomIndex];
+                    selectPalette(randomPalette.id);
+                } else {
+                    selectPalette(e.target.value);
+                }
             }
-        }
-    });
+        });
+    }
 
     // Palette name click to collapse
     document.getElementById('palette-name').addEventListener('click', () => {
@@ -313,24 +280,7 @@ function createSwatch(color) {
     return swatch;
 }
 
-// Copy hex code to clipboard
-function copyToClipboard(text) {
-    navigator.clipboard.writeText(text).then(() => {
-        showNotification(`Copied ${text} to clipboard!`);
-    });
-}
 
-// Show notification
-function showNotification(message) {
-    const notification = document.createElement('div');
-    notification.className = 'copy-notification';
-    notification.textContent = message;
-    document.body.appendChild(notification);
-
-    setTimeout(() => {
-        notification.remove();
-    }, 2000);
-}
 
 // Export palette in different formats
 function exportPalette(palette, format) {
