@@ -40,6 +40,8 @@ def convert_figma_to_palette(figma_data, metadata):
         "id": metadata["id"],
         "name": metadata["name"],
         "description": metadata["description"],
+        "contributor_handle": metadata.get("contributor_handle", ""),
+        "contributor_link": metadata.get("contributor_link", ""),
         "colors": {}
     }
 
@@ -111,6 +113,8 @@ def convert_css_to_palette(css_content, metadata):
         "id": metadata["id"],
         "name": metadata["name"],
         "description": metadata["description"],
+        "contributor_handle": metadata.get("contributor_handle", ""),
+        "contributor_link": metadata.get("contributor_link", ""),
         "colors": {}
     }
 
@@ -187,11 +191,16 @@ def prompt_metadata():
     else:
         date_added = str(date.today())
 
+    contributor_handle = input("Contributor Handle (e.g. datatimp): ").strip()
+    contributor_link = input("Contributor Link (optional URL): ").strip()
+
     return {
         "id": palette_id,
         "name": name,
         "description": description,
-        "dateAdded": date_added
+        "dateAdded": date_added,
+        "contributor_handle": contributor_handle,
+        "contributor_link": contributor_link
     }
 
 

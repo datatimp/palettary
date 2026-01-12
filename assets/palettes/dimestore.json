@@ -78,7 +78,6 @@
         "name": "neutral-900",
         "hex": "#202020"
       }
-    
     ],
     "orange": [
       {
@@ -126,5 +125,7 @@
         "hex": "#FFFFFF"
       }
     ]
-  }
+  },
+  "contributor_handle": "datatimp",
+  "contributor_link": "https://datatimp.github.io"
 }

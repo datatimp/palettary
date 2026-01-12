@@ -4,40 +4,132 @@
   "description": "Cool blues and whites with subtle gradients for clean, modern interfaces",
   "colors": {
     "primary": [
-      { "name": "primary-50", "hex": "#eff6ff" },
-      { "name": "primary-100", "hex": "#dbeafe" },
-      { "name": "primary-200", "hex": "#bfdbfe" },
-      { "name": "primary-300", "hex": "#93c5fd" },
-      { "name": "primary-400", "hex": "#60a5fa" },
-      { "name": "primary-500", "hex": "#3b82f6" },
-      { "name": "primary-600", "hex": "#2563eb" },
-      { "name": "primary-700", "hex": "#1d4ed8" },
-      { "name": "primary-800", "hex": "#1e40af" },
-      { "name": "primary-900", "hex": "#1e3a8a" }
+      {
+        "name": "primary-50",
+        "hex": "#eff6ff"
+      },
+      {
+        "name": "primary-100",
+        "hex": "#dbeafe"
+      },
+      {
+        "name": "primary-200",
+        "hex": "#bfdbfe"
+      },
+      {
+        "name": "primary-300",
+        "hex": "#93c5fd"
+      },
+      {
+        "name": "primary-400",
+        "hex": "#60a5fa"
+      },
+      {
+        "name": "primary-500",
+        "hex": "#3b82f6"
+      },
+      {
+        "name": "primary-600",
+        "hex": "#2563eb"
+      },
+      {
+        "name": "primary-700",
+        "hex": "#1d4ed8"
+      },
+      {
+        "name": "primary-800",
+        "hex": "#1e40af"
+      },
+      {
+        "name": "primary-900",
+        "hex": "#1e3a8a"
+      }
     ],
     "secondary": [
-      { "name": "secondary-50", "hex": "#f0f9ff" },
-      { "name": "secondary-100", "hex": "#e0f2fe" },
-      { "name": "secondary-200", "hex": "#bae6fd" },
-      { "name": "secondary-300", "hex": "#7dd3fc" },
-      { "name": "secondary-400", "hex": "#38bdf8" },
-      { "name": "secondary-500", "hex": "#0ea5e9" },
-      { "name": "secondary-600", "hex": "#0284c7" },
-      { "name": "secondary-700", "hex": "#0369a1" },
-      { "name": "secondary-800", "hex": "#075985" },
-      { "name": "secondary-900", "hex": "#0c4a6e" }
+      {
+        "name": "secondary-50",
+        "hex": "#f0f9ff"
+      },
+      {
+        "name": "secondary-100",
+        "hex": "#e0f2fe"
+      },
+      {
+        "name": "secondary-200",
+        "hex": "#bae6fd"
+      },
+      {
+        "name": "secondary-300",
+        "hex": "#7dd3fc"
+      },
+      {
+        "name": "secondary-400",
+        "hex": "#38bdf8"
+      },
+      {
+        "name": "secondary-500",
+        "hex": "#0ea5e9"
+      },
+      {
+        "name": "secondary-600",
+        "hex": "#0284c7"
+      },
+      {
+        "name": "secondary-700",
+        "hex": "#0369a1"
+      },
+      {
+        "name": "secondary-800",
+        "hex": "#075985"
+      },
+      {
+        "name": "secondary-900",
+        "hex": "#0c4a6e"
+      }
     ],
     "neutral": [
-      { "name": "neutral-50", "hex": "#f9fafb" },
-      { "name": "neutral-100", "hex": "#f3f4f6" },
-      { "name": "neutral-200", "hex": "#e5e7eb" },
-      { "name": "neutral-300", "hex": "#d1d5db" },
-      { "name": "neutral-400", "hex": "#9ca3af" },
-      { "name": "neutral-500", "hex": "#6b7280" },
-      { "name": "neutral-600", "hex": "#4b5563" },
-      { "name": "neutral-700", "hex": "#374151" },
-      { "name": "neutral-800", "hex": "#1f2937" },
-      { "name": "neutral-900", "hex": "#111827" }
+      {
+        "name": "neutral-50",
+        "hex": "#f9fafb"
+      },
+      {
+        "name": "neutral-100",
+        "hex": "#f3f4f6"
+      },
+      {
+        "name": "neutral-200",
+        "hex": "#e5e7eb"
+      },
+      {
+        "name": "neutral-300",
+        "hex": "#d1d5db"
+      },
+      {
+        "name": "neutral-400",
+        "hex": "#9ca3af"
+      },
+      {
+        "name": "neutral-500",
+        "hex": "#6b7280"
+      },
+      {
+        "name": "neutral-600",
+        "hex": "#4b5563"
+      },
+      {
+        "name": "neutral-700",
+        "hex": "#374151"
+      },
+      {
+        "name": "neutral-800",
+        "hex": "#1f2937"
+      },
+      {
+        "name": "neutral-900",
+        "hex": "#111827"
+      }
     ]
-  }
+  },
+  "contributor_handle": "datatimp",
+  "contributor_link": "https://datatimp.github.io"
 }

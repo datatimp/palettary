@@ -57,10 +57,7 @@
         <!-- Selected Palette Display -->
         <section id="palette-display" class="palette-display" style="display: none;">
             <div class="palette-header">
-                <div class="palette-info">
-                    <h2 id="palette-name"></h2>
-                    <p id="palette-description"></p>
-                </div>
+                <h2 id="palette-name"></h2>
                 <div class="export-buttons">
                     <button class="export-btn" data-format="json">
                         <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -85,6 +82,9 @@
                     </button>
                 </div>
             </div>
+
+            <p id="palette-contributor" class="palette-contributor"></p>
+            <p id="palette-description" class="palette-description"></p>
 
             <div id="color-swatches" class="color-swatches">
                 <!-- Color swatches will be dynamically inserted here -->

@@ -219,6 +219,18 @@ async function selectPalette(paletteId) {
     document.getElementById('palette-name').textContent = palette.name;
     document.getElementById('palette-description').textContent = palette.description;
 
+    // Update contributor info
+    const contributorEl = document.getElementById('palette-contributor');
+    if (palette.contributor_handle) {
+        if (palette.contributor_link) {
+            contributorEl.innerHTML = `Contributed by <a href="${palette.contributor_link}" class="contributor-name" target="_blank" rel="noopener noreferrer">${palette.contributor_handle}</a>`;
+        } else {
+            contributorEl.innerHTML = `Contributed by <span class="contributor-name">${palette.contributor_handle}</span>`;
+        }
+    } else {
+        contributorEl.innerHTML = '';
+    }
+
     // Display color swatches
     displayColorSwatches(palette);
 

@@ -58,31 +58,42 @@
     display: flex;
     justify-content: space-between;
     align-items: flex-start;
-    margin-bottom: 30px;
+    /* margin-bottom: 30px; */
     flex-wrap: wrap;
     gap: 20px;
 }
 
-.palette-info {
-    flex: 1;
-    min-width: 0;
-}
-
-.palette-info h2 {
+.palette-header h2 {
     font-size: 2rem;
-    margin-bottom: 8px;
     color: var(--color-text-default-primary);
     cursor: pointer;
     transition: color 0.2s ease;
 }
 
-.palette-info h2:hover {
+.palette-header h2:hover {
     color: var(--color-primary-default);
 }
 
-.palette-info p {
+.palette-contributor {
+    display: inline-block;
+    font-size: .6rem;
+    padding: 6px 16px;
+    border-radius: 20px;
+    background: var(--color-background-neutral-light);
+    margin-bottom: 12px;
+}
+
+.contributor-name {
+    font-size: 0.7rem;
+    font-weight: 600;
+}
+
+.palette-description {
     color: var(--color-text-default-secondary);
     font-size: 1rem;
+    max-width: 100%;
+    margin-bottom: 30px;
+    line-height: 1.6;
 }
 
 .export-buttons {
@@ -120,7 +131,7 @@
 
 /* Color Swatches */
 .color-swatches {
-    
+
     display: flex;
     flex-direction: column;
     gap: 20px;
