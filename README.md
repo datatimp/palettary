@@ -38,38 +38,47 @@
 
 ## Available Apps
 
-<table align="center" style="border: none;">
-  <tr>
-    <td align="center" width="50%">
-      <h3>🎨 Color Primitives</h3>
-      <p style="text-align: left;">Browse, preview, and export curated color palette collections directly to Figma. Perfect for setting up your design system's foundation.</p>
-      <br />
-      <a href="https://datatimp.github.io/palettary/">
-        <img src="https://img.shields.io/badge/Launch_App-Color_Primitive_Palettes-blue" alt="Launch Color App" />
-      </a>
-      <br /><br />
-      <ul align="left">
-        <li>Browse palettes with evocative names</li>
-        <li>One-click hex copy</li>
-        <li>Export to Figma JSON, TXT, or MD</li>
-      </ul>
-    </td>
-    <td align="center" width="50%">
-      <h3>🖼️ Thumbnail Generator</h3>
-      <p style="text-align: left;">Create professional file cover thumbnails for your Figma projects in seconds. Keep your team organized with consistent visuals.</p>
-      <br />
-      <a href="https://datatimp.github.io/palettary/figthumb.html/">
-        <img src="https://img.shields.io/badge/Launch_App-Thumbnail_Generator-purple" alt="Launch Thumbnail App" />
-      </a>
-      <br /><br />
-      <ul align="left">
-        <li>Customizable project status & types</li>
-        <li>Toggle platform icons (iOS, Android, etc.)</li>
-        <li>Export as PNG or SVG</li>
-      </ul>
-    </td>
-  </tr>
-</table>
+<div align="center">
+
+  <h3>🎨 Color Primitives</h3>
+  <p>Browse, preview, and export curated color palette collections directly to Figma. Perfect for setting up your design system's foundation.</p>
+  
+  <img src="assets/images/palettary-old-standby-screen.png" width="50%">
+  <br/>
+  
+  <a href="https://datatimp.github.io/palettary/">
+    <img src="https://img.shields.io/badge/Launch_App-Color_Primitive_Palettes-blue" alt="Launch Color App" />
+  </a>
+
+  <div align="left" style="max-width: 400px;">
+    <ul>
+      <li>Browse palettes with evocative names</li>
+      <li>One-click hex copy</li>
+      <li>Export to Figma JSON, TXT, or MD</li>
+    </ul>
+  </div>
+
+  <br/><hr/><br/>
+
+  <h3>🖼️ Thumbnail Generator</h3>
+  <p>Create professional file cover thumbnails for your Figma projects in seconds. Keep your team organized with consistent visuals.</p>
+  
+  <img src="assets/images/palettary-thumbnail-gen-screen.png" width="60%">
+  <br/>
+
+  <a href="https://datatimp.github.io/palettary/figthumb.html/">
+    <img src="https://img.shields.io/badge/Launch_App-Thumbnail_Generator-purple" alt="Launch Thumbnail App" />
+  </a>
+
+  <div align="left" style="max-width: 400px;">
+    <ul>
+      <li>Customizable project status & types</li>
+      <li>Toggle platform icons (iOS, Android, etc.)</li>
+      <li>Export as PNG or SVG</li>
+    </ul>
+  </div>
+
+</div>
 
 <br />
 

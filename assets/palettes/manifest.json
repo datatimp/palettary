@@ -76,6 +76,13 @@
       "description": "Give one",
       "file": "dimestore.json",
       "dateAdded": "2026-01-03"
+    },
+    {
+      "id": "old-standby",
+      "name": "Old Standby",
+      "description": "A classic default palette with neutral grays and standard hues for everyday design needs",
+      "file": "old-standby.json",
+      "dateAdded": "2026-01-13"
     }
   ]
 }
