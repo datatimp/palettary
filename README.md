@@ -92,6 +92,7 @@ Color primitives are the **raw color values** in your design system (e.g., `blue
 
 <figure>
   <img src="assets/images/figma-variables.png" alt="Figma variables panel showing color primitives" width="75%">
+  <br>
   <figcaption align="center"><i>Figure 1: Figma variables panel showing color primitives.</i></figcaption>
 </figure>
 
