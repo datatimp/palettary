@@ -85,12 +85,20 @@
 ## What are Color Primitives?
 
 Color primitives are the **raw color values** in your design system (e.g., `blue-500: #2563EB`). They describe what a color *is*.
-<figure align="center">
+
+<br />
+
+<div align="center">
+
+<figure>
   <img src="assets/images/figma-variables.png" alt="Figma variables panel showing color primitives" width="75%">
   <figcaption align="center"><i>Figure 1: Figma variables panel showing color primitives.</i></figcaption>
 </figure>
 
-<br>
+</div>
+
+<br />
+<br />
 
 **Semantic tokens**, on the other hand, describe a color's *purpose* (e.g., `color-text-primary`). By referencing primitives, you create a flexible abstraction layer.
 
