@@ -22,6 +22,12 @@
 <br />
 </div>
 
+<div align="center">
+
+![Palettary GIF](assets/images/palettary-homepage-scroll.webp)
+
+</div>
+
 ## Table of Contents
 1. [Available Apps](#available-apps)
 2. [What are color primitives?](#what-are-color-primitives)
