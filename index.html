@@ -3,14 +3,14 @@
 
 <head>
     <!-- Google tag (gtag.js) -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-CN30ZXQHMQ"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-CN30ZXQHMQ"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag() { dataLayer.push(arguments); }
+        gtag('js', new Date());
 
-  gtag('config', 'G-CN30ZXQHMQ');
-</script>
+        gtag('config', 'G-CN30ZXQHMQ');
+    </script>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Palettary - Color Primitives & Figma Thumbnail Generator</title>
@@ -66,7 +66,10 @@
         <!-- Selected Palette Display -->
         <section id="palette-display" class="palette-display" style="display: none;">
             <div class="palette-header">
-                <h2 id="palette-name"></h2>
+                <div class="palette-title-group">
+                    <h2 id="palette-name"></h2>
+                    <p id="palette-contributor" class="palette-contributor"></p>
+                </div>
                 <div class="export-buttons">
                     <button class="export-btn" data-format="json">
                         <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -91,8 +94,6 @@
                     </button>
                 </div>
             </div>
-
-            <p id="palette-contributor" class="palette-contributor"></p>
             <p id="palette-description" class="palette-description"></p>
 
             <div id="color-swatches" class="color-swatches">

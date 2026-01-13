@@ -281,8 +281,13 @@ function createSwatch(color) {
     swatch.className = 'swatch';
     swatch.onclick = () => copyToClipboard(color.hex);
 
+    // Calculate luminance to decide if we need a border
+    const rgb = hexToRgb(color.hex);
+    const luminance = getLuminance(rgb.r, rgb.g, rgb.b);
+    const isLight = luminance > 0.95;
+
     swatch.innerHTML = `
-        <div class="swatch-color" style="background-color: ${color.hex};"></div>
+        <div class="swatch-color${isLight ? ' light-swatch' : ''}" style="background-color: ${color.hex};"></div>
         <div class="swatch-info">
             <div class="swatch-name">${color.name}</div>
             <div class="swatch-hex">${color.hex}</div>
@@ -290,6 +295,15 @@ function createSwatch(color) {
     `;
 
     return swatch;
+}
+
+// Calculate relative luminance
+function getLuminance(r, g, b) {
+    const a = [r, g, b].map(function (v) {
+        v /= 255;
+        return v <= 0.03928 ? v / 12.92 : Math.pow((v + 0.055) / 1.055, 2.4);
+    });
+    return a[0] * 0.2126 + a[1] * 0.7152 + a[2] * 0.0722;
 }
 
 
