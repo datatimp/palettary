@@ -113,7 +113,7 @@ Semantic token:   color-link-default → blue-600
 2.  **Mix & Match**: Once ported into Figma, alter colors as you see fit.
 3.  **Create Semantics**: Create semantic tokens and map them to the corresponding primitives. 
 
-This [article](https://medium.com/@tarun_design00/color-system-color-theory-primitives-semantics-tokens-567f64368d30) on Medium is a terrific resource to learn more. 
+This [article](https://medium.com/@tarun_design00/color-system-color-theory-primitives-semantics-tokens-567f64368d30) on Medium is a terrific resource from which to learn more. 
 
 <br />
 
