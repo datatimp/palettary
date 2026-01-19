@@ -1,7 +1,7 @@
 import json
 import os
 
-palettes_dir = '/home/datatimp/repos/palettary/assets/palettes'
+palettes_dir = '/home/datatimp/repos/palettary/src/assets/palettes'
 contributor_handle = "datatimp"
 contributor_link = "https://datatimp.github.io"
 

@@ -10,7 +10,7 @@ Usage:
     python import-palette.py css <input-file>
 
 Example:
-    python import-palette.py figma assets/uploads/woodblock-japanese.tokens.json
+    python src/assets/scripts/import-palette.py figma assets/uploads/woodblock-japanese.tokens.json
 """
 
 import json

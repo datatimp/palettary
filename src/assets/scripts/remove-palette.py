@@ -9,7 +9,7 @@ Usage:
     python remove-palette.py <palette-id>
 
 Example:
-    python remove-palette.py japanese-woodblock
+    python src/assets/scripts/remove-palette.py japanese-woodblock
 """
 
 import json

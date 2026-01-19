@@ -3,26 +3,26 @@
 
 <head>
     <!-- Google tag (gtag.js) -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-CN30ZXQHMQ"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-CN30ZXQHMQ"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag() { dataLayer.push(arguments); }
+        gtag('js', new Date());
 
-  gtag('config', 'G-CN30ZXQHMQ');
-</script>
+        gtag('config', 'G-CN30ZXQHMQ');
+    </script>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Palettary - Color Primitives & Figma Thumbnail Generator</title>
-    <link rel="stylesheet" href="css/about.css">
-    <link rel="shortcut icon" type="image/png" href="assets/images/favicon.png">
+    <link rel="stylesheet" href="src/css/about.css">
+    <link rel="shortcut icon" type="image/png" href="src/assets/images/favicon.png">
 </head>
 
 <body>
     <header>
         <div class="container">
             <a href="https://datatimp.github.io/palettary"><img
-                    src="assets/images/palettary-wordmark-brand-primary1b.svg"></a>
+                    src="src/assets/images/palettary-wordmark-brand-primary1b.svg"></a>
             <nav class="header-nav">
                 <div class="nav-menu">
                     <span class="nav-trigger">
@@ -36,7 +36,7 @@
                     <div class="nav-overlay"></div>
                     <div class="nav-dropdown">
                         <div class="nav-logo-wrapper">
-                            <img src="assets/images/palettary-logo-brand-primary-square.svg" alt="Palettary Logo"
+                            <img src="src/assets/images/palettary-logo-brand-primary-square.svg" alt="Palettary Logo"
                                 class="nav-logo">
                         </div>
                         <a href="index.html">Color Primitives</a>
@@ -59,9 +59,12 @@
                 <div class="about-body">
                     <p>Palettary solves a few problems I often encounter when working in Figma.</p>
                     <br />
-                    <p>Having to build a complete set of color primitives is a slog. To speed up the initial design phase, Palettary features a curated collection of color primitive palettes that includes color scales across multiple hues, making it easy to establish consistent, accessible color foundations for your projects.
-                    Import the <code>.json</code> into Figma as color primitives, or download as <code>.css</code>
-                    or plain <code>.txt</code> for use in any design tool or codebase.</p>
+                    <p>Having to build a complete set of color primitives is a slog. To speed up the initial design
+                        phase, Palettary features a curated collection of color primitive palettes that includes color
+                        scales across multiple hues, making it easy to establish consistent, accessible color
+                        foundations for your projects.
+                        Import the <code>.json</code> into Figma as color primitives, or download as <code>.css</code>
+                        or plain <code>.txt</code> for use in any design tool or codebase.</p>
                 </div>
                 <div class="about-heading">
                     <h2 class="highlight-gold">Thumbnail Generator</h2>
@@ -72,7 +75,8 @@
                         provide a quick, scannable preview of each file's contents.</p>
                     <br>
                     <p>Palettary's thumbnail generator offers multiple color schemes and file status options. Export the
-                    generated thumbnail as a <code>.png</code> or <code>.svg</code> file, then upload to a <code>Cover</code> page in your Figma file and set it as the thumbnail.</p>
+                        generated thumbnail as a <code>.png</code> or <code>.svg</code> file, then upload to a
+                        <code>Cover</code> page in your Figma file and set it as the thumbnail.</p>
                 </div>
                 <div class="about-heading">
                     <h2 class="highlight-gold">Can I Contribute?</h2>
@@ -90,7 +94,7 @@
 
         <!--Footer Section-->
         <footer>
-            <a href="#top"><img src="assets/images/palettary-logo-brand-primary-square.svg"></a>
+            <a href="#top"><img src="src/assets/images/palettary-logo-brand-primary-square.svg"></a>
             <div class="divider"></div>
             <div class="footer-cols">
                 <div class="footer-col">
@@ -101,7 +105,11 @@
                     <a class="footer-col-item" href="https://www.linkedin.com/in/timothypevey/">LinkedIn</a>
                     <a class="footer-col-item" href="https://www.github.com/datatimp">Github</a>
                     <br />
-         <a href="https://www.producthunt.com/products/palettary?utm_source=badge-follow&utm_medium=badge&utm_source=badge-palettary" target="_blank"><img src="https://api.producthunt.com/widgets/embed-image/v1/follow.svg?product_id=1149439&theme=neutral" alt="Palettary - Ready&#0045;made&#0032;color&#0032;primitives&#0032;&#0038;&#0032;Figma&#0032;thumbnail&#0032;generator | Product Hunt" style="width: 250px; height: 54px;" width="250" height="54" /></a>
+                    <a href="https://www.producthunt.com/products/palettary?utm_source=badge-follow&utm_medium=badge&utm_source=badge-palettary"
+                        target="_blank"><img
+                            src="https://api.producthunt.com/widgets/embed-image/v1/follow.svg?product_id=1149439&theme=neutral"
+                            alt="Palettary - Ready&#0045;made&#0032;color&#0032;primitives&#0032;&#0038;&#0032;Figma&#0032;thumbnail&#0032;generator | Product Hunt"
+                            style="width: 250px; height: 54px;" width="250" height="54" /></a>
                 </div>
             </div>
             <div class="divider"></div>
@@ -113,7 +121,7 @@
 
     </main>
 
-    <script src="js/common.js"></script>
+    <script src="src/js/common.js"></script>
 </body>
 
 </html>

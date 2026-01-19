@@ -50,14 +50,14 @@ const headerPresets = [
 // Icon paths for OS and Platform types (light theme)
 const iconPaths = {
     os: {
-        ios: 'assets/icons/icon-os-ios-on-light.svg',
-        android: 'assets/icons/icon-os-android-on-light.svg'
+        ios: 'src/assets/icons/icon-os-ios-on-light.svg',
+        android: 'src/assets/icons/icon-os-android-on-light.svg'
     },
     platform: {
-        watch: 'assets/icons/icon-platform-watch-on-light.svg',
-        mobile: 'assets/icons/icon-platform-mobile-on-light.svg',
-        laptop: 'assets/icons/icon-platform-laptopon-light.svg',
-        desktop: 'assets/icons/icon-platform-desktop-on-light.svg'
+        watch: 'src/assets/icons/icon-platform-watch-on-light.svg',
+        mobile: 'src/assets/icons/icon-platform-mobile-on-light.svg',
+        laptop: 'src/assets/icons/icon-platform-laptopon-light.svg',
+        desktop: 'src/assets/icons/icon-platform-desktop-on-light.svg'
     }
 };
 

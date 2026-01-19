@@ -3,26 +3,26 @@
 
 <head>
     <!-- Google tag (gtag.js) -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-CN30ZXQHMQ"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-CN30ZXQHMQ"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag() { dataLayer.push(arguments); }
+        gtag('js', new Date());
 
-  gtag('config', 'G-CN30ZXQHMQ');
-</script>
+        gtag('config', 'G-CN30ZXQHMQ');
+    </script>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Palettary - Color Primitives & Figma Thumbnail Generator</title>
-    <link rel="stylesheet" href="css/figthumb.css">
-    <link rel="shortcut icon" type="image/png" href="assets/images/favicon.png">
+    <link rel="stylesheet" href="src/css/figthumb.css">
+    <link rel="shortcut icon" type="image/png" href="src/assets/images/favicon.png">
 </head>
 
 <body>
     <header>
         <div class="container">
             <a href="https://datatimp.github.io/palettary"><img
-                    src="assets/images/palettary-wordmark-brand-primary1b.svg"></a>
+                    src="src/assets/images/palettary-wordmark-brand-primary1b.svg"></a>
             <nav class="header-nav">
                 <div class="nav-menu">
                     <span class="nav-trigger">
@@ -36,7 +36,7 @@
                     <div class="nav-overlay"></div>
                     <div class="nav-dropdown">
                         <div class="nav-logo-wrapper">
-                            <img src="assets/images/palettary-logo-brand-primary-square.svg" alt="Palettary Logo"
+                            <img src="src/assets/images/palettary-logo-brand-primary-square.svg" alt="Palettary Logo"
                                 class="nav-logo">
                         </div>
                         <a href="index.html">Color Primitives</a>
@@ -74,12 +74,12 @@
                         <div class="custom-color-wrapper">
                             <input type="color" id="customColorInput" value="#6B7280" title="Custom Solid Color">
                             <label for="customColorInput" class="btn btn-small btn-icon-only" title="Custom Color">
-                                <img src="assets/icons/icon-nosquare-pen-dark.svg"
+                                <img src="src/assets/icons/icon-nosquare-pen-dark.svg"
                                     style="width: 16px; height: 16px; opacity: 0.6;">
                             </label>
                         </div>
                         <button id="clearHeaderColorBtn" class="btn btn-small" title="No Color" style="padding: 0 8px;">
-                            <img src="assets/icons/icon-nosquare-close-dark.svg"
+                            <img src="src/assets/icons/icon-nosquare-close-dark.svg"
                                 style="width: 16px; height: 16px; opacity: 0.6;">
                         </button>
                     </div>
@@ -147,13 +147,14 @@
                     <div class="chip-group">
                         <label class="chip" title="iOS">
                             <input type="checkbox" id="osIos">
-                            <img src="assets/icons/icon-nosquare-apple-dark.svg" class="icon-dark" alt="iOS">
-                            <img src="assets/icons/icon-nosquare-apple-white.svg" class="icon-white" alt="iOS">
+                            <img src="src/assets/icons/icon-nosquare-apple-dark.svg" class="icon-dark" alt="iOS">
+                            <img src="src/assets/icons/icon-nosquare-apple-white.svg" class="icon-white" alt="iOS">
                         </label>
                         <label class="chip" title="Android">
                             <input type="checkbox" id="osAndroid">
-                            <img src="assets/icons/icon-nosquare-android-dark.svg" class="icon-dark" alt="Android">
-                            <img src="assets/icons/icon-nosquare-android-white.svg" class="icon-white" alt="Android">
+                            <img src="src/assets/icons/icon-nosquare-android-dark.svg" class="icon-dark" alt="Android">
+                            <img src="src/assets/icons/icon-nosquare-android-white.svg" class="icon-white"
+                                alt="Android">
                         </label>
                     </div>
                 </div>
@@ -164,23 +165,24 @@
                     <div class="chip-group">
                         <label class="chip" title="Desktop">
                             <input type="checkbox" id="platformDesktop" checked>
-                            <img src="assets/icons/icon-nosquare-desktop-dark.svg" class="icon-dark" alt="Desktop">
-                            <img src="assets/icons/icon-nosquare-desktop-white.svg" class="icon-white" alt="Desktop">
+                            <img src="src/assets/icons/icon-nosquare-desktop-dark.svg" class="icon-dark" alt="Desktop">
+                            <img src="src/assets/icons/icon-nosquare-desktop-white.svg" class="icon-white"
+                                alt="Desktop">
                         </label>
                         <label class="chip" title="Laptop">
                             <input type="checkbox" id="platformLaptop" checked>
-                            <img src="assets/icons/icon-nosquare-laptop-dark.svg" class="icon-dark" alt="Laptop">
-                            <img src="assets/icons/icon-nosquare-laptop-white.svg" class="icon-white" alt="Laptop">
+                            <img src="src/assets/icons/icon-nosquare-laptop-dark.svg" class="icon-dark" alt="Laptop">
+                            <img src="src/assets/icons/icon-nosquare-laptop-white.svg" class="icon-white" alt="Laptop">
                         </label>
                         <label class="chip" title="Mobile">
                             <input type="checkbox" id="platformMobile" checked>
-                            <img src="assets/icons/icon-nosquare-mobile-dark.svg" class="icon-dark" alt="Mobile">
-                            <img src="assets/icons/icon-nosquare-mobile-white.svg" class="icon-white" alt="Mobile">
+                            <img src="src/assets/icons/icon-nosquare-mobile-dark.svg" class="icon-dark" alt="Mobile">
+                            <img src="src/assets/icons/icon-nosquare-mobile-white.svg" class="icon-white" alt="Mobile">
                         </label>
                         <label class="chip" title="Watch">
                             <input type="checkbox" id="platformWatch">
-                            <img src="assets/icons/icon-nosquare-watch-dark.svg" class="icon-dark" alt="Watch">
-                            <img src="assets/icons/icon-nosquare-watch-white.svg" class="icon-white" alt="Watch">
+                            <img src="src/assets/icons/icon-nosquare-watch-dark.svg" class="icon-dark" alt="Watch">
+                            <img src="src/assets/icons/icon-nosquare-watch-white.svg" class="icon-white" alt="Watch">
                         </label>
                     </div>
                 </div>
@@ -202,7 +204,7 @@
 
         <!--Footer Section-->
         <footer>
-            <a href="#top"><img src="assets/images/palettary-logo-brand-primary-square.svg"></a>
+            <a href="#top"><img src="src/assets/images/palettary-logo-brand-primary-square.svg"></a>
             <div class="divider"></div>
             <div class="footer-cols">
                 <div class="footer-col">
@@ -213,7 +215,11 @@
                     <a class="footer-col-item" href="https://www.linkedin.com/in/timothypevey/">LinkedIn</a>
                     <a class="footer-col-item" href="https://www.github.com/datatimp">Github</a>
                     <br />
-                    <a href="https://www.producthunt.com/products/palettary?utm_source=badge-follow&utm_medium=badge&utm_source=badge-palettary" target="_blank"><img src="https://api.producthunt.com/widgets/embed-image/v1/follow.svg?product_id=1149439&theme=neutral" alt="Palettary - Ready&#0045;made&#0032;color&#0032;primitives&#0032;&#0038;&#0032;Figma&#0032;thumbnail&#0032;generator | Product Hunt" style="width: 250px; height: 54px;" width="250" height="54" /></a>
+                    <a href="https://www.producthunt.com/products/palettary?utm_source=badge-follow&utm_medium=badge&utm_source=badge-palettary"
+                        target="_blank"><img
+                            src="https://api.producthunt.com/widgets/embed-image/v1/follow.svg?product_id=1149439&theme=neutral"
+                            alt="Palettary - Ready&#0045;made&#0032;color&#0032;primitives&#0032;&#0038;&#0032;Figma&#0032;thumbnail&#0032;generator | Product Hunt"
+                            style="width: 250px; height: 54px;" width="250" height="54" /></a>
                 </div>
             </div>
             <div class="divider"></div>
@@ -226,8 +232,8 @@
     </main>
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
-    <script src="js/figthumb.js"></script>
-    <script src="js/common.js"></script>
+    <script src="src/js/figthumb.js"></script>
+    <script src="src/js/common.js"></script>
 </body>
 
 </html>

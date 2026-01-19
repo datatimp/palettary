@@ -21,7 +21,7 @@ Convert external palette files (Figma JSON or CSS) to Palettary's internal forma
 
 ```bash
 # From the project root directory:
-python assets/scripts/import-palette.py <format> <input-file>
+python src/assets/scripts/import-palette.py <format> <input-file>
 ```
 
 ### Supported Formats
@@ -76,7 +76,7 @@ python ~/path/my-file.css
 ### Example Session
 
 ```bash
-$ python assets/scripts/import-palette.py figma path/to/your-palette.tokens.json
+$ python src/assets/scripts/import-palette.py figma path/to/your-palette.tokens.json
 
 === Palettary Palette Importer ===
 Input file: path/to/your-palette.tokens.json
@@ -129,17 +129,17 @@ Safely remove a palette from the system by deleting its file and updating the ma
 
 ```bash
 # Remove a specific palette
-python assets/scripts/remove-palette.py <palette-id>
+python src/assets/scripts/remove-palette.py <palette-id>
 
 # List all available palettes
-python assets/scripts/remove-palette.py list
+python src/assets/scripts/remove-palette.py list
 ```
 
 ### Examples
 
 **Remove a palette:**
 ```bash
-$ python assets/scripts/remove-palette.py japanese-woodblock
+$ python src/assets/scripts/remove-palette.py japanese-woodblock
 
 === Palettary Palette Remover ===
 Palette ID: japanese-woodblock
@@ -160,7 +160,7 @@ Are you sure you want to remove this palette? [y/N]: y
 
 **List available palettes:**
 ```bash
-$ python assets/scripts/remove-palette.py list
+$ python src/assets/scripts/remove-palette.py list
 
 === Available Palettes ===
   midnight-canvas           - Midnight Canvas

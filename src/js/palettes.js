@@ -7,14 +7,14 @@ let paletteCache = {};
 document.addEventListener('DOMContentLoaded', async () => {
     await loadManifest();
     populateDropdown();
-    displayPaletteCards();
+    await displayPaletteCards();
     setupEventListeners();
 });
 
 // Load the palette manifest
 async function loadManifest() {
     try {
-        const response = await fetch('assets/palettes/manifest.json');
+        const response = await fetch('src/assets/palettes/manifest.json');
         const data = await response.json();
         paletteManifest = data.palettes;
     } catch (error) {
@@ -31,7 +31,7 @@ async function loadPalette(paletteId) {
     }
 
     try {
-        const response = await fetch(`assets/palettes/${paletteId}.json`);
+        const response = await fetch(`src/assets/palettes/${paletteId}.json`);
         const palette = await response.json();
         paletteCache[paletteId] = palette;
         return palette;
@@ -74,7 +74,8 @@ function populateDropdown() {
 }
 
 // Display palette cards in the gallery
-function displayPaletteCards() {
+// Display palette cards in the gallery
+async function displayPaletteCards() {
     const cardsContainer = document.getElementById('palette-cards');
 
     if (!paletteManifest) return;
@@ -84,9 +85,14 @@ function displayPaletteCards() {
         return new Date(b.dateAdded) - new Date(a.dateAdded);
     });
 
-    sortedPalettes.forEach(async (paletteInfo) => {
-        const card = await createPaletteCard(paletteInfo);
-        cardsContainer.appendChild(card);
+    // Create all cards in parallel but maintain order
+    const cardPromises = sortedPalettes.map(paletteInfo => createPaletteCard(paletteInfo));
+    const cards = await Promise.all(cardPromises);
+
+    // Append cards in valid order
+    cardsContainer.innerHTML = ''; // Clear existing content
+    cards.forEach(card => {
+        if (card) cardsContainer.appendChild(card);
     });
 }
 
