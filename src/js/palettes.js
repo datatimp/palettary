@@ -9,6 +9,15 @@ document.addEventListener('DOMContentLoaded', async () => {
     populateDropdown();
     await displayPaletteCards();
     setupEventListeners();
+
+    // Check for palette ID in URL
+    const urlParams = new URLSearchParams(window.location.search);
+    const paletteId = urlParams.get('palette');
+    
+    if (paletteId) {
+        // Wait for everything to be ready before selecting
+        selectPalette(paletteId);
+    }
 });
 
 // Load the palette manifest
@@ -201,6 +210,15 @@ function setupEventListeners() {
             }
         });
     });
+
+    // Share button listener
+    const shareBtn = document.getElementById('share-btn');
+    if (shareBtn) {
+        shareBtn.addEventListener('click', (e) => {
+            e.stopPropagation(); // Prevent bubbling if needed
+            copyShareLink();
+        });
+    }
 }
 
 // Select and display a palette
@@ -220,6 +238,11 @@ async function selectPalette(paletteId) {
 
     // Update dropdown
     document.getElementById('palette-select').value = paletteId;
+
+    // Update URL without reloading
+    const newUrl = new URL(window.location);
+    newUrl.searchParams.set('palette', paletteId);
+    window.history.pushState({ paletteId: paletteId }, '', newUrl);
 
     // Update display
     document.getElementById('palette-name').textContent = palette.name;
@@ -436,6 +459,66 @@ function hexToRgb(hex) {
         g: parseInt(result[2], 16),
         b: parseInt(result[3], 16)
     } : null;
+}
+
+// Copy share link to clipboard
+function copyShareLink() {
+    const url = window.location.href;
+    
+    // Function to show feedback
+    const showFeedback = () => {
+        const tooltip = document.getElementById('share-tooltip');
+        if (tooltip) {
+            const originalText = tooltip.textContent;
+            tooltip.textContent = 'Copied!';
+            tooltip.classList.add('visible');
+            
+            setTimeout(() => {
+                tooltip.textContent = originalText;
+                tooltip.classList.remove('visible');
+            }, 2000);
+        }
+    };
+
+    // Try Navigator Clipboard API first
+    if (navigator.clipboard && navigator.clipboard.writeText) {
+        navigator.clipboard.writeText(url)
+            .then(showFeedback)
+            .catch(err => {
+                console.warn('Navigator clipboard failed, trying fallback:', err);
+                fallbackCopy(url);
+            });
+    } else {
+        fallbackCopy(url);
+    }
+
+    // Fallback using temporary textarea
+    function fallbackCopy(text) {
+        try {
+            const textArea = document.createElement("textarea");
+            textArea.value = text;
+            
+            // Ensure it's not visible but part of DOM
+            textArea.style.position = "fixed";
+            textArea.style.left = "-9999px";
+            textArea.style.top = "0";
+            document.body.appendChild(textArea);
+            
+            textArea.focus();
+            textArea.select();
+            
+            const successful = document.execCommand('copy');
+            document.body.removeChild(textArea);
+            
+            if (successful) {
+                showFeedback();
+            } else {
+                console.error('Fallback copy failed');
+            }
+        } catch (err) {
+            console.error('Fallback copy error:', err);
+        }
+    }
 }
 
 // Download file

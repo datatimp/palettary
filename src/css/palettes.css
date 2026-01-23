@@ -71,6 +71,12 @@
     gap: 8px;
 }
 
+.palette-name-wrapper {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
 .palette-header h2 {
     font-size: 2rem;
     color: var(--color-text-default-primary);
@@ -80,6 +86,60 @@
 
 .palette-header h2:hover {
     color: var(--color-primary-default);
+}
+
+.share-btn {
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 4px;
+    color: var(--color-text-default-secondary);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 4px;
+    transition: all 0.2s ease;
+    position: relative;
+}
+
+.share-btn:hover {
+    color: var(--color-primary-default);
+    background-color: var(--color-background-neutral-light);
+}
+
+.share-tooltip {
+    position: absolute;
+    bottom: 100%;
+    left: 50%;
+    transform: translateX(-50%);
+    background-color: var(--color-text-default-primary);
+    color: var(--color-background-white);
+    padding: 4px 8px;
+    border-radius: 4px;
+    font-size: 0.75rem;
+    font-family: 'Monaco', 'Courier New', monospace;
+    white-space: nowrap;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.2s ease, transform 0.2s ease;
+    margin-bottom: 8px;
+}
+
+.share-tooltip::after {
+    content: '';
+    position: absolute;
+    top: 100%;
+    left: 50%;
+    margin-left: -4px;
+    border-width: 4px;
+    border-style: solid;
+    border-color: var(--color-text-default-primary) transparent transparent transparent;
+}
+
+.share-btn:hover .share-tooltip,
+.share-tooltip.visible {
+    opacity: 1;
+    transform: translateX(-50%) translateY(-4px);
 }
 
 .palette-contributor {

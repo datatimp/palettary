@@ -1,0 +1,283 @@
+{
+  "id": "aisle-7",
+  "name": "Aisle 7",
+  "description": "Inspired by wood-paneled aisles, harvest gold appliances, and vintage food packaging.",
+  "contributor_handle": "datatimp",
+  "contributor_link": "https://datatimp.github.io",
+  "colors": {
+    "neutral": [
+      {
+        "name": "neutral-0",
+        "hex": "#FFFFFF"
+      },
+      {
+        "name": "neutral-100",
+        "hex": "#F7F5F0"
+      },
+      {
+        "name": "neutral-200",
+        "hex": "#EBE6D9"
+      },
+      {
+        "name": "neutral-300",
+        "hex": "#D6CFC1"
+      },
+      {
+        "name": "neutral-400",
+        "hex": "#A8A191"
+      },
+      {
+        "name": "neutral-500",
+        "hex": "#787263"
+      },
+      {
+        "name": "neutral-600",
+        "hex": "#545045"
+      },
+      {
+        "name": "neutral-700",
+        "hex": "#423F36"
+      },
+      {
+        "name": "neutral-800",
+        "hex": "#292722"
+      },
+      {
+        "name": "neutral-900",
+        "hex": "#1A1915"
+      },
+      {
+        "name": "neutral-1000",
+        "hex": "#000000"
+      }
+    ],
+    "red": [
+      {
+        "name": "red-100",
+        "hex": "#FDE8E8"
+      },
+      {
+        "name": "red-200",
+        "hex": "#FBD2D2"
+      },
+      {
+        "name": "red-300",
+        "hex": "#F4A5A5"
+      },
+      {
+        "name": "red-400",
+        "hex": "#E87171"
+      },
+      {
+        "name": "red-500",
+        "hex": "#D14444"
+      },
+      {
+        "name": "red-600",
+        "hex": "#B22626"
+      },
+      {
+        "name": "red-700",
+        "hex": "#8F1C1C"
+      },
+      {
+        "name": "red-800",
+        "hex": "#731B1B"
+      },
+      {
+        "name": "red-900",
+        "hex": "#5C1D1D"
+      }
+    ],
+    "orange": [
+      {
+        "name": "orange-100",
+        "hex": "#FFF1E0"
+      },
+      {
+        "name": "orange-200",
+        "hex": "#FEDBB0"
+      },
+      {
+        "name": "orange-300",
+        "hex": "#FDB470"
+      },
+      {
+        "name": "orange-400",
+        "hex": "#F58C31"
+      },
+      {
+        "name": "orange-500",
+        "hex": "#D96F1A"
+      },
+      {
+        "name": "orange-600",
+        "hex": "#B35812"
+      },
+      {
+        "name": "orange-700",
+        "hex": "#8C440E"
+      },
+      {
+        "name": "orange-800",
+        "hex": "#6B340B"
+      },
+      {
+        "name": "orange-900",
+        "hex": "#4F2708"
+      }
+    ],
+    "yellow": [
+      {
+        "name": "yellow-100",
+        "hex": "#FEF9D9"
+      },
+      {
+        "name": "yellow-200",
+        "hex": "#FDF0A6"
+      },
+      {
+        "name": "yellow-300",
+        "hex": "#F9E061"
+      },
+      {
+        "name": "yellow-400",
+        "hex": "#E8C323"
+      },
+      {
+        "name": "yellow-500",
+        "hex": "#C9A414"
+      },
+      {
+        "name": "yellow-600",
+        "hex": "#A6850D"
+      },
+      {
+        "name": "yellow-700",
+        "hex": "#856A0A"
+      },
+      {
+        "name": "yellow-800",
+        "hex": "#665208"
+      },
+      {
+        "name": "yellow-900",
+        "hex": "#4D3D06"
+      }
+    ],
+    "green": [
+      {
+        "name": "green-100",
+        "hex": "#F0F4E1"
+      },
+      {
+        "name": "green-200",
+        "hex": "#DEE7B4"
+      },
+      {
+        "name": "green-300",
+        "hex": "#B8C87B"
+      },
+      {
+        "name": "green-400",
+        "hex": "#93A64D"
+      },
+      {
+        "name": "green-500",
+        "hex": "#748535"
+      },
+      {
+        "name": "green-600",
+        "hex": "#5D6B2A"
+      },
+      {
+        "name": "green-700",
+        "hex": "#465120"
+      },
+      {
+        "name": "green-800",
+        "hex": "#343D18"
+      },
+      {
+        "name": "green-900",
+        "hex": "#252B11"
+      }
+    ],
+    "blue": [
+      {
+        "name": "blue-100",
+        "hex": "#E2EBF5"
+      },
+      {
+        "name": "blue-200",
+        "hex": "#C5D7EB"
+      },
+      {
+        "name": "blue-300",
+        "hex": "#9ABADA"
+      },
+      {
+        "name": "blue-400",
+        "hex": "#6B96C2"
+      },
+      {
+        "name": "blue-500",
+        "hex": "#4B76A6"
+      },
+      {
+        "name": "blue-600",
+        "hex": "#395B82"
+      },
+      {
+        "name": "blue-700",
+        "hex": "#2D4663"
+      },
+      {
+        "name": "blue-800",
+        "hex": "#23354B"
+      },
+      {
+        "name": "blue-900",
+        "hex": "#1A2738"
+      }
+    ],
+    "brown": [
+      {
+        "name": "brown-100",
+        "hex": "#F2E9E1"
+      },
+      {
+        "name": "brown-200",
+        "hex": "#E1D0C1"
+      },
+      {
+        "name": "brown-300",
+        "hex": "#C2A68C"
+      },
+      {
+        "name": "brown-400",
+        "hex": "#A17F5F"
+      },
+      {
+        "name": "brown-500",
+        "hex": "#826245"
+      },
+      {
+        "name": "brown-600",
+        "hex": "#664D36"
+      },
+      {
+        "name": "brown-700",
+        "hex": "#4D3A29"
+      },
+      {
+        "name": "brown-800",
+        "hex": "#3B2D20"
+      },
+      {
+        "name": "brown-900",
+        "hex": "#2B2117"
+      }
+    ]
+  }
+}
