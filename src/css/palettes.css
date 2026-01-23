@@ -337,6 +337,97 @@
     color: var(--color-text-default-secondary);
 }
 
+/* Tabs */
+.palette-tabs {
+    display: flex;
+    gap: 12px;
+    margin-bottom: 20px;
+    border-bottom: 1px solid var(--color-border-default);
+    padding-bottom: 0;
+}
+
+.palette-tab {
+    background: none;
+    border: none;
+    padding: 10px 16px;
+    font-size: 1rem;
+    font-family: var(--font-default-body);
+    font-weight: 600;
+    color: var(--color-text-default-secondary);
+    cursor: pointer;
+    border-bottom: 3px solid transparent;
+    transition: all 0.2s ease;
+    margin-bottom: -1px;
+}
+
+.palette-tab:hover {
+    color: var(--color-primary-default);
+}
+
+.palette-tab.active {
+    color: var(--color-text-white);
+    background-color: var(--color-primary-default);
+    border-top-left-radius: 8px;
+    border-top-right-radius: 8px;
+    border-bottom-color: var(--color-primary-default);
+}
+
+/* CSS Code View */
+.css-code-view {
+    position: relative;
+    background-color: #f5f5f5;
+    border-radius: 8px;
+    overflow: hidden;
+    border: 1px solid var(--color-border-default);
+}
+
+.css-code-view pre {
+    margin: 0;
+    padding: 24px;
+    overflow-x: auto;
+    font-family: 'Monaco', 'Courier New', monospace;
+    font-size: 0.9rem;
+    line-height: 1.5;
+    color: var(--color-text-default-primary);
+}
+
+/* Reset global code styles for the block view */
+.css-code-view code {
+    padding: 0;
+    border: none;
+    border-radius: 0;
+    background: transparent;
+    color: inherit;
+    margin: 0;
+    display: block;
+    /* Ensure it behaves like a block for Prism if needed */
+}
+
+.code-actions {
+    position: absolute;
+    top: 12px;
+    right: 12px;
+}
+
+.copy-code-btn {
+    background-color: var(--color-background-white);
+    border: 1px solid var(--color-border-default);
+    border-radius: 6px;
+    padding: 6px 12px;
+    font-size: 0.85rem;
+    font-weight: 600;
+    color: var(--color-text-default-primary);
+    cursor: pointer;
+    transition: all 0.2s ease;
+    box-shadow: var(--shadow-sm);
+}
+
+.copy-code-btn:hover {
+    background-color: var(--color-background-neutral-light);
+    transform: translateY(-1px);
+    box-shadow: var(--shadow-md);
+}
+
 /* Responsive Design */
 @media (max-width: 768px) {
     .palette-gallery h2 {

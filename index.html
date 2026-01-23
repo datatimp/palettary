@@ -16,6 +16,9 @@
     <title>Palettary - Color Primitives & Figma Thumbnail Generator</title>
     <link rel="stylesheet" href="src/css/palettes.css">
     <link rel="shortcut icon" type="image/png" href="src/assets/images/favicon.png">
+
+    <!-- PrismJS for syntax highlighting -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css">
 </head>
 
 <body>
@@ -107,8 +110,20 @@
             </div>
             <p id="palette-description" class="palette-description"></p>
 
+            <div class="palette-tabs">
+                <button class="palette-tab active" data-tab="visual">Swatches</button>
+                <button class="palette-tab" data-tab="css">CSS Code</button>
+            </div>
+
             <div id="color-swatches" class="color-swatches">
                 <!-- Color swatches will be dynamically inserted here -->
+            </div>
+
+            <div id="css-code-view" class="css-code-view" style="display: none;">
+                <pre><code id="css-code-content" class="language-css"></code></pre>
+                <div class="code-actions">
+                    <button id="copy-css-btn" class="copy-code-btn">Copy CSS</button>
+                </div>
             </div>
         </section>
 
@@ -149,6 +164,8 @@
     </main>
 
     <script src="src/js/common.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-css.min.js"></script>
     <script src="src/js/palettes.js"></script>
 </body>
 

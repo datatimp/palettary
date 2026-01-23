@@ -219,6 +219,23 @@ function setupEventListeners() {
             copyShareLink();
         });
     }
+
+    // Tab switching
+    document.querySelectorAll('.palette-tab').forEach(tab => {
+        tab.addEventListener('click', (e) => {
+            const tabName = e.target.dataset.tab;
+            switchTab(tabName);
+        });
+    });
+
+    // Copy CSS Code button
+    const copyCssBtn = document.getElementById('copy-css-btn');
+    if (copyCssBtn) {
+        copyCssBtn.addEventListener('click', () => {
+            const code = document.getElementById('css-code-content').textContent;
+            copyToClipboard(code, 'copy-css-btn');
+        });
+    }
 }
 
 // Select and display a palette
@@ -266,6 +283,19 @@ async function selectPalette(paletteId) {
     // Show the palette display section
     const paletteDisplay = document.getElementById('palette-display');
     paletteDisplay.style.display = 'block';
+
+    // Reset to visual tab
+    switchTab('visual');
+
+    // Populate CSS code view (pre-load it)
+    const cssContent = generateCSS(palette);
+    const codeElement = document.getElementById('css-code-content');
+    codeElement.textContent = cssContent;
+    
+    // Trigger syntax highlighting if Prism is available
+    if (window.Prism) {
+        Prism.highlightElement(codeElement);
+    }
 
     // Hide the selected palette's card from the gallery
     const selectedCard = document.querySelector(`.palette-card[data-palette-id="${paletteId}"]`);
@@ -461,64 +491,102 @@ function hexToRgb(hex) {
     } : null;
 }
 
-// Copy share link to clipboard
-function copyShareLink() {
-    const url = window.location.href;
-    
+
+
+// Switch between Visual and CSS tabs
+function switchTab(tabName) {
+    // Update tab buttons
+    document.querySelectorAll('.palette-tab').forEach(tab => {
+        if (tab.dataset.tab === tabName) {
+            tab.classList.add('active');
+        } else {
+            tab.classList.remove('active');
+        }
+    });
+
+    // Toggle views
+    const swatches = document.getElementById('color-swatches');
+    const codeView = document.getElementById('css-code-view');
+
+    if (tabName === 'visual') {
+        swatches.style.display = ''; // default flex
+        codeView.style.display = 'none';
+    } else {
+        swatches.style.display = 'none';
+        codeView.style.display = 'block';
+    }
+}
+
+// Copy text to clipboard with feedback (generic)
+function copyToClipboard(text, buttonId = null) {
     // Function to show feedback
     const showFeedback = () => {
-        const tooltip = document.getElementById('share-tooltip');
-        if (tooltip) {
-            const originalText = tooltip.textContent;
-            tooltip.textContent = 'Copied!';
-            tooltip.classList.add('visible');
-            
+        if (buttonId) {
+            const btn = document.getElementById(buttonId);
+            const originalText = btn.textContent;
+            btn.textContent = 'Copied!';
             setTimeout(() => {
-                tooltip.textContent = originalText;
-                tooltip.classList.remove('visible');
+                btn.textContent = originalText;
             }, 2000);
+        } else {
+            // Default tooltip behavior for share button
+            const tooltip = document.getElementById('share-tooltip');
+            if (tooltip) {
+                const originalText = tooltip.textContent;
+                tooltip.textContent = 'Copied!';
+                tooltip.classList.add('visible');
+                setTimeout(() => {
+                    tooltip.textContent = originalText;
+                    tooltip.classList.remove('visible');
+                }, 2000);
+            }
         }
     };
 
     // Try Navigator Clipboard API first
     if (navigator.clipboard && navigator.clipboard.writeText) {
-        navigator.clipboard.writeText(url)
+        navigator.clipboard.writeText(text)
             .then(showFeedback)
             .catch(err => {
                 console.warn('Navigator clipboard failed, trying fallback:', err);
-                fallbackCopy(url);
+                fallbackCopy(text, showFeedback);
             });
     } else {
-        fallbackCopy(url);
+        fallbackCopy(text, showFeedback);
     }
+}
 
-    // Fallback using temporary textarea
-    function fallbackCopy(text) {
-        try {
-            const textArea = document.createElement("textarea");
-            textArea.value = text;
-            
-            // Ensure it's not visible but part of DOM
-            textArea.style.position = "fixed";
-            textArea.style.left = "-9999px";
-            textArea.style.top = "0";
-            document.body.appendChild(textArea);
-            
-            textArea.focus();
-            textArea.select();
-            
-            const successful = document.execCommand('copy');
-            document.body.removeChild(textArea);
-            
-            if (successful) {
-                showFeedback();
-            } else {
-                console.error('Fallback copy failed');
-            }
-        } catch (err) {
-            console.error('Fallback copy error:', err);
+// Fallback using temporary textarea
+function fallbackCopy(text, callback) {
+    try {
+        const textArea = document.createElement("textarea");
+        textArea.value = text;
+        
+        // Ensure it's not visible but part of DOM
+        textArea.style.position = "fixed";
+        textArea.style.left = "-9999px";
+        textArea.style.top = "0";
+        document.body.appendChild(textArea);
+        
+        textArea.focus();
+        textArea.select();
+        
+        const successful = document.execCommand('copy');
+        document.body.removeChild(textArea);
+        
+        if (successful) {
+            if (callback) callback();
+        } else {
+            console.error('Fallback copy failed');
         }
+    } catch (err) {
+        console.error('Fallback copy error:', err);
     }
+}
+
+// Copy share link (specific wrapper)
+function copyShareLink() {
+    copyToClipboard(window.location.href);
 }
 
 // Download file
