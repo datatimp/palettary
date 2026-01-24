@@ -19,15 +19,13 @@ function initNavigation() {
 
     if (navTrigger && navMenu) {
         navTrigger.addEventListener('click', (e) => {
+            // Disable click on desktop (hover only)
+            if (window.innerWidth > 768) return;
+
             e.stopPropagation();
             navMenu.classList.toggle('active');
             
-            // Prevent body scroll when menu is open
-            if (navMenu.classList.contains('active')) {
-                document.body.style.overflow = 'hidden';
-            } else {
-                document.body.style.overflow = '';
-            }
+            toggleScrollLock(navMenu.classList.contains('active'));
         });
     }
 
@@ -35,7 +33,7 @@ function initNavigation() {
     if (navOverlay && navMenu) {
         navOverlay.addEventListener('click', () => {
             navMenu.classList.remove('active');
-            document.body.style.overflow = '';
+            toggleScrollLock(false);
         });
     }
 
@@ -43,7 +41,7 @@ function initNavigation() {
     document.addEventListener('click', (e) => {
         if (navMenu && navMenu.classList.contains('active') && !navMenu.contains(e.target)) {
             navMenu.classList.remove('active');
-            document.body.style.overflow = '';
+            toggleScrollLock(false);
         }
     });
 
@@ -52,9 +50,39 @@ function initNavigation() {
         navDropdown.querySelectorAll('a').forEach(link => {
             link.addEventListener('click', () => {
                 navMenu.classList.remove('active');
-                document.body.style.overflow = '';
+                toggleScrollLock(false);
             });
         });
+    }
+}
+
+/**
+ * Toggle body scroll lock with padding compensation
+ * Prevents layout shift when scrollbar disappears
+ * @param {boolean} isLocked - Whether to lock the scroll
+ */
+function toggleScrollLock(isLocked) {
+    // Only apply lock on mobile
+    if (window.innerWidth > 768) return;
+
+    const body = document.body;
+    const header = document.querySelector('header');
+    
+    if (isLocked) {
+        // Calculate scrollbar width
+        const scrollbarWidth = window.innerWidth - document.documentElement.clientWidth;
+        
+        // Apply padding to body and header to compensate for missing scrollbar
+        body.style.paddingRight = `${scrollbarWidth}px`;
+        if (header) header.style.paddingRight = `${scrollbarWidth}px`;
+        
+        // Lock scroll
+        body.style.overflow = 'hidden';
+    } else {
+        // Remove padding and unlock
+        body.style.paddingRight = '';
+        if (header) header.style.paddingRight = '';
+        body.style.overflow = '';
     }
 }
 

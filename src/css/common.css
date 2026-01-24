@@ -2,6 +2,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Fira+Code:wght@300..700&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100..900;1,100..900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Marko+One&display=swap');
 
 /** MARK: Global
 */
@@ -13,12 +14,13 @@
     font-size: 16px;
 }
 
-:root {    
+:root {
     /* Typeface Variables */
-    --font-default-body: 'Inter';
-    --font-default-mono: 'Fira Code';
-    --font-thumb-body: 'Roboto';
-    --font-thumb-mono: 'Fira Code';
+    --font-default-body: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, "Helvetica Neue", Arial, sans-serif;
+    --font-default-mono: 'Fira Code', ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+    --font-thumb-body: 'Roboto', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, "Helvetica Neue", Arial, sans-serif;
+    --font-thumb-mono: 'Fira Code', ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+    --font-hero: 'Marko One', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, "Helvetica Neue", Arial, sans-serif;
 
     /* Color Primitives */
     --color-neutral-0: #ffffff;
@@ -50,18 +52,18 @@
     --color-background-neutral-light: rgb(229, 229, 229);
     --color-background-neutral-medium: rgb(165, 165, 165);
     --color-background-neutral-dark: rgb(81, 81, 81);
-    --color-background-success-light: rgb(178, 238, 179); 
+    --color-background-success-light: rgb(178, 238, 179);
     --color-background-success-medium: rgb(42, 139, 43);
     --color-background-success-dark: rgb(22, 101, 52);
-    --color-background-alert-light: rgb(248, 237, 197); 
+    --color-background-alert-light: rgb(248, 237, 197);
     --color-background-alert-medium: rgb(224, 200, 114);
-    --color-background-alert-dark: rgb(154, 122, 53); 
+    --color-background-alert-dark: rgb(154, 122, 53);
     --color-background-warning-light: rgb(250, 172, 117);
     --color-background-warning-medium: rgb(217, 116, 44);
     --color-background-warning-dark: rgb(121, 51, 0);
-    --color-background-danger-light:  rgb(251, 184, 184);
+    --color-background-danger-light: rgb(251, 184, 184);
     --color-background-danger-medium: rgb(193, 36, 36);
-    --color-background-danger-dark:  rgb(97, 7, 7);
+    --color-background-danger-dark: rgb(97, 7, 7);
     --color-background-purple-light: rgb(229, 186, 252);
     --color-background-purple-medium: rgb(139, 35, 179);
     --color-background-purple-dark: rgb(65, 0, 100);
@@ -422,6 +424,7 @@ footer .divider {
         transform: translateX(400px);
         opacity: 0;
     }
+
     to {
         transform: translateX(0);
         opacity: 1;

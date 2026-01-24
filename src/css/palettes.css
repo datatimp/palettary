@@ -1,6 +1,12 @@
 /* Pull in common stylesheet */
 @import url("common.css");
 
+
+.hero-text {
+    font-family: var(--font-hero);
+}
+
+
 /* Selector Section */
 .selector-section {
     margin-top: 40px;
