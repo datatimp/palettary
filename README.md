@@ -63,7 +63,7 @@
   <h3>🖼️ Thumbnail Generator</h3>
   <p>Create professional file cover thumbnails for your Figma projects in seconds. Keep your team organized with consistent visuals.</p>
   
-  <img src="assets/images/palettary-thumbnail-gen-screen.png" width="60%">
+  <img src="src/assets/images/palettary-thumbnail-gen-screen.png" width="60%">
   <br/>
 
   <a href="https://datatimp.github.io/palettary/figthumb.html/">
