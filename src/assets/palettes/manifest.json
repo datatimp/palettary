@@ -97,6 +97,13 @@
       "description": "A classic collection of neutrals.",
       "file": "neutrals.json",
       "dateAdded": "2026-01-30"
+    },
+    {
+      "id": "short-and-sweet",
+      "name": "Short & Sweet",
+      "description": "A minimal collection of primitives for a quick start.",
+      "file": "short-and-sweet.json",
+      "dateAdded": "2026-01-30"
     }
   ]
 }

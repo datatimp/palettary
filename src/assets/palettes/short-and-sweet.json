@@ -1,0 +1,133 @@
+{
+  "id": "short-and-sweet",
+  "name": "Short & Sweet",
+  "description": "A minimal collection of primitives for a quick start.",
+  "contributor_handle": "datatimp",
+  "contributor_link": "https://datatimp.github.io",
+  "colors": {
+    "neutral": [
+      {
+        "name": "neutral-0",
+        "hex": "#FFFFFF"
+      },
+      {
+        "name": "neutral-25",
+        "hex": "#FCFCFC"
+      },
+      {
+        "name": "neutral-50",
+        "hex": "#F8F8F8"
+      },
+      {
+        "name": "neutral-100",
+        "hex": "#F5F5F5"
+      },
+      {
+        "name": "neutral-200",
+        "hex": "#E5E5E5"
+      },
+      {
+        "name": "neutral-300",
+        "hex": "#D4D4D4"
+      },
+      {
+        "name": "neutral-400",
+        "hex": "#A3A3A3"
+      },
+      {
+        "name": "neutral-500",
+        "hex": "#737373"
+      },
+      {
+        "name": "neutral-600",
+        "hex": "#525252"
+      },
+      {
+        "name": "neutral-700",
+        "hex": "#404040"
+      },
+      {
+        "name": "neutral-800",
+        "hex": "#262626"
+      },
+      {
+        "name": "neutral-900",
+        "hex": "#171717"
+      },
+      {
+        "name": "neutral-1000",
+        "hex": "#000000"
+      }
+    ],
+    "red": [
+      {
+        "name": "red-100",
+        "hex": "#FEE2E2"
+      },
+      {
+        "name": "red-500",
+        "hex": "#CF4747"
+      },
+      {
+        "name": "red-900",
+        "hex": "#7F1D1D"
+      }
+    ],
+    "orange": [
+      {
+        "name": "orange-100",
+        "hex": "#FFEDD5"
+      },
+      {
+        "name": "orange-500",
+        "hex": "#EA921E"
+      },
+      {
+        "name": "orange-900",
+        "hex": "#6D310E"
+      }
+    ],
+    "yellow": [
+      {
+        "name": "yellow-100",
+        "hex": "#FCF7C7"
+      },
+      {
+        "name": "yellow-500",
+        "hex": "#F9D713"
+      },
+      {
+        "name": "yellow-900",
+        "hex": "#7F631C"
+      }
+    ],
+    "green": [
+      {
+        "name": "green-100",
+        "hex": "#D1FAE5"
+      },
+      {
+        "name": "green-500",
+        "hex": "#10B981"
+      },
+      {
+        "name": "green-900",
+        "hex": "#064E3B"
+      }
+    ],
+    "blue": [
+      {
+        "name": "blue-100",
+        "hex": "#E0F2FE"
+      },
+      {
+        "name": "blue-500",
+        "hex": "#2F95C4"
+      },
+      {
+        "name": "blue-900",
+        "hex": "#0C4A6E"
+      }
+    ]
+  }
+}
