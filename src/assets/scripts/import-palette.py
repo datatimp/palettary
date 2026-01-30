@@ -139,7 +139,8 @@ def convert_css_to_palette(css_content, metadata):
 
     # Pattern to match CSS custom properties
     # Matches: --text-100: #HEX, --background-500: #HEX, etc.
-    pattern = r'--([a-zA-Z]+)-(\d+)\s*:\s*(#[0-9A-Fa-f]{6})'
+    # Also handles --color-text-100: #HEX format (with optional "color-" prefix)
+    pattern = r'--(?:color-)?([a-zA-Z]+)-(\d+)\s*:\s*(#[0-9A-Fa-f]{6})'
 
     matches = re.findall(pattern, css_to_parse)
 

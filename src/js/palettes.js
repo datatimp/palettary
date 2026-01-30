@@ -126,26 +126,52 @@ async function createPaletteCard(paletteInfo) {
         return card;
     }
 
-    // Get up to 6 colors for preview, excluding neutral if there are 6+ other hues
+    // Get up to 6 colors for preview
     const hues = Object.keys(palette.colors);
     const nonNeutralHues = hues.filter(hue => hue !== 'neutral');
 
-    // Decide which hues to use for preview
-    let huesToDisplay;
-    if (nonNeutralHues.length >= 6) {
-        // Skip neutral if we have 6+ other hues
-        huesToDisplay = nonNeutralHues.slice(0, 6);
-    } else {
-        // Use all hues up to 6
-        huesToDisplay = hues.slice(0, 6);
-    }
-
     const previewColors = [];
-    huesToDisplay.forEach(hueName => {
-        const hueColors = palette.colors[hueName];
-        const midIndex = Math.floor(hueColors.length / 2);
-        previewColors.push(hueColors[midIndex].hex);
-    });
+
+    // Special handling for single-hue palettes: show multiple shades
+    if (hues.length === 1) {
+        const hueColors = palette.colors[hues[0]];
+
+        // Filter out white/near-white colors (luminance > 0.95)
+        const nonWhiteColors = hueColors.filter(color => {
+            const rgb = hexToRgb(color.hex);
+            if (!rgb) return true;
+            const luminance = getLuminance(rgb.r, rgb.g, rgb.b);
+            return luminance <= 0.95;
+        });
+
+        // Use non-white colors if we have enough, otherwise use all colors
+        const colorsToSample = nonWhiteColors.length >= 6 ? nonWhiteColors : hueColors;
+
+        // Pick up to 6 evenly distributed shades
+        const maxShades = Math.min(6, colorsToSample.length);
+        const step = colorsToSample.length / maxShades;
+
+        for (let i = 0; i < maxShades; i++) {
+            const index = Math.floor(i * step);
+            previewColors.push(colorsToSample[index].hex);
+        }
+    } else {
+        // Multiple hues: pick one color from each hue
+        let huesToDisplay;
+        if (nonNeutralHues.length >= 6) {
+            // Skip neutral if we have 6+ other hues
+            huesToDisplay = nonNeutralHues.slice(0, 6);
+        } else {
+            // Use all hues up to 6
+            huesToDisplay = hues.slice(0, 6);
+        }
+
+        huesToDisplay.forEach(hueName => {
+            const hueColors = palette.colors[hueName];
+            const midIndex = Math.floor(hueColors.length / 2);
+            previewColors.push(hueColors[midIndex].hex);
+        });
+    }
 
     const colorsHTML = previewColors.map(color =>
         `<div class="palette-card-color" style="background-color: ${color};"></div>`

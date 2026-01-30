@@ -90,6 +90,13 @@
       "description": "Inspired by wood-paneled aisles, harvest gold appliances, and vintage food packaging.",
       "file": "aisle-7.json",
       "dateAdded": "2026-01-22"
+    },
+    {
+      "id": "neutrals",
+      "name": "Neutrals",
+      "description": "A classic collection of neutrals.",
+      "file": "neutrals.json",
+      "dateAdded": "2026-01-30"
     }
   ]
 }
