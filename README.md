@@ -24,7 +24,7 @@
 
 <div align="center">
 
-![Palettary GIF](assets/images/palettary-homepage-scroll.webp)
+![Palettary GIF](src/assets/images/palettary-homepage-scroll.webp)
 
 </div>
 
@@ -43,7 +43,7 @@
   <h3>🎨 Color Primitives</h3>
   <p>Browse, preview, and export curated color palette collections directly to Figma. Perfect for setting up your design system's foundation.</p>
   
-  <img src="assets/images/palettary-old-standby-screen.png" width="60%">
+  <img src="src/assets/images/palettary-old-standby-screen.png" width="60%">
   <br/>
   
   <a href="https://datatimp.github.io/palettary/">
