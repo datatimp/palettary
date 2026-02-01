@@ -22,77 +22,93 @@
     --font-thumb-mono: 'Fira Code', ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
     --font-hero: 'Marko One', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, "Helvetica Neue", Arial, sans-serif;
 
-    /* Color Primitives */
-  --color-red-100: #FEE2E2;
-  --color-red-500: #cf4747;
-  --color-red-900: #7F1D1D;
-  --color-yellow-100: #FEF3C7;
-  --color-yellow-500: #f0aa31;
-  --color-yellow-900: #78350F;
-  --color-green-100: #D1FAE5;
-  --color-green-500: #10B981;
-  --color-green-900: #064E3B;
-  --color-blue-100: #E0F2FE;
-  --color-blue-500: #2f95c4;
-  --color-blue-900: #0C4A6E;
+    /* ========================================
+       COLOR PRIMITIVES
+       ======================================== */
 
-
-    
+    /* Neutral (light to dark) */
     --color-neutral-0: #ffffff;
     --color-neutral-100: #f9fafb;
     --color-neutral-200: #f1f1f1;
+    --color-neutral-250: #e5e7eb;
+    --color-neutral-300: rgb(229, 229, 229);
+    --color-neutral-350: rgb(217, 217, 217);
+    --color-neutral-500: rgb(165, 165, 165);
+    --color-neutral-550: rgb(163, 163, 163);
+    --color-neutral-600: rgb(107, 114, 128);
+    --color-neutral-750: rgb(81, 81, 81);
+    --color-neutral-800: rgb(49, 49, 49);
+    --color-neutral-900: rgb(31, 41, 55);
 
-    /* Color Variables */
-    --color-text-default-primary: rgb(31, 41, 55);
-    --color-text-default-secondary: rgb(107, 114, 128);
+    /* Green */
+    --color-green-500: rgb(81, 122, 92);
+    --color-green-700: rgb(22, 101, 52);
+    --color-green-900: rgb(27, 58, 34);
+
+    /* Gold */
+    --color-gold-500: rgb(238, 188, 78);
+
+    /* Pink */
+    --color-pink-400: rgb(224, 153, 166);
+
+    /* Yellow */
+    --color-yellow-400: rgb(224, 200, 114);
+
+    /* Purple */
+    --color-purple-600: rgb(139, 35, 179);
+    --color-purple-900: rgba(83, 6, 190, 1);
+
+    /* Blue */
+    --color-blue-900: rgb(30, 58, 138);
+
+    /* Teal */
+    --color-teal-400: rgb(133, 199, 187);
+
+    /* Orange */
+    --color-orange-500: rgba(204, 121, 86, 1);
+
+    /* ========================================
+       SEMANTIC TOKENS
+       ======================================== */
+
+    /* Text */
+    --color-text-default-primary: var(--color-neutral-900);
+    --color-text-default-secondary: var(--color-neutral-600);
     --color-text-white: var(--color-neutral-0);
-    --color-text-neutral-light: rgb(237, 237, 237);
-    --color-text-neutral-medium: rgb(81, 81, 81);
-    --color-text-neutral-dark: rgb(49, 49, 49);
-    --color-text-disabled: rgb(163, 163, 163);
+    --color-text-neutral-medium: var(--color-neutral-750);
+    --color-text-neutral-dark: var(--color-neutral-800);
+    --color-text-disabled: var(--color-neutral-550);
 
-    --color-border-default: #e5e7eb;
+    /* Border */
+    --color-border-default: var(--color-neutral-250);
 
-    --color-brand-primary: rgb(81, 122, 92);
-    --color-brand-primary-dark: rgb(27, 58, 34);
-    --color-brand-secondary: rgb(238, 188, 78);
-    --color-brand-secondary-dark: rgb(219, 137, 39);
-    --color-brand-tertiary: rgb(224, 153, 166);
+    /* Brand */
+    --color-brand-primary: var(--color-green-500);
+    --color-brand-primary-dark: var(--color-green-900);
+    --color-brand-secondary: var(--color-gold-500);
+    --color-brand-tertiary: var(--color-pink-400);
     --color-primary-default: var(--color-brand-primary);
-    --color-primary-hover: var(--color-brand-tertiary);
 
+    /* Background */
     --color-background-white: var(--color-neutral-0);
     --color-background-default-primary: var(--color-neutral-100);
     --color-background-default-secondary: var(--color-neutral-200);
-    --color-background-neutral-light: rgb(229, 229, 229);
-    --color-background-neutral-medium: rgb(165, 165, 165);
-    --color-background-neutral-dark: rgb(81, 81, 81);
-    --color-background-success-light: rgb(178, 238, 179);
-    --color-background-success-medium: rgb(42, 139, 43);
-    --color-background-success-dark: rgb(22, 101, 52);
-    --color-background-alert-light: rgb(248, 237, 197);
-    --color-background-alert-medium: rgb(224, 200, 114);
-    --color-background-alert-dark: rgb(154, 122, 53);
-    --color-background-warning-light: rgb(250, 172, 117);
-    --color-background-warning-medium: rgb(217, 116, 44);
-    --color-background-warning-dark: rgb(121, 51, 0);
-    --color-background-danger-light: rgb(251, 184, 184);
-    --color-background-danger-medium: rgb(193, 36, 36);
-    --color-background-danger-dark: rgb(97, 7, 7);
-    --color-background-purple-light: rgb(229, 186, 252);
-    --color-background-purple-medium: rgb(139, 35, 179);
-    --color-background-purple-dark: rgb(65, 0, 100);
-    --color-background-blue-light: rgb(212, 249, 255);
-    --color-background-blue-medium: rgb(59, 130, 246);
-    --color-background-blue-dark: rgb(30, 58, 138);
-    --color-background-teal-light: rgb(179, 246, 234);
-    --color-background-teal-medium: rgb(133, 199, 187);
-    --color-background-teal-dark: rgb(28, 95, 83);
-    --color-background-disabled: rgb(217, 217, 217);
+    --color-background-neutral-light: var(--color-neutral-300);
+    --color-background-neutral-medium: var(--color-neutral-500);
+    --color-background-neutral-dark: var(--color-neutral-750);
+    --color-background-success-dark: var(--color-green-700);
+    --color-background-alert-medium: var(--color-yellow-400);
+    --color-background-purple-medium: var(--color-purple-600);
+    --color-background-blue-dark: var(--color-blue-900);
+    --color-background-teal-medium: var(--color-teal-400);
+    --color-background-disabled: var(--color-neutral-350);
 
-    --gradient-purple-orange-01: linear-gradient(91deg, rgba(83, 6, 190, 1) 0.6%, rgba(204, 121, 86, 1) 99.06%);
+    /* Gradient */
+    --gradient-purple-orange-01: linear-gradient(91deg, var(--color-purple-900) 0.6%, var(--color-orange-500) 99.06%);
 
-    /* Elevation Variables */
+    /* ========================================
+       ELEVATION
+       ======================================== */
     --shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
     --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
     --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
@@ -111,7 +127,7 @@ a:link {
 }
 
 a:hover {
-    color: var(--color-brand-tertiary);
+    color: var(--color-brand-secondary);
 }
 
 a:visited {
@@ -230,6 +246,14 @@ header h1 {
     display: inline-block;
 }
 
+.external-link-icon {
+    fill: var(--color-brand-primary);
+    stroke: none;
+    width: 15px;
+    height: 15px;
+    margin-left: 6px;
+}
+
 .menu-text:hover {
     background-color: var(--color-background-default-secondary);
 }
@@ -274,7 +298,8 @@ header h1 {
 }
 
 .nav-dropdown a {
-    display: block;
+    display: inline-block;
+    position: relative;
     padding: 12px 24px;
     font-family: Inter;
     font-weight: 600;
@@ -283,19 +308,29 @@ header h1 {
     text-decoration: none;
     text-align: left;
     white-space: nowrap;
-    transition: color 0.2s ease;
 }
 
 .nav-dropdown a:hover {
-    color: var(--color-brand-secondary);
+    z-index: 5;
+    position: relative;
+    display: inline-block;
 }
 
-.nav-dropdown a:visited {
-    color: var(--color-brand-primary);
+.nav-dropdown a::before {
+    content: "";
+    position: absolute;
+    bottom: 12px;
+    left: 24px;
+    width: calc(100% - 48px);
+    height: 0;
+    z-index: -5;
+    opacity: 30%;
+    background: var(--color-brand-secondary);
+    transition: height 0.2s ease;
 }
 
-.nav-dropdown a:hover:visited {
-    color: var(--color-brand-secondary);
+.nav-dropdown a:hover::before {
+    height: 0.85em;
 }
 
 .nav-logo {
@@ -535,6 +570,7 @@ footer .divider {
     }
 
     .nav-dropdown a {
+        display: block;
         padding: 12px 24px;
         font-size: 1.1rem;
     }
