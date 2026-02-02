@@ -6,8 +6,99 @@
     font-family: var(--font-hero);
 }
 
+.hero-wrapper {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 40px;
+    padding: 60px 0;
+    margin-bottom: 20px;
+    min-height: 500px;
+}
+
+.hero-content {
+    flex: 1;
+    max-width: 550px;
+}
+
+.hero-title {
+    font-family: var(--font-hero);
+    font-size: 4.1rem;
+    line-height: 1.1;
+    color: var(--color-brand-primary);
+    margin-bottom: 24px;
+}
+
+.hero-subtitle {
+    font-size: 1.5rem;
+    color: var(--color-neutral-700);
+    margin-bottom: 24px;
+    font-weight: 500;
+}
+
+.hero-actions {
+    display: flex;
+    gap: 16px;
+}
+
+.hero-image-wrapper {
+    flex: 1;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+}
+
+.hero-image {
+    max-width: 100%;
+    height: auto;
+    filter: drop-shadow(var(--shadow-lg));
+}
+
+/* Button Styles */
+.btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 12px 24px;
+    border-radius: 50px;
+    font-weight: 600;
+    font-size: 1rem;
+    text-decoration: none;
+    transition: all 0.2s ease;
+    cursor: pointer;
+    line-height: 1.5;
+}
+
+.btn-primary {
+    background-color: var(--color-brand-primary);
+    color: var(--color-text-white) !important;
+    border: 2px solid var(--color-brand-primary);
+}
+
+.btn-primary:hover {
+    background-color: var(--color-brand-primary-dark);
+    border-color: var(--color-brand-primary-dark);
+    color: var(--color-text-white);
+}
+
+.btn-secondary {
+    background-color: transparent;
+    color: var(--color-brand-secondary) !important;
+    border: 2px solid var(--color-brand-secondary);
+}
+
+.btn-secondary:hover {
+    background-color: var(--color-brand-secondary);
+    color: var(--color-text-white) !important;
+}
+
+
 
 /* Selector Section */
+#color-palettes {
+    scroll-margin-top: 120px;
+}
+
 .selector-section {
     margin-top: 40px;
     margin-bottom: 40px;
@@ -435,7 +526,45 @@
 }
 
 /* Responsive Design */
+
+/* Tablet / Small Desktop (max-width: 968px) */
+@media (max-width: 968px) {
+
+    /* Hero adjustments */
+    .hero-wrapper {
+        flex-direction: column-reverse;
+        text-align: center;
+        padding: 40px;
+        gap: 30px;
+    }
+
+    .hero-content {
+        max-width: 100%;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .hero-image-wrapper {
+        justify-content: center;
+        width: 100%;
+    }
+
+    .hero-image {
+        max-width: 80%;
+    }
+
+    .hero-title {
+        font-size: 2.5rem;
+    }
+}
+
+/* Mobile (max-width: 768px) */
 @media (max-width: 768px) {
+    #color-palettes {
+        scroll-margin-top: 90px;
+    }
+
     .palette-gallery h2 {
         font-size: 1.5rem;
     }
@@ -459,5 +588,29 @@
 
     .palette-cards {
         grid-template-columns: 1fr;
+    }
+}
+
+/* Small Mobile (max-width: 480px) */
+@media (max-width: 480px) {
+    .hero-title {
+        font-size: 2rem;
+    }
+
+    .hero-subtitle {
+        font-size: 1.2rem;
+    }
+
+    .hero-actions {
+        flex-direction: column;
+        width: 100%;
+    }
+
+    .btn {
+        width: 100%;
+    }
+
+    .hero-image {
+        max-width: 100%;
     }
 }
