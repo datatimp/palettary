@@ -23,9 +23,7 @@
 </div>
 
 <div align="center">
-
-![Palettary GIF](src/assets/images/palettary-tour.avif)
-
+<img src="https://raw.githubusercontent.com/datatimp/palettary/main/src/assets/images/palettary-tour.avif" width="800" alt="Palettary AVIF" />
 </div>
 
 ## Table of Contents
