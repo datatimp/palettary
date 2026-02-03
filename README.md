@@ -23,7 +23,7 @@
 </div>
 
 <div align="center">
-<img src="https://raw.githubusercontent.com/datatimp/palettary/main/src/assets/images/palettary-tour.avif" width="800" alt="Palettary AVIF" />
+<img src="https://raw.githubusercontent.com/datatimp/palettary/main/src/assets/images/palettary-tour-900x600.avif" width="800" alt="Palettary AVIF" />
 </div>
 
 ## Table of Contents
