@@ -1,6 +1,6 @@
 <div align="center">
 <a href="https://datatimp.github.io/palettary" target="_blank">
-  <img src="https://raw.githubusercontent.com/datatimp/palettary/main/src/assets/images/palettary-wordmark-brand-primary1a.svg" width="600" alt="Palettary Logo" />
+  <img src="https://raw.githubusercontent.com/datatimp/palettary/main/src/assets/images/palettary-wordmark-logo.svg" width="600" alt="Palettary Logo" />
 </a>
 </div>
 
@@ -24,7 +24,7 @@
 
 <div align="center">
 
-![Palettary GIF](src/assets/images/palettary-homepage-scroll.webp)
+![Palettary GIF](src/assets/images/palettary-tour.avif)
 
 </div>
 
