@@ -9,16 +9,77 @@ document.addEventListener('DOMContentLoaded', async () => {
     populateDropdown();
     await displayPaletteCards();
     setupEventListeners();
+    initHeroParallax();
 
     // Check for palette ID in URL
     const urlParams = new URLSearchParams(window.location.search);
     const paletteId = urlParams.get('palette');
-    
+
     if (paletteId) {
         // Wait for everything to be ready before selecting
         selectPalette(paletteId);
     }
 });
+
+// Hero parallax - content scrolls faster (growing gap), image fades
+function initHeroParallax() {
+    const heroImage = document.querySelector('.hero-image');
+    const heroContent = document.querySelector('.hero-content');
+
+    if (!heroImage || !heroContent) return;
+
+    const BREAKPOINT = 968;
+    const SCROLL_MULTIPLIER = 0.3;
+    const MIN_OPACITY = 0.2;
+
+    let lastScrollY = 0;
+
+    function resetParallax() {
+        heroContent.style.transform = '';
+        heroImage.style.opacity = '';
+        lastScrollY = 0;
+    }
+
+    function updateParallax() {
+        if (window.innerWidth > BREAKPOINT) {
+            resetParallax();
+            return;
+        }
+
+        const scrollY = window.scrollY;
+        const imageHeight = heroImage.offsetHeight;
+        const scrollingUp = scrollY < lastScrollY;
+
+        // Content scrolls faster - creates growing gap effect
+        const contentOffset = scrollY * SCROLL_MULTIPLIER;
+        heroContent.style.transform = `translateY(-${contentOffset}px)`;
+
+        // Image fades as content approaches
+        // Instant snap to full opacity when scrolling up
+        if (scrollingUp) {
+            heroImage.style.opacity = 1;
+        } else {
+            const fadeProgress = Math.min(1, scrollY / imageHeight);
+            heroImage.style.opacity = 1 - (1 - MIN_OPACITY) * fadeProgress;
+        }
+
+        lastScrollY = scrollY;
+    }
+
+    // Handle scroll-to-top links
+    document.querySelectorAll('.scroll-to-top, a[href="#top"]').forEach(link => {
+        link.addEventListener('click', (e) => {
+            e.preventDefault();
+            resetParallax();
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        });
+    });
+
+    window.addEventListener('scroll', updateParallax, { passive: true });
+    window.addEventListener('resize', updateParallax);
+
+    updateParallax();
+}
 
 // Load the palette manifest
 async function loadManifest() {
