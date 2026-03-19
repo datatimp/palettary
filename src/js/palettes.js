@@ -89,43 +89,52 @@ function initHeroAnimation() {
 
     if (!heroImage || !canvas) return;
 
-    // Return visit — PNG background shows by default
-    if (localStorage.getItem('palettary_hero_seen')) return;
+    const playRive = () => {
+        if (typeof rive === 'undefined') return;
 
-    // First visit — check that Rive runtime is available
-    if (typeof rive === 'undefined') return;
+        // Show canvas, hide PNG background
+        heroImage.classList.add('rive-active');
 
-    // Show canvas, hide PNG background
-    heroImage.classList.add('rive-active');
+        // Wait one frame so the browser completes layout before reading dimensions
+        requestAnimationFrame(() => {
+            const dpr = window.devicePixelRatio || 1;
+            canvas.width = canvas.offsetWidth * dpr;
+            canvas.height = canvas.offsetHeight * dpr;
 
-    // Wait one frame so the browser completes layout before reading dimensions
-    requestAnimationFrame(() => {
-        const dpr = window.devicePixelRatio || 1;
-        canvas.width = canvas.offsetWidth * dpr;
-        canvas.height = canvas.offsetHeight * dpr;
+            try {
+                const r = new rive.Rive({
+                    src: 'src/assets/images/hero-graphic.riv',
+                    canvas: canvas,
+                    autoplay: true,
+                    layout: new rive.Layout({
+                        fit: window.innerWidth <= 968 ? rive.Fit.Cover : rive.Fit.Contain,
+                        alignment: rive.Alignment.Center,
+                    }),
+                    onStop: () => {
+                        localStorage.setItem('palettary_hero_seen', 'true');
+                        heroImage.classList.remove('rive-active');
+                    },
+                    onLoad: () => {
+                        r.resizeDrawingSurfaceToCanvas();
+                    },
+                    onLoadError: () => {
+                        heroImage.classList.remove('rive-active');
+                    }
+                });
+            } catch (e) {
+                heroImage.classList.remove('rive-active');
+            }
+        });
+    };
 
-        try {
-            const r = new rive.Rive({
-                src: 'src/assets/images/hero-graphic.riv',
-                canvas: canvas,
-                autoplay: true,
-                layout: new rive.Layout({
-                    fit: window.innerWidth <= 968 ? rive.Fit.Cover : rive.Fit.Contain,
-                    alignment: rive.Alignment.Center,
-                }),
-                onStop: () => {
-                    localStorage.setItem('palettary_hero_seen', 'true');
-                },
-                onLoad: () => {
-                    r.resizeDrawingSurfaceToCanvas();
-                },
-                onLoadError: () => {
-                    heroImage.classList.remove('rive-active');
-                }
-            });
-        } catch (e) {
-            heroImage.classList.remove('rive-active');
-        }
+    // Auto-play on first visit
+    if (!localStorage.getItem('palettary_hero_seen')) {
+        playRive();
+    }
+
+    // Manual replay on click
+    heroImage.addEventListener('click', () => {
+        playRive();
     });
 }
 
