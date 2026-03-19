@@ -109,8 +109,10 @@ function initHeroAnimation() {
                 src: 'src/assets/images/hero-graphic.riv',
                 canvas: canvas,
                 autoplay: true,
-                fit: window.innerWidth <= 968 ? rive.Fit.Cover : rive.Fit.Contain,
-                alignment: rive.Alignment.Center,
+                layout: new rive.Layout({
+                    fit: window.innerWidth <= 968 ? rive.Fit.Cover : rive.Fit.Contain,
+                    alignment: rive.Alignment.Center,
+                }),
                 onStop: () => {
                     localStorage.setItem('palettary_hero_seen', 'true');
                 },
