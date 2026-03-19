@@ -10,6 +10,7 @@ document.addEventListener('DOMContentLoaded', async () => {
     await displayPaletteCards();
     setupEventListeners();
     initHeroParallax();
+    initHeroAnimation();
 
     // Check for palette ID in URL
     const urlParams = new URLSearchParams(window.location.search);
@@ -79,6 +80,51 @@ function initHeroParallax() {
     window.addEventListener('resize', updateParallax);
 
     updateParallax();
+}
+
+// Hero Rive animation - plays once on first visit, then shows static PNG
+function initHeroAnimation() {
+    const heroImage = document.querySelector('.hero-image');
+    const canvas = document.getElementById('rive-canvas');
+
+    if (!heroImage || !canvas) return;
+
+    // Return visit — PNG background shows by default
+    if (localStorage.getItem('palettary_hero_seen')) return;
+
+    // First visit — check that Rive runtime is available
+    if (typeof rive === 'undefined') return;
+
+    // Show canvas, hide PNG background
+    heroImage.classList.add('rive-active');
+
+    // Wait one frame so the browser completes layout before reading dimensions
+    requestAnimationFrame(() => {
+        const dpr = window.devicePixelRatio || 1;
+        canvas.width = canvas.offsetWidth * dpr;
+        canvas.height = canvas.offsetHeight * dpr;
+
+        try {
+            const r = new rive.Rive({
+                src: 'src/assets/images/hero-graphic.riv',
+                canvas: canvas,
+                autoplay: true,
+                fit: window.innerWidth <= 968 ? rive.Fit.Cover : rive.Fit.Contain,
+                alignment: rive.Alignment.Center,
+                onStop: () => {
+                    localStorage.setItem('palettary_hero_seen', 'true');
+                },
+                onLoad: () => {
+                    r.resizeDrawingSurfaceToCanvas();
+                },
+                onLoadError: () => {
+                    heroImage.classList.remove('rive-active');
+                }
+            });
+        } catch (e) {
+            heroImage.classList.remove('rive-active');
+        }
+    });
 }
 
 // Load the palette manifest

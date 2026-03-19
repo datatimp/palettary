@@ -55,6 +55,24 @@
     background-size: contain;
     background-position: center;
     background-repeat: no-repeat;
+    position: relative;
+}
+
+#rive-canvas {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    display: none;
+}
+
+.hero-image.rive-active {
+    background-image: none;
+}
+
+.hero-image.rive-active #rive-canvas {
+    display: block;
 }
 
 /* Button Styles */

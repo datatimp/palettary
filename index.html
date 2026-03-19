@@ -4,6 +4,7 @@
 <head>
     <!-- Google tag (gtag.js) -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-CN30ZXQHMQ"></script>
+    <script src="https://unpkg.com/@rive-app/canvas@latest"></script>
     <script>
         window.dataLayer = window.dataLayer || [];
         function gtag() { dataLayer.push(arguments); }
@@ -72,7 +73,14 @@
                 </div>
             </div>
             <div class="hero-image-wrapper">
-                <div class="hero-image"></div>
+                <div class="hero-image">
+                    <canvas id="rive-canvas"></canvas>
+                </div>
+                <script>
+                    if (!localStorage.getItem('palettary_hero_seen')) {
+                        document.querySelector('.hero-image').classList.add('rive-active');
+                    }
+                </script>
                 <!-- <img src="src/assets/images/hero-graphic.png"  alt="Palettary Color Workflow" class="hero-image"> -->
             </div>
         </section>
