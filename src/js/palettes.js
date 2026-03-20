@@ -89,10 +89,24 @@ function initHeroAnimation() {
 
     if (!heroImage || !canvas) return;
 
+    let riveInstance = null;
+    let resizeHandler = null;
+
     const playRive = () => {
         if (typeof rive === 'undefined') return;
 
         heroImage.classList.add('rive-active');
+        heroImage.style.backgroundImage = '';
+        canvas.style.opacity = '';
+        canvas.style.transition = '';
+
+        if (riveInstance) {
+            riveInstance.cleanup();
+            riveInstance = null;
+        }
+        if (resizeHandler) {
+            window.removeEventListener('resize', resizeHandler);
+        }
 
         // Dynamically get the layout depending on the exact CSS media query
         const getLayoutOptions = () => ({
@@ -103,18 +117,17 @@ function initHeroAnimation() {
         // Wait one frame so the browser flexbox completes its relative layout before reading dimensions
         requestAnimationFrame(() => {
             try {
-                const r = new rive.Rive({
+                riveInstance = new rive.Rive({
                     src: 'src/assets/images/hero-graphic.riv',
                     canvas: canvas,
                     autoplay: true,
                     layout: new rive.Layout(getLayoutOptions()),
                     onStop: () => {
                         localStorage.setItem('palettary_hero_seen', 'true');
-                        heroImage.classList.remove('rive-active');
-                        window.removeEventListener('resize', resizeHandler);
+                        // Kept canvas active indefinitely to prevent blink. 
                     },
                     onLoad: () => {
-                        r.resizeDrawingSurfaceToCanvas();
+                        riveInstance.resizeDrawingSurfaceToCanvas();
                     },
                     onLoadError: () => {
                         heroImage.classList.remove('rive-active');
@@ -122,10 +135,10 @@ function initHeroAnimation() {
                 });
 
                 // Keep the Rive layout in sync with CSS Media queries if the user dimensions change
-                const resizeHandler = () => {
-                    if (r) {
-                        r.layout = new rive.Layout(getLayoutOptions());
-                        r.resizeDrawingSurfaceToCanvas();
+                resizeHandler = () => {
+                    if (riveInstance) {
+                        riveInstance.layout = new rive.Layout(getLayoutOptions());
+                        riveInstance.resizeDrawingSurfaceToCanvas();
                     }
                 };
                 window.addEventListener('resize', resizeHandler);
