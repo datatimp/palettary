@@ -92,27 +92,26 @@ function initHeroAnimation() {
     const playRive = () => {
         if (typeof rive === 'undefined') return;
 
-        // Show canvas, hide PNG background
         heroImage.classList.add('rive-active');
 
-        // Wait one frame so the browser completes layout before reading dimensions
-        requestAnimationFrame(() => {
-            const dpr = window.devicePixelRatio || 1;
-            canvas.width = canvas.offsetWidth * dpr;
-            canvas.height = canvas.offsetHeight * dpr;
+        // Dynamically get the layout depending on the exact CSS media query
+        const getLayoutOptions = () => ({
+            fit: window.matchMedia('(max-width: 968px)').matches ? 'cover' : 'contain',
+            alignment: 'center'
+        });
 
+        // Wait one frame so the browser flexbox completes its relative layout before reading dimensions
+        requestAnimationFrame(() => {
             try {
                 const r = new rive.Rive({
                     src: 'src/assets/images/hero-graphic.riv',
                     canvas: canvas,
                     autoplay: true,
-                    layout: new rive.Layout({
-                        fit: window.innerWidth <= 968 ? rive.Fit.Cover : rive.Fit.Contain,
-                        alignment: rive.Alignment.Center,
-                    }),
+                    layout: new rive.Layout(getLayoutOptions()),
                     onStop: () => {
                         localStorage.setItem('palettary_hero_seen', 'true');
                         heroImage.classList.remove('rive-active');
+                        window.removeEventListener('resize', resizeHandler);
                     },
                     onLoad: () => {
                         r.resizeDrawingSurfaceToCanvas();
@@ -121,6 +120,16 @@ function initHeroAnimation() {
                         heroImage.classList.remove('rive-active');
                     }
                 });
+
+                // Keep the Rive layout in sync with CSS Media queries if the user dimensions change
+                const resizeHandler = () => {
+                    if (r) {
+                        r.layout = new rive.Layout(getLayoutOptions());
+                        r.resizeDrawingSurfaceToCanvas();
+                    }
+                };
+                window.addEventListener('resize', resizeHandler);
+
             } catch (e) {
                 heroImage.classList.remove('rive-active');
             }
