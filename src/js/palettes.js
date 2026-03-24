@@ -95,8 +95,6 @@ function initHeroAnimation() {
     const playRive = () => {
         if (typeof rive === 'undefined') return;
 
-        heroImage.classList.add('rive-active');
-        heroImage.style.backgroundImage = '';
         canvas.style.opacity = '';
         canvas.style.transition = '';
 
@@ -121,6 +119,7 @@ function initHeroAnimation() {
                     src: 'src/assets/images/hero-graphic.riv',
                     canvas: canvas,
                     autoplay: true,
+                    stateMachines: 'State Machine',
                     layout: new rive.Layout(getLayoutOptions()),
                     onStop: () => {
                         localStorage.setItem('palettary_hero_seen', 'true');
@@ -128,6 +127,7 @@ function initHeroAnimation() {
                     },
                     onLoad: () => {
                         riveInstance.resizeDrawingSurfaceToCanvas();
+                        heroImage.classList.add('rive-active');
                     },
                     onLoadError: () => {
                         heroImage.classList.remove('rive-active');
@@ -149,15 +149,7 @@ function initHeroAnimation() {
         });
     };
 
-    // Auto-play on first visit
-    if (!localStorage.getItem('palettary_hero_seen')) {
-        playRive();
-    }
-
-    // Manual replay on click
-    heroImage.addEventListener('click', () => {
-        playRive();
-    });
+    playRive();
 }
 
 // Load the palette manifest
