@@ -1,0 +1,426 @@
+{
+  "id": "terracotta",
+  "name": "Terracotta",
+  "description": "Sun-baked clay reds, saffron golds, and warm desert sands for earthy, warm interfaces",
+  "previewColors": [
+    "#B83E2C",
+    "#CA7A55",
+    "#EAA838",
+    "#F7F2E8",
+    "#261613"
+  ],
+  "colors": {
+    "text": [
+      {
+        "name": "text-5",
+        "hex": "#F4F3F3"
+      },
+      {
+        "name": "text-10",
+        "hex": "#E9E8E7"
+      },
+      {
+        "name": "text-15",
+        "hex": "#DEDCDC"
+      },
+      {
+        "name": "text-20",
+        "hex": "#D4D0D0"
+      },
+      {
+        "name": "text-25",
+        "hex": "#C9C5C4"
+      },
+      {
+        "name": "text-30",
+        "hex": "#BEB9B8"
+      },
+      {
+        "name": "text-35",
+        "hex": "#B3ADAC"
+      },
+      {
+        "name": "text-40",
+        "hex": "#A8A2A1"
+      },
+      {
+        "name": "text-45",
+        "hex": "#9D9695"
+      },
+      {
+        "name": "text-50",
+        "hex": "#928A89"
+      },
+      {
+        "name": "text-55",
+        "hex": "#887F7D"
+      },
+      {
+        "name": "text-60",
+        "hex": "#7D7371"
+      },
+      {
+        "name": "text-65",
+        "hex": "#726866"
+      },
+      {
+        "name": "text-70",
+        "hex": "#675C5A"
+      },
+      {
+        "name": "text-75",
+        "hex": "#5C504E"
+      },
+      {
+        "name": "text-80",
+        "hex": "#514542"
+      },
+      {
+        "name": "text-85",
+        "hex": "#473936"
+      },
+      {
+        "name": "text-90",
+        "hex": "#3C2D2B"
+      },
+      {
+        "name": "text-95",
+        "hex": "#31221F"
+      },
+      {
+        "name": "text-100",
+        "hex": "#261613"
+      }
+    ],
+    "background": [
+      {
+        "name": "background-5",
+        "hex": "#FFFEFE"
+      },
+      {
+        "name": "background-10",
+        "hex": "#FEFEFD"
+      },
+      {
+        "name": "background-15",
+        "hex": "#FEFDFC"
+      },
+      {
+        "name": "background-20",
+        "hex": "#FDFCFA"
+      },
+      {
+        "name": "background-25",
+        "hex": "#FDFCF9"
+      },
+      {
+        "name": "background-30",
+        "hex": "#FDFBF8"
+      },
+      {
+        "name": "background-35",
+        "hex": "#FCFAF7"
+      },
+      {
+        "name": "background-40",
+        "hex": "#FCFAF6"
+      },
+      {
+        "name": "background-45",
+        "hex": "#FBF9F5"
+      },
+      {
+        "name": "background-50",
+        "hex": "#FBF8F4"
+      },
+      {
+        "name": "background-55",
+        "hex": "#FBF8F2"
+      },
+      {
+        "name": "background-60",
+        "hex": "#FAF7F1"
+      },
+      {
+        "name": "background-65",
+        "hex": "#FAF7F0"
+      },
+      {
+        "name": "background-70",
+        "hex": "#F9F6EF"
+      },
+      {
+        "name": "background-75",
+        "hex": "#F9F5EE"
+      },
+      {
+        "name": "background-80",
+        "hex": "#F9F5ED"
+      },
+      {
+        "name": "background-85",
+        "hex": "#F8F4EB"
+      },
+      {
+        "name": "background-90",
+        "hex": "#F8F3EA"
+      },
+      {
+        "name": "background-95",
+        "hex": "#F7F3E9"
+      },
+      {
+        "name": "background-100",
+        "hex": "#F7F2E8"
+      }
+    ],
+    "primary": [
+      {
+        "name": "primary-5",
+        "hex": "#FEFBF5"
+      },
+      {
+        "name": "primary-10",
+        "hex": "#FDF6EB"
+      },
+      {
+        "name": "primary-15",
+        "hex": "#FCF2E1"
+      },
+      {
+        "name": "primary-20",
+        "hex": "#FBEED7"
+      },
+      {
+        "name": "primary-25",
+        "hex": "#FAE9CD"
+      },
+      {
+        "name": "primary-30",
+        "hex": "#F9E5C3"
+      },
+      {
+        "name": "primary-35",
+        "hex": "#F8E1B9"
+      },
+      {
+        "name": "primary-40",
+        "hex": "#F7DCAF"
+      },
+      {
+        "name": "primary-45",
+        "hex": "#F6D8A5"
+      },
+      {
+        "name": "primary-50",
+        "hex": "#F4D49C"
+      },
+      {
+        "name": "primary-55",
+        "hex": "#F3CF92"
+      },
+      {
+        "name": "primary-60",
+        "hex": "#F2CB88"
+      },
+      {
+        "name": "primary-65",
+        "hex": "#F1C67E"
+      },
+      {
+        "name": "primary-70",
+        "hex": "#F0C274"
+      },
+      {
+        "name": "primary-75",
+        "hex": "#EFBE6A"
+      },
+      {
+        "name": "primary-80",
+        "hex": "#EEB960"
+      },
+      {
+        "name": "primary-85",
+        "hex": "#EDB556"
+      },
+      {
+        "name": "primary-90",
+        "hex": "#ECB14C"
+      },
+      {
+        "name": "primary-95",
+        "hex": "#EBAC42"
+      },
+      {
+        "name": "primary-100",
+        "hex": "#EAA838"
+      }
+    ],
+    "secondary": [
+      {
+        "name": "secondary-5",
+        "hex": "#FBF5F4"
+      },
+      {
+        "name": "secondary-10",
+        "hex": "#F8ECEA"
+      },
+      {
+        "name": "secondary-15",
+        "hex": "#F4E2DF"
+      },
+      {
+        "name": "secondary-20",
+        "hex": "#F1D8D5"
+      },
+      {
+        "name": "secondary-25",
+        "hex": "#EDCFCA"
+      },
+      {
+        "name": "secondary-30",
+        "hex": "#EAC5C0"
+      },
+      {
+        "name": "secondary-35",
+        "hex": "#E6BBB5"
+      },
+      {
+        "name": "secondary-40",
+        "hex": "#E3B2AB"
+      },
+      {
+        "name": "secondary-45",
+        "hex": "#DFA8A0"
+      },
+      {
+        "name": "secondary-50",
+        "hex": "#DC9E96"
+      },
+      {
+        "name": "secondary-55",
+        "hex": "#D8958B"
+      },
+      {
+        "name": "secondary-60",
+        "hex": "#D48B80"
+      },
+      {
+        "name": "secondary-65",
+        "hex": "#D18276"
+      },
+      {
+        "name": "secondary-70",
+        "hex": "#CD786B"
+      },
+      {
+        "name": "secondary-75",
+        "hex": "#CA6E61"
+      },
+      {
+        "name": "secondary-80",
+        "hex": "#C66556"
+      },
+      {
+        "name": "secondary-85",
+        "hex": "#C35B4C"
+      },
+      {
+        "name": "secondary-90",
+        "hex": "#BF5141"
+      },
+      {
+        "name": "secondary-95",
+        "hex": "#BC4837"
+      },
+      {
+        "name": "secondary-100",
+        "hex": "#B83E2C"
+      }
+    ],
+    "accent": [
+      {
+        "name": "accent-5",
+        "hex": "#FCF8F6"
+      },
+      {
+        "name": "accent-10",
+        "hex": "#FAF2EE"
+      },
+      {
+        "name": "accent-15",
+        "hex": "#F7EBE6"
+      },
+      {
+        "name": "accent-20",
+        "hex": "#F4E4DD"
+      },
+      {
+        "name": "accent-25",
+        "hex": "#F2DED4"
+      },
+      {
+        "name": "accent-30",
+        "hex": "#EFD7CC"
+      },
+      {
+        "name": "accent-35",
+        "hex": "#ECD0C4"
+      },
+      {
+        "name": "accent-40",
+        "hex": "#EACABB"
+      },
+      {
+        "name": "accent-45",
+        "hex": "#E7C3B2"
+      },
+      {
+        "name": "accent-50",
+        "hex": "#E4BCAA"
+      },
+      {
+        "name": "accent-55",
+        "hex": "#E2B6A2"
+      },
+      {
+        "name": "accent-60",
+        "hex": "#DFAF99"
+      },
+      {
+        "name": "accent-65",
+        "hex": "#DDA990"
+      },
+      {
+        "name": "accent-70",
+        "hex": "#DAA288"
+      },
+      {
+        "name": "accent-75",
+        "hex": "#D79B80"
+      },
+      {
+        "name": "accent-80",
+        "hex": "#D59577"
+      },
+      {
+        "name": "accent-85",
+        "hex": "#D28E6E"
+      },
+      {
+        "name": "accent-90",
+        "hex": "#CF8766"
+      },
+      {
+        "name": "accent-95",
+        "hex": "#CD815E"
+      },
+      {
+        "name": "accent-100",
+        "hex": "#CA7A55"
+      }
+    ]
+  },
+  "contributor_handle": "datatimp",
+  "contributor_link": "https://datatimp.github.io"
+}

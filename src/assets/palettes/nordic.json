@@ -1,102 +1,109 @@
 {
-  "id": "cooper-craft",
-  "name": "Cooper Craft",
-  "description": "Vibrant cyan and warm copper tones balanced with soft pink accents for modern, energetic designs",
+  "id": "nordic",
+  "name": "Nordic",
+  "description": "Cool glacier blues and misty fjord tones with mossy sage accents for calm, clean interfaces",
+  "previewColors": [
+    "#2B7699",
+    "#52707D",
+    "#8FA89B",
+    "#F0F4F6",
+    "#1A262C"
+  ],
   "colors": {
     "text": [
       {
         "name": "text-5",
-        "hex": "#F2F6F6"
+        "hex": "#F4F4F4"
       },
       {
         "name": "text-10",
-        "hex": "#E6ECED"
+        "hex": "#E8E9EA"
       },
       {
         "name": "text-15",
-        "hex": "#D9E3E4"
+        "hex": "#DDDEDF"
       },
       {
         "name": "text-20",
-        "hex": "#CDDADB"
+        "hex": "#D1D4D5"
       },
       {
         "name": "text-25",
-        "hex": "#C0D1D1"
+        "hex": "#C6C9CA"
       },
       {
         "name": "text-30",
-        "hex": "#B4C7C8"
+        "hex": "#BABEC0"
       },
       {
         "name": "text-35",
-        "hex": "#A7BEBF"
+        "hex": "#AFB3B5"
       },
       {
         "name": "text-40",
-        "hex": "#9BB5B6"
+        "hex": "#A3A8AB"
       },
       {
         "name": "text-45",
-        "hex": "#8EACAD"
+        "hex": "#989DA0"
       },
       {
         "name": "text-50",
-        "hex": "#81A2A4"
+        "hex": "#8C9296"
       },
       {
         "name": "text-55",
-        "hex": "#75999B"
+        "hex": "#81888B"
       },
       {
         "name": "text-60",
-        "hex": "#689092"
+        "hex": "#767D80"
       },
       {
         "name": "text-65",
-        "hex": "#5C8789"
+        "hex": "#6A7276"
       },
       {
         "name": "text-70",
-        "hex": "#4F7E80"
+        "hex": "#5F676B"
       },
       {
         "name": "text-75",
-        "hex": "#437477"
+        "hex": "#535C61"
       },
       {
         "name": "text-80",
-        "hex": "#366B6D"
+        "hex": "#485156"
       },
       {
         "name": "text-85",
-        "hex": "#2A6264"
+        "hex": "#3C474C"
       },
       {
         "name": "text-90",
-        "hex": "#1D595B"
+        "hex": "#313C41"
       },
       {
         "name": "text-95",
-        "hex": "#114F52"
+        "hex": "#253137"
       },
       {
         "name": "text-100",
-        "hex": "#044649"
+        "hex": "#1A262C"
       }
     ],
     "background": [
       {
         "name": "background-5",
-        "hex": "#FEFEFE"
+        "hex": "#FEFEFF"
       },
       {
         "name": "background-10",
-        "hex": "#FDFEFE"
+        "hex": "#FEFEFE"
       },
       {
         "name": "background-15",
-        "hex": "#FDFDFD"
+        "hex": "#FDFDFE"
       },
       {
         "name": "background-20",
@@ -104,7 +111,7 @@
       },
       {
         "name": "background-25",
-        "hex": "#FBFCFC"
+        "hex": "#FBFCFD"
       },
       {
         "name": "background-30",
@@ -112,7 +119,7 @@
       },
       {
         "name": "background-35",
-        "hex": "#F9FBFB"
+        "hex": "#FAFBFC"
       },
       {
         "name": "background-40",
@@ -120,297 +127,297 @@
       },
       {
         "name": "background-45",
-        "hex": "#F8FAFA"
+        "hex": "#F8FAFB"
       },
       {
         "name": "background-50",
-        "hex": "#F7FAFA"
+        "hex": "#F8FAFA"
       },
       {
         "name": "background-55",
-        "hex": "#F6F9F9"
+        "hex": "#F7F9FA"
       },
       {
         "name": "background-60",
-        "hex": "#F5F9F9"
+        "hex": "#F6F8FA"
       },
       {
         "name": "background-65",
-        "hex": "#F5F8F8"
+        "hex": "#F5F8F9"
       },
       {
         "name": "background-70",
-        "hex": "#F4F8F8"
+        "hex": "#F4F7F9"
       },
       {
         "name": "background-75",
-        "hex": "#F3F7F7"
+        "hex": "#F4F7F8"
       },
       {
         "name": "background-80",
-        "hex": "#F2F7F7"
+        "hex": "#F3F6F8"
       },
       {
         "name": "background-85",
-        "hex": "#F1F6F6"
+        "hex": "#F2F6F7"
       },
       {
         "name": "background-90",
-        "hex": "#F1F6F6"
+        "hex": "#F2F5F7"
       },
       {
         "name": "background-95",
-        "hex": "#F0F5F5"
+        "hex": "#F1F5F6"
       },
       {
         "name": "background-100",
-        "hex": "#EFF5F5"
+        "hex": "#F0F4F6"
       }
     ],
     "primary": [
       {
         "name": "primary-5",
-        "hex": "#F4FDFD"
+        "hex": "#F4F8FA"
       },
       {
         "name": "primary-10",
-        "hex": "#E9FBFC"
+        "hex": "#EAF1F5"
       },
       {
         "name": "primary-15",
-        "hex": "#DEF9FA"
+        "hex": "#DFEAF0"
       },
       {
         "name": "primary-20",
-        "hex": "#D2F7F9"
+        "hex": "#D5E4EB"
       },
       {
         "name": "primary-25",
-        "hex": "#C7F5F7"
+        "hex": "#CADDE6"
       },
       {
         "name": "primary-30",
-        "hex": "#BCF3F5"
+        "hex": "#BFD6E0"
       },
       {
         "name": "primary-35",
-        "hex": "#B1F1F4"
+        "hex": "#B5CFDB"
       },
       {
         "name": "primary-40",
-        "hex": "#A6EFF2"
+        "hex": "#AAC8D6"
       },
       {
         "name": "primary-45",
-        "hex": "#9BEDF1"
+        "hex": "#A0C1D1"
       },
       {
         "name": "primary-50",
-        "hex": "#8FEBEF"
+        "hex": "#95BACC"
       },
       {
         "name": "primary-55",
-        "hex": "#84E9ED"
+        "hex": "#8AB4C7"
       },
       {
         "name": "primary-60",
-        "hex": "#79E7EC"
+        "hex": "#80ADC2"
       },
       {
         "name": "primary-65",
-        "hex": "#6EE5EA"
+        "hex": "#75A6BD"
       },
       {
         "name": "primary-70",
-        "hex": "#63E3E9"
+        "hex": "#6B9FB8"
       },
       {
         "name": "primary-75",
-        "hex": "#58E1E7"
+        "hex": "#6098B2"
       },
       {
         "name": "primary-80",
-        "hex": "#4DDFE5"
+        "hex": "#5591AD"
       },
       {
         "name": "primary-85",
-        "hex": "#41DDE4"
+        "hex": "#4B8BA8"
       },
       {
         "name": "primary-90",
-        "hex": "#36DBE2"
+        "hex": "#4084A3"
       },
       {
         "name": "primary-95",
-        "hex": "#2BD9E1"
+        "hex": "#367D9E"
       },
       {
         "name": "primary-100",
-        "hex": "#20D7DF"
+        "hex": "#2B7699"
       }
     ],
     "secondary": [
       {
         "name": "secondary-5",
-        "hex": "#FDF9F4"
+        "hex": "#F6F8F8"
       },
       {
         "name": "secondary-10",
-        "hex": "#FBF3E9"
+        "hex": "#EEF1F2"
       },
       {
         "name": "secondary-15",
-        "hex": "#F9EDDE"
+        "hex": "#E5EAEC"
       },
       {
         "name": "secondary-20",
-        "hex": "#F7E7D4"
+        "hex": "#DCE2E5"
       },
       {
         "name": "secondary-25",
-        "hex": "#F5E1C9"
+        "hex": "#D4DBDE"
       },
       {
         "name": "secondary-30",
-        "hex": "#F4DBBE"
+        "hex": "#CBD4D8"
       },
       {
         "name": "secondary-35",
-        "hex": "#F2D5B3"
+        "hex": "#C2CDD2"
       },
       {
         "name": "secondary-40",
-        "hex": "#F0CFA8"
+        "hex": "#BAC6CB"
       },
       {
         "name": "secondary-45",
-        "hex": "#EEC99D"
+        "hex": "#B1BFC4"
       },
       {
         "name": "secondary-50",
-        "hex": "#ECC392"
+        "hex": "#A8B8BE"
       },
       {
         "name": "secondary-55",
-        "hex": "#EABD88"
+        "hex": "#A0B0B8"
       },
       {
         "name": "secondary-60",
-        "hex": "#E8B77D"
+        "hex": "#97A9B1"
       },
       {
         "name": "secondary-65",
-        "hex": "#E6B172"
+        "hex": "#8FA2AA"
       },
       {
         "name": "secondary-70",
-        "hex": "#E4AB67"
+        "hex": "#869BA4"
       },
       {
         "name": "secondary-75",
-        "hex": "#E2A55C"
+        "hex": "#7D949E"
       },
       {
         "name": "secondary-80",
-        "hex": "#E19F51"
+        "hex": "#758D97"
       },
       {
         "name": "secondary-85",
-        "hex": "#DF9947"
+        "hex": "#6C8590"
       },
       {
         "name": "secondary-90",
-        "hex": "#DD933C"
+        "hex": "#637E8A"
       },
       {
         "name": "secondary-95",
-        "hex": "#DB8D31"
+        "hex": "#5B7784"
       },
       {
         "name": "secondary-100",
-        "hex": "#D98726"
+        "hex": "#52707D"
       }
     ],
     "accent": [
       {
         "name": "accent-5",
-        "hex": "#FDF4F8"
+        "hex": "#F9FBFA"
       },
       {
         "name": "accent-10",
-        "hex": "#FBE9F1"
+        "hex": "#F4F6F5"
       },
       {
         "name": "accent-15",
-        "hex": "#F9DEEB"
+        "hex": "#EEF2F0"
       },
       {
         "name": "accent-20",
-        "hex": "#F7D4E4"
+        "hex": "#E9EEEB"
       },
       {
         "name": "accent-25",
-        "hex": "#F5C9DD"
+        "hex": "#E3E9E6"
       },
       {
         "name": "accent-30",
-        "hex": "#F4BED6"
+        "hex": "#DDE5E1"
       },
       {
         "name": "accent-35",
-        "hex": "#F2B3CF"
+        "hex": "#D8E1DC"
       },
       {
         "name": "accent-40",
-        "hex": "#F0A8C9"
+        "hex": "#D2DCD7"
       },
       {
         "name": "accent-45",
-        "hex": "#EE9DC2"
+        "hex": "#CDD8D2"
       },
       {
         "name": "accent-50",
-        "hex": "#EC92BB"
+        "hex": "#C7D4CD"
       },
       {
         "name": "accent-55",
-        "hex": "#EA88B4"
+        "hex": "#C1CFC8"
       },
       {
         "name": "accent-60",
-        "hex": "#E87DAD"
+        "hex": "#BCCBC3"
       },
       {
         "name": "accent-65",
-        "hex": "#E672A7"
+        "hex": "#B6C6BE"
       },
       {
         "name": "accent-70",
-        "hex": "#E467A0"
+        "hex": "#B1C2B9"
       },
       {
         "name": "accent-75",
-        "hex": "#E25C99"
+        "hex": "#ABBEB4"
       },
       {
         "name": "accent-80",
-        "hex": "#E15192"
+        "hex": "#A5B9AF"
       },
       {
         "name": "accent-85",
-        "hex": "#DF478B"
+        "hex": "#A0B5AA"
       },
       {
         "name": "accent-90",
-        "hex": "#DD3C85"
+        "hex": "#9AB1A5"
       },
       {
         "name": "accent-95",
-        "hex": "#DB317E"
+        "hex": "#95ACA0"
       },
       {
         "name": "accent-100",
-        "hex": "#D92677"
+        "hex": "#8FA89B"
       }
     ]
   },

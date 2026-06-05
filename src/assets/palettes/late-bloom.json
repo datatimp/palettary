@@ -1,0 +1,426 @@
+{
+  "id": "late-bloom",
+  "name": "Late Bloom",
+  "description": "Rich cobalt and vivid magenta over a clean ivory canvas for bold, confident designs",
+  "previewColors": [
+    "#16437E",
+    "#D4E6F1",
+    "#86255B",
+    "#D92381",
+    "#FAFAFA"
+  ],
+  "colors": {
+    "text": [
+      {
+        "name": "text-5",
+        "hex": "#F3F6F9"
+      },
+      {
+        "name": "text-10",
+        "hex": "#E8ECF2"
+      },
+      {
+        "name": "text-15",
+        "hex": "#DCE3EC"
+      },
+      {
+        "name": "text-20",
+        "hex": "#D0D9E5"
+      },
+      {
+        "name": "text-25",
+        "hex": "#C5D0DF"
+      },
+      {
+        "name": "text-30",
+        "hex": "#B9C7D8"
+      },
+      {
+        "name": "text-35",
+        "hex": "#ADBDD2"
+      },
+      {
+        "name": "text-40",
+        "hex": "#A2B4CB"
+      },
+      {
+        "name": "text-45",
+        "hex": "#96AAC5"
+      },
+      {
+        "name": "text-50",
+        "hex": "#8AA1BE"
+      },
+      {
+        "name": "text-55",
+        "hex": "#7F98B8"
+      },
+      {
+        "name": "text-60",
+        "hex": "#738EB2"
+      },
+      {
+        "name": "text-65",
+        "hex": "#6885AB"
+      },
+      {
+        "name": "text-70",
+        "hex": "#5C7BA5"
+      },
+      {
+        "name": "text-75",
+        "hex": "#50729E"
+      },
+      {
+        "name": "text-80",
+        "hex": "#456998"
+      },
+      {
+        "name": "text-85",
+        "hex": "#395F91"
+      },
+      {
+        "name": "text-90",
+        "hex": "#2D568B"
+      },
+      {
+        "name": "text-95",
+        "hex": "#224C84"
+      },
+      {
+        "name": "text-100",
+        "hex": "#16437E"
+      }
+    ],
+    "background": [
+      {
+        "name": "background-5",
+        "hex": "#FFFFFF"
+      },
+      {
+        "name": "background-10",
+        "hex": "#FEFEFE"
+      },
+      {
+        "name": "background-15",
+        "hex": "#FEFEFE"
+      },
+      {
+        "name": "background-20",
+        "hex": "#FEFEFE"
+      },
+      {
+        "name": "background-25",
+        "hex": "#FEFEFE"
+      },
+      {
+        "name": "background-30",
+        "hex": "#FEFEFE"
+      },
+      {
+        "name": "background-35",
+        "hex": "#FDFDFD"
+      },
+      {
+        "name": "background-40",
+        "hex": "#FDFDFD"
+      },
+      {
+        "name": "background-45",
+        "hex": "#FDFDFD"
+      },
+      {
+        "name": "background-50",
+        "hex": "#FCFCFC"
+      },
+      {
+        "name": "background-55",
+        "hex": "#FCFCFC"
+      },
+      {
+        "name": "background-60",
+        "hex": "#FCFCFC"
+      },
+      {
+        "name": "background-65",
+        "hex": "#FCFCFC"
+      },
+      {
+        "name": "background-70",
+        "hex": "#FCFCFC"
+      },
+      {
+        "name": "background-75",
+        "hex": "#FBFBFB"
+      },
+      {
+        "name": "background-80",
+        "hex": "#FBFBFB"
+      },
+      {
+        "name": "background-85",
+        "hex": "#FBFBFB"
+      },
+      {
+        "name": "background-90",
+        "hex": "#FAFAFA"
+      },
+      {
+        "name": "background-95",
+        "hex": "#FAFAFA"
+      },
+      {
+        "name": "background-100",
+        "hex": "#FAFAFA"
+      }
+    ],
+    "primary": [
+      {
+        "name": "primary-5",
+        "hex": "#FDF4F9"
+      },
+      {
+        "name": "primary-10",
+        "hex": "#FBE9F2"
+      },
+      {
+        "name": "primary-15",
+        "hex": "#F9DEEC"
+      },
+      {
+        "name": "primary-20",
+        "hex": "#F7D3E6"
+      },
+      {
+        "name": "primary-25",
+        "hex": "#F6C8E0"
+      },
+      {
+        "name": "primary-30",
+        "hex": "#F4BDD9"
+      },
+      {
+        "name": "primary-35",
+        "hex": "#F2B2D3"
+      },
+      {
+        "name": "primary-40",
+        "hex": "#F0A7CD"
+      },
+      {
+        "name": "primary-45",
+        "hex": "#EE9CC6"
+      },
+      {
+        "name": "primary-50",
+        "hex": "#EC91C0"
+      },
+      {
+        "name": "primary-55",
+        "hex": "#EA86BA"
+      },
+      {
+        "name": "primary-60",
+        "hex": "#E87BB3"
+      },
+      {
+        "name": "primary-65",
+        "hex": "#E670AD"
+      },
+      {
+        "name": "primary-70",
+        "hex": "#E465A7"
+      },
+      {
+        "name": "primary-75",
+        "hex": "#E25AA0"
+      },
+      {
+        "name": "primary-80",
+        "hex": "#E14F9A"
+      },
+      {
+        "name": "primary-85",
+        "hex": "#DF4494"
+      },
+      {
+        "name": "primary-90",
+        "hex": "#DD398E"
+      },
+      {
+        "name": "primary-95",
+        "hex": "#DB2E87"
+      },
+      {
+        "name": "primary-100",
+        "hex": "#D92381"
+      }
+    ],
+    "secondary": [
+      {
+        "name": "secondary-5",
+        "hex": "#F9F4F7"
+      },
+      {
+        "name": "secondary-10",
+        "hex": "#F3E9EF"
+      },
+      {
+        "name": "secondary-15",
+        "hex": "#EDDEE6"
+      },
+      {
+        "name": "secondary-20",
+        "hex": "#E7D3DE"
+      },
+      {
+        "name": "secondary-25",
+        "hex": "#E1C8D6"
+      },
+      {
+        "name": "secondary-30",
+        "hex": "#DBBECE"
+      },
+      {
+        "name": "secondary-35",
+        "hex": "#D5B3C6"
+      },
+      {
+        "name": "secondary-40",
+        "hex": "#CFA8BD"
+      },
+      {
+        "name": "secondary-45",
+        "hex": "#C99DB5"
+      },
+      {
+        "name": "secondary-50",
+        "hex": "#C292AD"
+      },
+      {
+        "name": "secondary-55",
+        "hex": "#BC87A5"
+      },
+      {
+        "name": "secondary-60",
+        "hex": "#B67C9D"
+      },
+      {
+        "name": "secondary-65",
+        "hex": "#B07194"
+      },
+      {
+        "name": "secondary-70",
+        "hex": "#AA668C"
+      },
+      {
+        "name": "secondary-75",
+        "hex": "#A45C84"
+      },
+      {
+        "name": "secondary-80",
+        "hex": "#9E517C"
+      },
+      {
+        "name": "secondary-85",
+        "hex": "#984674"
+      },
+      {
+        "name": "secondary-90",
+        "hex": "#923B6B"
+      },
+      {
+        "name": "secondary-95",
+        "hex": "#8C3063"
+      },
+      {
+        "name": "secondary-100",
+        "hex": "#86255B"
+      }
+    ],
+    "accent": [
+      {
+        "name": "accent-5",
+        "hex": "#FDFEFE"
+      },
+      {
+        "name": "accent-10",
+        "hex": "#FBFCFE"
+      },
+      {
+        "name": "accent-15",
+        "hex": "#F9FBFD"
+      },
+      {
+        "name": "accent-20",
+        "hex": "#F6FAFC"
+      },
+      {
+        "name": "accent-25",
+        "hex": "#F4F9FC"
+      },
+      {
+        "name": "accent-30",
+        "hex": "#F2F8FB"
+      },
+      {
+        "name": "accent-35",
+        "hex": "#F0F6FA"
+      },
+      {
+        "name": "accent-40",
+        "hex": "#EEF5F9"
+      },
+      {
+        "name": "accent-45",
+        "hex": "#ECF4F9"
+      },
+      {
+        "name": "accent-50",
+        "hex": "#EAF2F8"
+      },
+      {
+        "name": "accent-55",
+        "hex": "#E7F1F7"
+      },
+      {
+        "name": "accent-60",
+        "hex": "#E5F0F7"
+      },
+      {
+        "name": "accent-65",
+        "hex": "#E3EFF6"
+      },
+      {
+        "name": "accent-70",
+        "hex": "#E1EEF5"
+      },
+      {
+        "name": "accent-75",
+        "hex": "#DFECF4"
+      },
+      {
+        "name": "accent-80",
+        "hex": "#DDEBF4"
+      },
+      {
+        "name": "accent-85",
+        "hex": "#DAEAF3"
+      },
+      {
+        "name": "accent-90",
+        "hex": "#D8E8F2"
+      },
+      {
+        "name": "accent-95",
+        "hex": "#D6E7F2"
+      },
+      {
+        "name": "accent-100",
+        "hex": "#D4E6F1"
+      }
+    ]
+  },
+  "contributor_handle": "datatimp",
+  "contributor_link": "https://datatimp.github.io"
+}

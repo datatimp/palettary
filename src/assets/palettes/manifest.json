@@ -64,10 +64,10 @@
       "dateAdded": "2026-01-02"
     },
     {
-      "id": "cooper-craft",
-      "name": "Cooper Craft",
-      "description": "Give one",
-      "file": "cooper-craft.json",
+      "id": "ice-cream",
+      "name": "Ice Cream",
+      "description": "Vibrant cyan and warm copper tones balanced with soft pink accents for modern, energetic designs",
+      "file": "ice-cream.json",
       "dateAdded": "2026-01-02"
     },
     {
@@ -104,6 +104,34 @@
       "description": "A minimal collection of primitives for a quick start.",
       "file": "short-and-sweet.json",
       "dateAdded": "2026-01-30"
+    },
+    {
+      "id": "speakeasy",
+      "name": "Speakeasy",
+      "description": "Dark, moody Art Deco tones in brass, teal, and noir for sophisticated, atmospheric interfaces",
+      "file": "speakeasy.json",
+      "dateAdded": "2026-06-05"
+    },
+    {
+      "id": "late-bloom",
+      "name": "Late Bloom",
+      "description": "Rich cobalt and vivid magenta over a clean ivory canvas for bold, confident designs",
+      "file": "late-bloom.json",
+      "dateAdded": "2026-06-05"
+    },
+    {
+      "id": "terracotta",
+      "name": "Terracotta",
+      "description": "Sun-baked clay reds, saffron golds, and warm desert sands for earthy, warm interfaces",
+      "file": "terracotta.json",
+      "dateAdded": "2026-06-05"
+    },
+    {
+      "id": "nordic",
+      "name": "Nordic",
+      "description": "Cool glacier blues and misty fjord tones with mossy sage accents for calm, clean interfaces",
+      "file": "nordic.json",
+      "dateAdded": "2026-06-05"
     }
   ]
 }

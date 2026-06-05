@@ -116,7 +116,7 @@ function initHeroAnimation() {
         requestAnimationFrame(() => {
             try {
                 riveInstance = new rive.Rive({
-                    src: 'src/assets/images/hero-graphic.riv',
+                    src: 'src/assets/images/hero-graphic.riv?v=2',
                     canvas: canvas,
                     autoplay: true,
                     stateMachines: 'State Machine',
@@ -258,50 +258,39 @@ async function createPaletteCard(paletteInfo) {
         return card;
     }
 
-    // Get up to 6 colors for preview
+    // Get up to 5 non-white colors for preview
     const hues = Object.keys(palette.colors);
     const nonNeutralHues = hues.filter(hue => hue !== 'neutral');
 
     const previewColors = [];
 
-    // Special handling for single-hue palettes: show multiple shades
-    if (hues.length === 1) {
+    const isNearWhite = hex => {
+        const rgb = hexToRgb(hex);
+        return rgb && getLuminance(rgb.r, rgb.g, rgb.b) > 0.95;
+    };
+
+    if (Array.isArray(palette.previewColors) && palette.previewColors.length > 0) {
+        // Use explicit preview colors, excluding near-white
+        const filtered = palette.previewColors.filter(hex => !isNearWhite(hex));
+        previewColors.push(...filtered.slice(0, 5));
+    } else if (hues.length === 1) {
+        // Single-hue: show up to 5 evenly distributed non-white shades
         const hueColors = palette.colors[hues[0]];
-
-        // Filter out white/near-white colors (luminance > 0.95)
-        const nonWhiteColors = hueColors.filter(color => {
-            const rgb = hexToRgb(color.hex);
-            if (!rgb) return true;
-            const luminance = getLuminance(rgb.r, rgb.g, rgb.b);
-            return luminance <= 0.95;
-        });
-
-        // Use non-white colors if we have enough, otherwise use all colors
-        const colorsToSample = nonWhiteColors.length >= 6 ? nonWhiteColors : hueColors;
-
-        // Pick up to 6 evenly distributed shades
-        const maxShades = Math.min(6, colorsToSample.length);
-        const step = colorsToSample.length / maxShades;
-
+        const nonWhite = hueColors.filter(c => !isNearWhite(c.hex));
+        const pool = nonWhite.length >= 5 ? nonWhite : hueColors;
+        const maxShades = Math.min(5, pool.length);
+        const step = pool.length / maxShades;
         for (let i = 0; i < maxShades; i++) {
-            const index = Math.floor(i * step);
-            previewColors.push(colorsToSample[index].hex);
+            previewColors.push(pool[Math.floor(i * step)].hex);
         }
     } else {
-        // Multiple hues: pick one color from each hue
-        let huesToDisplay;
-        if (nonNeutralHues.length >= 6) {
-            // Skip neutral if we have 6+ other hues
-            huesToDisplay = nonNeutralHues.slice(0, 6);
-        } else {
-            // Use all hues up to 6
-            huesToDisplay = hues.slice(0, 6);
-        }
-
+        // Multiple hues: one non-white color per hue, up to 5
+        const huesToDisplay = (nonNeutralHues.length >= 5 ? nonNeutralHues : hues).slice(0, 5);
         huesToDisplay.forEach(hueName => {
             const hueColors = palette.colors[hueName];
-            const midIndex = Math.floor(hueColors.length / 2);
-            previewColors.push(hueColors[midIndex].hex);
+            const nonWhite = hueColors.filter(c => !isNearWhite(c.hex));
+            const pool = nonWhite.length > 0 ? nonWhite : hueColors;
+            previewColors.push(pool[Math.floor(pool.length / 2)].hex);
         });
     }
 
