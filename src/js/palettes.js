@@ -128,8 +128,15 @@ function initHeroAnimation() {
                     onLoad: () => {
                         riveInstance.resizeDrawingSurfaceToCanvas();
                         heroImage.classList.add('rive-active');
-                        // Start after WebGL shaders are compiled so frame 0 isn't skipped
-                        riveInstance.play();
+                        // WebGL shaders compile on first draw, which is async after onLoad.
+                        // Wait until the browser goes idle (shaders done) before starting the
+                        // animation clock so frame 0 isn't skipped.
+                        const beginPlay = () => riveInstance.play();
+                        if (window.requestIdleCallback) {
+                            requestIdleCallback(beginPlay, { timeout: 800 });
+                        } else {
+                            setTimeout(beginPlay, 350);
+                        }
                     },
                     onLoadError: () => {
                         heroImage.classList.remove('rive-active');
