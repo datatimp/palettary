@@ -339,6 +339,10 @@ function setupEventListeners() {
             document.getElementById('palette-display').style.display = 'none';
             currentPalette = null;
             document.getElementById('palette-select').value = '';
+            // Clear palette from URL so a reload doesn't reopen it
+            const newUrl = new URL(window.location);
+            newUrl.searchParams.delete('palette');
+            window.history.pushState({}, '', newUrl);
             // Show all palette cards again
             document.querySelectorAll('.palette-card').forEach(card => {
                 card.style.display = '';
