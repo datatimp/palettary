@@ -118,16 +118,18 @@ function initHeroAnimation() {
                 riveInstance = new rive.Rive({
                     src: 'src/assets/images/hero-graphic.riv?v=2',
                     canvas: canvas,
-                    autoplay: true,
+                    autoplay: false,
                     stateMachines: 'State Machine',
                     layout: new rive.Layout(getLayoutOptions()),
                     onStop: () => {
                         localStorage.setItem('palettary_hero_seen', 'true');
-                        // Kept canvas active indefinitely to prevent blink. 
+                        // Kept canvas active indefinitely to prevent blink.
                     },
                     onLoad: () => {
                         riveInstance.resizeDrawingSurfaceToCanvas();
                         heroImage.classList.add('rive-active');
+                        // Start after WebGL shaders are compiled so frame 0 isn't skipped
+                        riveInstance.play();
                     },
                     onLoadError: () => {
                         heroImage.classList.remove('rive-active');
