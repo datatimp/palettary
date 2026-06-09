@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-CN30ZXQHMQ"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag() { dataLayer.push(arguments); }
+        gtag('js', new Date());
+
+        gtag('config', 'G-CN30ZXQHMQ');
+    </script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Palettary - Image to Halftone SVG</title>
+    <link rel="stylesheet" href="src/css/halftone.css">
+    <link rel="shortcut icon" type="image/png" href="src/assets/images/favicon.png">
+</head>
+
+<body>
+    <header>
+        <div class="container">
+            <a href="https://datatimp.github.io/palettary"><img
+                    src="src/assets/images/palettary-wordmark-logo-reversed.svg"></a>
+            <nav class="header-nav">
+                <div class="nav-menu">
+                    <span class="nav-trigger">
+                        <span class="menu-text">Menu</span>
+                        <span class="hamburger-icon">
+                            <span></span>
+                            <span></span>
+                            <span></span>
+                        </span>
+                    </span>
+                    <div class="nav-overlay"></div>
+                    <div class="nav-dropdown">
+                        <div class="nav-logo-wrapper">
+                            <img src="src/assets/images/palettary-logo-square.svg" alt="Palettary Logo"
+                                class="nav-logo">
+                        </div>
+                        <a href="index.html">Color Primitives</a>
+                        <a href="halftone.html">Halftone SVG</a>
+                        <a href="figthumb.html">Thumbnail Generator</a>
+                        <a href="https://www.figma.com/community/file/1599213625577905854/handoff-toolset"
+                            target="_blank">Handoff
+                            Toolset<svg class="external-link-icon" aria-hidden="true" focusable="false"
+                                xmlns="http://www.w3.org/2000/svg" viewBox="0 0 18 18">
+                                <path
+                                    d="M0 14.75V4.75C0 4.02065 0.289939 3.32139 0.805664 2.80566C1.32139 2.28994 2.02065 2 2.75 2H8.75C9.16421 2 9.5 2.33579 9.5 2.75C9.5 3.16421 9.16421 3.5 8.75 3.5H2.75C2.41848 3.5 2.10063 3.63179 1.86621 3.86621C1.63179 4.10063 1.5 4.41848 1.5 4.75V14.75C1.5 15.0815 1.63179 15.3994 1.86621 15.6338C2.10063 15.8682 2.41848 16 2.75 16H12.75C13.0815 16 13.3994 15.8682 13.6338 15.6338C13.8682 15.3994 14 15.0815 14 14.75V8.75C14 8.33579 14.3358 8 14.75 8C15.1642 8 15.5 8.33579 15.5 8.75V14.75C15.5 15.4793 15.2101 16.1786 14.6943 16.6943C14.1786 17.2101 13.4793 17.5 12.75 17.5H2.75C2.02065 17.5 1.32139 17.2101 0.805664 16.6943C0.289939 16.1786 0 15.4793 0 14.75ZM17.5 5.75C17.5 6.16421 17.1642 6.5 16.75 6.5C16.3358 6.5 16 6.16421 16 5.75V2.56055L8.28027 10.2803C7.98738 10.5732 7.51262 10.5732 7.21973 10.2803C6.92683 9.98738 6.92683 9.51262 7.21973 9.21973L14.9395 1.5H11.75C11.3358 1.5 11 1.16421 11 0.75C11 0.335786 11.3358 0 11.75 0H16.75C17.1642 0 17.5 0.335786 17.5 0.75V5.75Z" />
+                            </svg></a>
+                        <a href="about.html">About</a>
+                    </div>
+                </div>
+            </nav>
+        </div>
+    </header>
+
+    <main class="container">
+        <div class="page-title">Image to Halftone SVG</div>
+        <p class="subtitle">Convert images to scalable vector halftones with correct angle rotation at any degree</p>
+
+        <div class="generator-layout">
+
+            <!-- Controls Panel -->
+            <div class="controls">
+
+                <!-- Image Upload -->
+                <div class="control-row">
+                    <label>Image</label>
+                    <div class="upload-zone" id="uploadZone">
+                        <input type="file" id="imageUpload" accept="image/png,image/jpeg,image/webp">
+                        <div class="upload-prompt" id="uploadPrompt">
+                            <span class="upload-prompt-main">Drop image or click to upload</span>
+                            <span class="upload-prompt-sub">PNG, JPG, WEBP</span>
+                        </div>
+                        <div class="upload-file-info" id="uploadFileInfo" style="display:none">
+                            <span id="uploadFileName" class="upload-filename"></span>
+                            <button id="clearImageBtn" class="btn btn-small" type="button">Clear</button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Dots Per Row -->
+                <div class="control-row">
+                    <label for="dotsPerRow">Dots Per Row</label>
+                    <input type="number" id="dotsPerRow" value="40" min="5" max="300">
+                </div>
+
+                <!-- Grid Type -->
+                <div class="control-row">
+                    <label>Grid</label>
+                    <div class="toggle-group">
+                        <label class="toggle-chip">
+                            <input type="radio" name="gridType" value="square" checked>
+                            Square
+                        </label>
+                        <label class="toggle-chip">
+                            <input type="radio" name="gridType" value="diamond">
+                            Diamond
+                        </label>
+                    </div>
+                </div>
+
+                <!-- Angle -->
+                <div class="control-row">
+                    <label for="angle">Angle</label>
+                    <div class="input-with-unit">
+                        <input type="number" id="angle" value="45" min="0" max="359">
+                        <span class="unit-label">°</span>
+                    </div>
+                </div>
+
+                <!-- Minimum Radius -->
+                <div class="control-row">
+                    <label for="minRadius">Min Radius</label>
+                    <input type="number" id="minRadius" value="1" min="0" max="20" step="0.5">
+                </div>
+
+            </div>
+
+            <!-- Preview Panel -->
+            <div class="preview-panel">
+                <div class="action-bar">
+                    <button id="downloadBtn" class="btn btn-primary" disabled>Download SVG</button>
+                </div>
+                <div class="preview-area">
+                    <div class="preview-placeholder" id="previewPlaceholder">
+                        <p>Upload an image to preview your halftone</p>
+                    </div>
+                    <canvas id="halftoneCanvas" style="display:none"></canvas>
+                </div>
+            </div>
+
+        </div>
+
+        <p class="subtitle" style="margin-top: 32px;">For CMYK color separation to individual SVGs for screen printing and risograph, use the Palettary Halftone CLI — coming soon.</p>
+
+        <!--Footer Section-->
+        <footer>
+            <a href="#top"><img src="src/assets/images/palettary-logo-square.svg"></a>
+            <div class="divider"></div>
+            <div class="footer-cols">
+                <div class="footer-col">
+                    <div class="footer-col-head">
+                        CONNECT WITH ME
+                    </div>
+                    <a class="footer-col-item" href="https://datatimp.github.io">Portfolio</a>
+                    <a class="footer-col-item" href="https://www.linkedin.com/in/timothypevey/">LinkedIn</a>
+                    <a class="footer-col-item" href="https://www.github.com/datatimp">Github</a>
+                    <br />
+                    <a href="https://www.producthunt.com/products/palettary?utm_source=badge-follow&utm_medium=badge&utm_source=badge-palettary"
+                        target="_blank"><img
+                            src="https://api.producthunt.com/widgets/embed-image/v1/follow.svg?product_id=1149439&theme=neutral"
+                            alt="Palettary - Ready&#0045;made&#0032;color&#0032;primitives&#0032;&#0038;&#0032;Figma&#0032;thumbnail&#0032;generator | Product Hunt"
+                            style="width: 250px; height: 54px;" width="250" height="54" /></a>
+                </div>
+            </div>
+            <div class="divider"></div>
+            <div class="authorship-data">
+                <p>Made with ☕ for designers by <a href="https://datatimp.github.io">datatimp</a></p>
+                <small style="opacity: 40%;">© 2026</small>
+            </div>
+        </footer>
+
+    </main>
+
+    <script src="src/js/halftone.js"></script>
+    <script src="src/js/common.js"></script>
+</body>
+
+</html>

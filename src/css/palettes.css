@@ -6,6 +6,10 @@
     font-family: var(--font-hero);
 }
 
+.hero-icon {
+    padding-right: 5px;
+}
+
 .hero-wrapper {
     display: flex;
     align-items: center;
@@ -105,6 +109,10 @@
 .btn-secondary:hover {
     background-color: var(--color-brand-secondary);
     color: var(--color-text-white) !important;
+}
+
+.btn-secondary:hover .hero-icon {
+    filter: brightness(0) invert(1);
 }
 
 

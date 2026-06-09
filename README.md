@@ -29,8 +29,9 @@
 ## Table of Contents
 1. [Available Apps](#available-apps)
 2. [What are color primitives?](#what-are-color-primitives)
-3. [Why generate thumbnails?](#why-generate-thumbnails)
-4. [Contributions](#contributions)
+3. [Creating accurate halftones](#creating-accurate-halftones)
+4. [Why generate thumbnails?](#why-generate-thumbnails)
+5. [Contributions](#contributions)
 
 <br>
 
@@ -53,6 +54,27 @@
       <li>Browse palettes with evocative names</li>
       <li>One-click hex copy</li>
       <li>Export to Figma JSON, TXT, or MD</li>
+    </ul>
+  </div>
+
+  <br/><hr/><br/>
+
+  <h3>◎ Halftone SVG</h3>
+  <p>Convert any image to a scalable monochrome vector halftone. </p>
+
+  <img src="src/assets/images/palettary-halftone-screen.png" width="60%">
+  <br/>
+
+  <a href="https://datatimp.github.io/palettary/halftone.html/">
+    <img src="https://img.shields.io/badge/Launch_App-Halftone_SVG-green" alt="Launch Halftone App" />
+  </a>
+
+  <div align="left" style="max-width: 400px;">
+    <ul>
+      <li>Monochrome, Flattened Color, and CMYK Separation modes</li>
+      <li>Square and Diamond grid options</li>
+      <li>Correct rotation coverage at any screen angle</li>
+      <li>Export as SVG</li>
     </ul>
   </div>
 
@@ -112,6 +134,18 @@ Semantic token:   color-link-default → blue-600
 3.  **Create Semantics**: Create semantic tokens and map them to the corresponding primitives. 
 
 This [article](https://medium.com/@tarun_design00/color-system-color-theory-primitives-semantics-tokens-567f64368d30) on Medium is a terrific resource from which to learn more. 
+
+<br />
+
+## Creating accurate halftones
+
+A halftone converts a continuous-tone image into a pattern of discrete dots. Varying dot size creates the illusion of shading — large dots in dark areas, small dots in highlights. Halftones are the foundation of offset printing, risograph, and screen printing, and remain a popular aesthetic in digital design.
+
+**CMYK separation.** Process color printing uses four ink layers — Cyan, Magenta, Yellow, and Key (Black) — each screened at a different angle to prevent moiré patterns. CMYK Separation mode generates a separate SVG per channel at its own screen angle with `mix-blend-mode: multiply` applied. Standard angle presets (US, EU, and six alternates) are included, and individual channels can be disabled for spot color workflows like risograph (CMY only) or duotone.
+
+**Proper rotation.** Palettary's tool loops the grid in rotated coordinate space over the full image diagonal before transforming back to image coordinates, then uses a `clipPath` to trim to bounds. This means any angle — 0°, 15°, 45°, 75° — produces complete, edge-to-edge coverage.
+
+**Grid types.** Square grid places dots at equal horizontal and vertical intervals. Diamond grid halves the vertical spacing and offsets every odd row by half a cell width, producing twice the row density in the same vertical space. This can be a handy alternative to a square grid for some black and white images. Square grids are preferred for color.
 
 <br />
 
