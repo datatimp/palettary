@@ -9,6 +9,7 @@ const state = {
     dotsPerRow: 40,
     angle: 45,
     minRadius: 1,
+    gamma: 1.5,
     gridType: 'square'
 };
 
@@ -42,6 +43,7 @@ function rgbToLuminance(r, g, b) {
     return (0.2126 * r + 0.7152 * g + 0.0722 * b) / 255;
 }
 
+// Nearest-neighbour sample — used by the Diamond path.
 function samplePixel(imageData, x, y) {
     const px = Math.min(imageData.width - 1, Math.max(0, Math.round(x)));
     const py = Math.min(imageData.height - 1, Math.max(0, Math.round(y)));
@@ -49,12 +51,36 @@ function samplePixel(imageData, x, y) {
     return { r: imageData.data[idx], g: imageData.data[idx + 1], b: imageData.data[idx + 2] };
 }
 
-// Core halftone generator with correct rotation coverage.
-// The grid is defined in rotated space and covers the full image diagonal,
-// then each cell is rotated back to image space. A clipPath in the SVG output
-// trims dots to the image rectangle — this is the fix for the rotation-clipping
-// bug present in other tools.
-function getCircles(imageData, cellSize, angleDeg, minR, gridType) {
+// Bilinear sample — used by the Square (rosette) path.
+function sampleBilinear(imageData, x, y) {
+    const w = imageData.width;
+    const h = imageData.height;
+    const x0 = Math.floor(x);
+    const y0 = Math.floor(y);
+    const x1 = x0 + 1;
+    const y1 = y0 + 1;
+    const tx = x - x0;
+    const ty = y - y0;
+
+    function getLuma(xi, yi) {
+        const xc = Math.max(0, Math.min(w - 1, xi));
+        const yc = Math.max(0, Math.min(h - 1, yi));
+        const idx = (yc * w + xc) * 4;
+        return rgbToLuminance(imageData.data[idx], imageData.data[idx + 1], imageData.data[idx + 2]);
+    }
+
+    return (
+        getLuma(x0, y0) * (1 - tx) * (1 - ty) +
+        getLuma(x1, y0) * tx       * (1 - ty) +
+        getLuma(x0, y1) * (1 - tx) * ty       +
+        getLuma(x1, y1) * tx       * ty
+    );
+}
+
+// ─── Diamond grid — original algorithm, unchanged ────────────────────────────
+// 5-point nearest-neighbour sample, linear radius mapping.
+// This path is not modified and produces the chunky, high-contrast diamond feel.
+function getCirclesDiamond(imageData, cellSize, angleDeg, minR, gamma) {
     const w = imageData.width;
     const h = imageData.height;
     const rad = angleDeg * Math.PI / 180;
@@ -65,13 +91,13 @@ function getCircles(imageData, cellSize, angleDeg, minR, gridType) {
     const cx = w / 2;
     const cy = h / 2;
     const maxR = cellSize * 0.45;
-    const cellSizeY = gridType === 'diamond' ? cellSize * 0.5 : cellSize;
+    const cellSizeY = cellSize * 0.5;
 
     const circles = [];
     let rowIndex = 0;
 
     for (let gy = -halfDiag; gy <= halfDiag; gy += cellSizeY) {
-        const xOffset = (gridType === 'diamond' && rowIndex % 2 === 1) ? cellSize / 2 : 0;
+        const xOffset = rowIndex % 2 === 1 ? cellSize / 2 : 0;
         for (let gx = -halfDiag; gx <= halfDiag; gx += cellSize) {
             const agx = gx + xOffset;
             const ix = agx * cosA - gy * sinA + cx;
@@ -80,7 +106,6 @@ function getCircles(imageData, cellSize, angleDeg, minR, gridType) {
             if (ix < 0 || ix >= w || iy < 0 || iy >= h) continue;
 
             // 5-point multi-sample: center + 4 cardinal offsets at half cell size.
-            // Averaging suppresses per-pixel noise without preprocessing the image.
             const hs = maxR;
             const center = samplePixel(imageData, ix, iy);
             const luma = ({ r, g, b }) => 1 - rgbToLuminance(r, g, b);
@@ -92,7 +117,8 @@ function getCircles(imageData, cellSize, angleDeg, minR, gridType) {
                 luma(samplePixel(imageData, ix, iy - hs))
             ) / 5;
 
-            const radius = channelValue * (maxR - minR) + minR;
+            const curved = Math.pow(channelValue, gamma);
+            const radius = curved * (maxR - minR) + minR;
             if (radius <= 0) continue;
 
             circles.push({ x: ix, y: iy, r: radius });
@@ -101,6 +127,70 @@ function getCircles(imageData, cellSize, angleDeg, minR, gridType) {
     }
 
     return circles;
+}
+
+// ─── Square grid — Rosette algorithm ─────────────────────────────────────────
+// Gaussian pre-blur → bilinear sample → area-proportional (sqrt) radius → gamma.
+// Produces clean tonal gradients with controllable dot weight.
+function getCirclesSquare(sourceCanvas, cellSize, angleDeg, minR, gamma) {
+    const w = sourceCanvas.width;
+    const h = sourceCanvas.height;
+
+    // Gaussian pre-blur using the Canvas filter API (blur radius = cell_size / 2).
+    const blurCanvas = document.createElement('canvas');
+    blurCanvas.width = w;
+    blurCanvas.height = h;
+    const blurCtx = blurCanvas.getContext('2d');
+    blurCtx.filter = `blur(${(cellSize / 2).toFixed(1)}px)`;
+    blurCtx.drawImage(sourceCanvas, 0, 0);
+    const blurredData = blurCtx.getImageData(0, 0, w, h);
+
+    const rad = angleDeg * Math.PI / 180;
+    const cosA = Math.cos(rad);
+    const sinA = Math.sin(rad);
+    const diagonal = Math.sqrt(w * w + h * h);
+    const halfDiag = diagonal / 2;
+    const cx = w / 2;
+    const cy = h / 2;
+    const maxR = cellSize * 0.47;
+    const safeMinR = Math.min(minR, maxR * 0.9);
+
+    const circles = [];
+
+    for (let gy = -halfDiag; gy <= halfDiag + cellSize; gy += cellSize) {
+        for (let gx = -halfDiag; gx <= halfDiag + cellSize; gx += cellSize) {
+            const ix = gx * cosA - gy * sinA + cx;
+            const iy = gx * sinA + gy * cosA + cy;
+
+            // Soft clip: keep dots one cell outside the image so edges are fully covered.
+            if (ix < -cellSize || ix > w + cellSize) continue;
+            if (iy < -cellSize || iy > h + cellSize) continue;
+
+            const luma = sampleBilinear(blurredData, ix, iy);
+            const density = 1 - luma; // 0 = white/no ink, 1 = black/full ink
+
+            // Gamma curve: >1 opens highlights (smaller dots), <1 pushes heavier.
+            const curved = Math.pow(density, gamma);
+
+            // Area-proportional radius: linear density → linear ink coverage.
+            const r2 = curved * (maxR * maxR - safeMinR * safeMinR) + safeMinR * safeMinR;
+            const radius = Math.sqrt(Math.max(0, r2));
+
+            if (radius < 0.05) continue;
+
+            circles.push({ x: ix, y: iy, r: radius });
+        }
+    }
+
+    return circles;
+}
+
+// Dispatcher — routes to the correct algorithm based on grid type.
+function getCircles(sourceCanvas, imageData, cellSize, angleDeg, minR, gamma, gridType) {
+    if (gridType === 'diamond') {
+        return getCirclesDiamond(imageData, cellSize, angleDeg, minR, gamma);
+    }
+    return getCirclesSquare(sourceCanvas, cellSize, angleDeg, minR, gamma);
 }
 
 function buildSVG(circles, w, h) {
@@ -136,7 +226,7 @@ function renderPreview() {
     ctx.fillRect(0, 0, w, h);
 
     ctx.fillStyle = '#000000';
-    const circles = getCircles(imageData, cellSize, state.angle, minR, state.gridType);
+    const circles = getCircles(offscreenCanvas, imageData, cellSize, state.angle, minR, state.gamma, state.gridType);
     for (const c of circles) {
         ctx.beginPath();
         ctx.arc(c.x, c.y, c.r, 0, Math.PI * 2);
@@ -153,7 +243,7 @@ function generateMonoSVG() {
     const imageData = offscreenCtx.getImageData(0, 0, offscreenCanvas.width, offscreenCanvas.height);
     const w = imageData.width, h = imageData.height;
     const cellSize = w / Math.max(1, state.dotsPerRow);
-    const circles = getCircles(imageData, cellSize, state.angle, state.minRadius, state.gridType);
+    const circles = getCircles(offscreenCanvas, imageData, cellSize, state.angle, state.minRadius, state.gamma, state.gridType);
     return buildSVG(circles, w, h);
 }
 
@@ -173,11 +263,13 @@ function updateDownloadButton() {
     document.getElementById('downloadBtn').disabled = !uploadedImage;
 }
 
+
 document.addEventListener('DOMContentLoaded', () => {
     state.gridType   = document.querySelector('input[name="gridType"]:checked')?.value || 'square';
     state.dotsPerRow = Math.max(5, parseInt(document.getElementById('dotsPerRow').value) || 40);
     state.angle      = parseFloat(document.getElementById('angle').value) || 0;
     state.minRadius  = Math.max(0, parseFloat(document.getElementById('minRadius').value) || 0);
+    state.gamma      = Math.max(0.5, parseFloat(document.getElementById('gamma').value) || 1.5);
 
     const uploadZone = document.getElementById('uploadZone');
     const imageInput = document.getElementById('imageUpload');
@@ -235,6 +327,12 @@ document.addEventListener('DOMContentLoaded', () => {
 
     document.getElementById('minRadius').addEventListener('input', (e) => {
         state.minRadius = Math.max(0, parseFloat(e.target.value) || 0);
+        schedulePreview();
+    });
+
+    document.getElementById('gamma').addEventListener('input', (e) => {
+        state.gamma = Math.max(0.5, parseFloat(e.target.value) || 1.5);
+        document.getElementById('gammaValue').textContent = state.gamma.toFixed(1);
         schedulePreview();
     });
 

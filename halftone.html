@@ -58,7 +58,7 @@
 
     <main class="container">
         <div class="page-title">Image to Halftone SVG</div>
-        <p class="subtitle">Convert images to scalable vector halftones with correct angle rotation at any degree</p>
+        <p class="subtitle">Convert images to monochrome scalable vector halftones.</p>
 
         <div class="generator-layout">
 
@@ -117,6 +117,15 @@
                     <input type="number" id="minRadius" value="1" min="0" max="20" step="0.5">
                 </div>
 
+                <!-- Gamma -->
+                <div class="control-row" id="gammaRow">
+                    <label for="gamma">Gamma</label>
+                    <div class="slider-with-value">
+                        <input type="range" id="gamma" class="gamma-slider" value="1.5" min="0.5" max="3.0" step="0.1">
+                        <span class="slider-value" id="gammaValue">1.5</span>
+                    </div>
+                </div>
+
             </div>
 
             <!-- Preview Panel -->
@@ -134,7 +143,7 @@
 
         </div>
 
-        <p class="subtitle" style="margin-top: 32px;">For CMYK color separation to individual SVGs for screen printing and risograph, use the Palettary Halftone CLI — coming soon.</p>
+        <p class="subtitle" style="margin-top: 32px;">This tool renders monochrome halftones using the <a href="https://github.com/datatimp/rosette-halftone" target="_blank">Rosette</a> engine. The Rosette CLI can also separate color images into isolated CMYK SVG plates for screen printing, risograph, and digital art — install it with <code>pip install rosette-halftone</code> or view it on <a href="https://pypi.org/project/rosette-halftone/" target="_blank">PyPI</a>.</p>
 
         <!--Footer Section-->
         <footer>
