@@ -13,10 +13,17 @@
     color: var(--color-text-default-primary);
 }
 
+.about-heading h1,
 .about-heading h2 {
     color: var(--color-brand-primary);
     font-size: 1.8rem;
     padding-bottom: 1.5rem;
+}
+
+.about-heading h3 {
+    color: var(--color-brand-primary);
+    font-size: 1.3rem;
+    padding-bottom: 0.5rem;
 }
 
 .about-body + .about-heading {
@@ -25,6 +32,7 @@
 
 /* Responsive Design */
 @media (max-width: 768px) {
+    .about-heading h1,
     .about-heading h2 {
         font-size: 1.5rem;
     }
