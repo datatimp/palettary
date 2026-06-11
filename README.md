@@ -45,7 +45,7 @@
   <img src="src/assets/images/palettary-palette-screen.png" width="60%">
   <br/>
   
-  <a href="https://datatimp.github.io/palettary/">
+  <a href="https://datatimp.github.io/palettary">
     <img src="https://img.shields.io/badge/Launch_App-Color_Primitive_Palettes-blue" alt="Launch Color App" />
   </a>
 
@@ -65,7 +65,7 @@
   <img src="src/assets/images/palettary-halftone-screen.png" width="60%">
   <br/>
 
-  <a href="https://datatimp.github.io/palettary/halftone.html/">
+  <a href="https://datatimp.github.io/palettary/halftone.html">
     <img src="https://img.shields.io/badge/Launch_App-Halftone_SVG-green" alt="Launch Halftone App" />
   </a>
 
@@ -86,7 +86,7 @@
   <img src="src/assets/images/palettary-thumbnail-gen-screen.png" width="60%">
   <br/>
 
-  <a href="https://datatimp.github.io/palettary/figthumb.html/">
+  <a href="https://datatimp.github.io/palettary/figthumb.html">
     <img src="https://img.shields.io/badge/Launch_App-Thumbnail_Generator-purple" alt="Launch Thumbnail App" />
   </a>
 
