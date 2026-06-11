@@ -620,7 +620,8 @@
     .hero-image {
         width: 60%;
         max-width: 375px;
-        transition: all 1s ease;
+        /* opacity only — animating the box size desyncs the rive canvas buffer */
+        transition: opacity 1s ease;
     }
 
     #color-palettes {
