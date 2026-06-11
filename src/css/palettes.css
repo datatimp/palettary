@@ -580,8 +580,12 @@
         position: relative;
         z-index: 5;
         margin-bottom: -20px;
-        height: 300px;
+        /* Fixed aspect ratio (not fixed height) so the rive cover fit crops the
+           same amount on every viewport width, incl. iOS Display Zoom */
+        height: auto;
+        aspect-ratio: 3 / 2;
         width: 60%;
+        max-width: 450px;
         transition: opacity 0.1s ease;
         will-change: opacity;
         mask-image: linear-gradient(to bottom,
@@ -614,8 +618,8 @@
     }
 
     .hero-image {
-        height: 250px;
         width: 60%;
+        max-width: 375px;
         transition: all 1s ease;
     }
 
@@ -673,8 +677,8 @@
     }
 
     .hero-image {
-        height: 200px;
         width: 80%;
+        max-width: 300px;
         margin-bottom: -20px;
     }
 }
