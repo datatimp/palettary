@@ -522,7 +522,7 @@ function initHeaderControls() {
         if (preset.id === 'default') btn.classList.add('active');
         
         const stops = preset.stops.map(s => `${s.color} ${s.offset}`).join(', ');
-        btn.style.background = `linear-gradient(135deg, ${stops})`;
+        btn.style.backgroundImage = `linear-gradient(135deg, ${stops})`;
         
         btn.onclick = () => {
             setHeaderState('gradient', preset);
