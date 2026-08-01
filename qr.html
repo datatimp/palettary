@@ -14,7 +14,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Palettary - Web Tools for Designers</title>
-    <link rel="stylesheet" href="src/css/halftone.css">
+    <link rel="stylesheet" href="src/css/qr.css">
     <link rel="shortcut icon" type="image/png" href="src/assets/images/favicon.png">
 </head>
 
@@ -58,98 +58,119 @@
     </header>
 
     <main class="container">
-        <div class="page-title">Image to Halftone SVG</div>
-        <p class="subtitle">Convert images to monochrome scalable vector halftones.</p>
+        <div class="page-title">QR Code Generator</div>
+        <p class="subtitle">Create clean, permanent QR codes for free. Your link is encoded directly — no redirects,
+            no expiration, no subscription.</p>
 
         <div class="generator-layout">
-
-            <!-- Controls Panel -->
-            <div class="controls">
-
-                <!-- Image Upload -->
-                <div class="control-row">
-                    <label>Image</label>
-                    <div class="upload-zone" id="uploadZone">
-                        <input type="file" id="imageUpload" accept="image/png,image/jpeg,image/webp">
-                        <div class="upload-prompt" id="uploadPrompt">
-                            <span class="upload-prompt-main">Drop image or click to upload</span>
-                            <span class="upload-prompt-sub">PNG, JPG, WEBP</span>
-                        </div>
-                        <div class="upload-file-info" id="uploadFileInfo" style="display:none">
-                            <span id="uploadFileName" class="upload-filename"></span>
-                            <button id="clearImageBtn" class="btn btn-small" type="button">Clear</button>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Dots Per Row -->
-                <div class="control-row">
-                    <label for="dotsPerRow">Dots Per Row</label>
-                    <input type="number" id="dotsPerRow" value="40" min="5" max="300">
-                </div>
-
-                <!-- Grid Type -->
-                <div class="control-row">
-                    <label>Grid</label>
-                    <div class="toggle-group">
-                        <label class="toggle-chip">
-                            <input type="radio" name="gridType" value="square" checked>
-                            Square
-                        </label>
-                        <label class="toggle-chip">
-                            <input type="radio" name="gridType" value="diamond">
-                            Diamond
-                        </label>
-                    </div>
-                </div>
-
-                <!-- Angle -->
-                <div class="control-row">
-                    <label for="angle">Angle</label>
-                    <div class="input-with-unit">
-                        <input type="number" id="angle" value="45" min="0" max="359">
-                        <span class="unit-label">°</span>
-                    </div>
-                </div>
-
-                <!-- Minimum Radius -->
-                <div class="control-row">
-                    <label for="minRadius">Min Radius</label>
-                    <input type="number" id="minRadius" value="1" min="0" max="20" step="0.5">
-                </div>
-
-                <!-- Gamma -->
-                <div class="control-row" id="gammaRow">
-                    <label for="gamma">Gamma</label>
-                    <div class="slider-with-value">
-                        <input type="range" id="gamma" class="gamma-slider" value="1.5" min="0.5" max="3.0" step="0.1">
-                        <span class="slider-value" id="gammaValue">1.5</span>
-                    </div>
-                </div>
-
-            </div>
-
-            <!-- Preview Panel -->
             <div class="preview-panel">
-                <div class="action-bar">
-                    <button id="downloadBtn" class="btn btn-primary" disabled>Download SVG</button>
-                </div>
-                <div class="preview-area">
-                    <div class="preview-placeholder" id="previewPlaceholder">
-                        <p>Upload an image to preview your halftone</p>
-                    </div>
-                    <canvas id="halftoneCanvas" style="display:none"></canvas>
+                <div class="qr-preview-wrapper">
+                    <div class="qr-preview" id="qrPreview"></div>
                 </div>
             </div>
 
+            <div class="controls">
+                <!-- URL / Text to encode -->
+                <div class="control-row">
+                    <label for="qrText">Link / Text</label>
+                    <input type="text" id="qrText" value="https://example.com" placeholder="Enter a URL or text"
+                        required>
+                </div>
+
+                <!-- Colors -->
+                <div class="control-row">
+                    <label>Colors</label>
+                    <div class="color-picker-group">
+                        <div class="color-picker">
+                            <input type="color" id="dotColor" value="#000000" title="Dot Color">
+                            <label for="dotColor">Foreground</label>
+                        </div>
+                        <div class="color-picker">
+                            <div class="bg-swatch-group">
+                                <input type="color" id="bgColor" value="#ffffff" title="Solid Background Color"
+                                    class="active">
+                                <button type="button" id="bgTransparentBtn" class="bg-transparent-swatch checkerboard-bg"
+                                    title="Transparent Background" aria-pressed="false"></button>
+                            </div>
+                            <label for="bgColor">Background</label>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Module (dot) shape -->
+                <div class="control-row">
+                    <label>Dot Shape</label>
+                    <div class="shape-options">
+                        <label class="shape-option" title="Square">
+                            <input type="radio" name="dotShape" value="square" checked>
+                            <svg viewBox="0 0 24 24" width="22" height="22">
+                                <rect x="2" y="2" width="20" height="20" fill="currentColor" />
+                            </svg>
+                        </label>
+                        <label class="shape-option" title="Rounded">
+                            <input type="radio" name="dotShape" value="rounded">
+                            <svg viewBox="0 0 24 24" width="23" height="23">
+                                <rect x="2" y="2" width="20" height="20" rx="4" fill="currentColor" />
+                            </svg>
+                        </label>
+                        <label class="shape-option" title="Circles">
+                            <input type="radio" name="dotShape" value="dots">
+                            <svg viewBox="0 0 24 24" width="24" height="24">
+                                <circle cx="12" cy="12" r="10" fill="currentColor" />
+                            </svg>
+                        </label>
+                    </div>
+                </div>
+
+                <!-- Corner shape -->
+                <div class="control-row">
+                    <label>Corner Shape</label>
+                    <div class="shape-options">
+                        <label class="shape-option" title="Square">
+                            <input type="radio" name="cornerShape" value="square" checked>
+                            <svg viewBox="0 0 24 24" width="22" height="22">
+                                <rect x="2" y="2" width="20" height="20" fill="currentColor" />
+                            </svg>
+                        </label>
+                        <label class="shape-option" title="Rounded">
+                            <input type="radio" name="cornerShape" value="squircle">
+                            <svg viewBox="0 0 24 24" width="23" height="23">
+                                <rect x="2" y="2" width="20" height="20" rx="4" fill="currentColor" />
+                            </svg>
+                        </label>
+                    </div>
+                </div>
+
+                <!-- Logo Upload -->
+                <div class="control-row">
+                    <label>Logo</label>
+                    <div class="logo-upload-group">
+                        <div style="display: flex; gap: 8px; align-items: center;">
+                            <input type="file" id="logoUpload" accept="image/png, image/jpeg, image/svg+xml"
+                                style="display: none;">
+                            <label for="logoUpload" class="btn btn-small" style="cursor: pointer; margin: 0;">Choose
+                                File</label>
+                            <span id="logoFileName"
+                                style="font-size: 0.85rem; color: var(--color-text-default-secondary); flex: 1; white-space: nowrap; overflow: hidden; text-overflow: ellipsis;">No
+                                file chosen</span>
+                            <button id="clearLogoBtn" class="btn btn-small">Clear</button>
+                        </div>
+                        <label id="logoRecolorWrapper" class="logo-recolor-option">
+                            <input type="checkbox" id="logoRecolor">
+                            Recolor logo to match foreground
+                        </label>
+                    </div>
+                </div>
+            </div>
+
+            <div class="action-bar">
+                <select id="exportFormat" class="export-select" required>
+                    <option value="svg" selected>SVG</option>
+                    <option value="png">PNG</option>
+                </select>
+                <button id="downloadBtn" class="btn btn-primary" disabled>Download QR Code</button>
+            </div>
         </div>
-
-        <p class="subtitle" style="margin-top: 32px;">This tool renders monochrome halftones using the <a href="https://github.com/datatimp/rosette-halftone" target="_blank">Rosette</a> engine. The Rosette CLI can also separate color images into isolated CMYK SVG plates for screen printing, risograph, and digital art — install it with <code>pip install rosette-halftone</code> or view it on <a href="https://pypi.org/project/rosette-halftone/" target="_blank">PyPI</a>.
-        <br>
-        <a href="https://github.com/datatimp/rosette-halftone"><img src="src/assets/images/rosette-powered-onDark.svg" class="rosette-powered"></a> 
-        </p>
-
-       
 
         <!--Footer Section-->
         <footer>
@@ -180,7 +201,8 @@
 
     </main>
 
-    <script src="src/js/halftone.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/qr-code-styling@1.9.2/lib/qr-code-styling.js"></script>
+    <script src="src/js/qr.js"></script>
     <script src="src/js/common.js"></script>
 </body>
 

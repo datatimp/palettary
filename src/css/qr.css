@@ -1,0 +1,347 @@
+/* Pull in common stylesheet */
+@import url("common.css");
+
+/* QR Code Generator Styles */
+
+/* Main Layout Wrapper — mobile-first: preview, then controls, then actions last */
+.generator-layout {
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-areas:
+        "preview"
+        "controls"
+        "actions";
+    gap: 40px;
+    margin-top: 32px;
+    margin-bottom: 64px;
+}
+
+.preview-panel {
+    grid-area: preview;
+    display: flex;
+    flex-direction: column;
+}
+
+.controls {
+    grid-area: controls;
+    width: 100%;
+    margin-bottom: 0;
+}
+
+.control-row {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 8px;
+    margin-bottom: 24px;
+}
+
+.control-row>label:first-child {
+    font-size: 0.9rem;
+    font-weight: 600;
+    color: var(--color-text-default-secondary);
+}
+
+.control-row input[type="text"] {
+    width: 100%;
+    padding: 10px 12px;
+    border: 2px solid var(--color-border-default);
+    border-radius: 8px;
+    font-size: 0.95rem;
+    transition: border-color 0.2s;
+    font-family: var(--font-default-body), sans-serif;
+    background-color: var(--color-background-white);
+}
+
+.control-row input[type="text"]:focus {
+    outline: none;
+    border-color: var(--color-brand-primary);
+}
+
+.logo-upload-group {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    width: 100%;
+}
+
+/* Segmented shape picker (module shape / corner shape) */
+.shape-options {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+}
+
+.shape-option {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 40px;
+    height: 40px;
+    padding: 0;
+    border-radius: 8px;
+    background: var(--color-background-default-secondary);
+    border: 1px solid var(--color-border-default);
+    cursor: pointer;
+    transition: all 0.2s;
+    user-select: none;
+    color: var(--color-text-default-primary);
+}
+
+.shape-option svg {
+    display: block;
+}
+
+.shape-option input {
+    display: none;
+}
+
+.shape-option:has(input:checked) {
+    background: var(--color-brand-primary);
+    border-color: var(--color-brand-primary);
+    color: var(--color-background-white);
+}
+
+.shape-option:hover {
+    border-color: var(--color-brand-primary);
+}
+
+/* Color pickers */
+.color-picker-group {
+    display: flex;
+    gap: 24px;
+}
+
+.color-picker {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.color-picker label {
+    font-size: 0.85rem;
+    color: var(--color-text-default-secondary);
+}
+
+.color-picker input[type="color"] {
+    appearance: none;
+    -webkit-appearance: none;
+    width: 32px;
+    height: 32px;
+    padding: 0;
+    border: 1px solid var(--color-border-default);
+    border-radius: 8px;
+    cursor: pointer;
+    background: none;
+    overflow: hidden;
+    transition: box-shadow 0.2s, border-color 0.2s, opacity 0.2s;
+}
+
+.color-picker input[type="color"]::-webkit-color-swatch-wrapper {
+    padding: 0;
+    border-radius: 7px;
+    overflow: hidden;
+}
+
+.color-picker input[type="color"]::-webkit-color-swatch {
+    border: none;
+    border-radius: 7px;
+}
+
+.color-picker input[type="color"]::-moz-color-swatch {
+    border: none;
+    border-radius: 7px;
+}
+
+/* Background swatch group: solid color vs. transparent, as a clear either/or */
+.bg-swatch-group {
+    display: flex;
+    gap: 6px;
+}
+
+.color-picker input[type="color"].active,
+.bg-transparent-swatch.active {
+    border-color: var(--color-brand-primary);
+    box-shadow: 0 0 0 2px var(--color-background-white), 0 0 0 4px var(--color-brand-primary);
+    opacity: 1;
+}
+
+/* Shared checkerboard pattern — used for the transparent swatch and the QR preview
+   card when transparent background is selected, so "transparent" always looks the same. */
+.checkerboard-bg {
+    --tile: 8px;
+    background-color: #ffffff;
+    background-image:
+        linear-gradient(45deg, #ccc 25%, transparent 25%),
+        linear-gradient(-45deg, #ccc 25%, transparent 25%),
+        linear-gradient(45deg, transparent 75%, #ccc 75%),
+        linear-gradient(-45deg, transparent 75%, #ccc 75%);
+    background-size: var(--tile) var(--tile);
+    background-position:
+        0 0,
+        0 calc(var(--tile) / 2),
+        calc(var(--tile) / 2) calc(var(--tile) / -2),
+        calc(var(--tile) / -2) 0;
+}
+
+.bg-transparent-swatch {
+    width: 32px;
+    height: 32px;
+    padding: 0;
+    border: 1px solid var(--color-border-default);
+    border-radius: 8px;
+    cursor: pointer;
+    transition: box-shadow 0.2s, border-color 0.2s, opacity 0.2s;
+}
+
+/* Mutual dimming so it's unambiguous which mode (color vs. transparent) is active.
+   Both stay clickable — dimming is visual only, so switching back is always possible. */
+.bg-swatch-group:has(input[type="color"].active) .bg-transparent-swatch {
+    opacity: 0.4;
+}
+
+.bg-swatch-group:has(.bg-transparent-swatch.active) input[type="color"] {
+    opacity: 0.4;
+}
+
+/* Logo recolor toggle */
+.logo-recolor-option {
+    display: none;
+    align-items: center;
+    gap: 6px;
+    font-size: 0.85rem;
+    color: var(--color-text-default-secondary);
+    cursor: pointer;
+    user-select: none;
+}
+
+.logo-recolor-option.visible {
+    display: flex;
+}
+
+.logo-recolor-option input {
+    cursor: pointer;
+}
+
+/* Action bar (export controls) — last in the flow: format, then download */
+.action-bar {
+    grid-area: actions;
+    display: flex;
+    gap: 16px;
+    align-items: stretch;
+    width: 100%;
+    flex-direction: column;
+}
+
+.export-select {
+    width: 100%;
+}
+
+.btn {
+    padding: 12px 24px;
+    border: none;
+    border-radius: 8px;
+    font-size: 0.95rem;
+    font-weight: 400;
+    cursor: pointer;
+    transition: all 0.2s;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-family: var(--font-default-body), sans-serif;
+}
+
+.btn-small {
+    padding: 0 12px;
+    height: 36px;
+    font-size: 0.8rem;
+    background: var(--color-background-neutral-light);
+    white-space: nowrap;
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    color: var(--color-text-default-primary);
+}
+
+.btn-primary {
+    background-color: var(--color-brand-primary);
+    color: var(--color-background-white);
+    box-shadow: var(--shadow-sm);
+}
+
+.btn-primary:disabled {
+    background-color: var(--color-background-disabled);
+    color: var(--color-text-disabled);
+    box-shadow: none;
+}
+
+.btn-primary:hover:not(:disabled) {
+    background-color: var(--color-brand-primary-dark);
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-md);
+}
+
+.btn-primary:active:not(:disabled) {
+    transform: translateY(0);
+}
+
+/* QR preview */
+.qr-preview-wrapper {
+    display: flex;
+    justify-content: center;
+}
+
+.qr-preview {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 24px;
+    background-color: var(--color-background-white);
+    border: 1px solid var(--color-border-default);
+    border-radius: 16px;
+    box-shadow: var(--shadow-sm);
+}
+
+.qr-preview.checkerboard-bg {
+    --tile: 20px;
+}
+
+.qr-preview canvas,
+.qr-preview svg {
+    max-width: 100%;
+    height: auto;
+}
+
+@media (min-width: 640px) {
+    .action-bar {
+        flex-direction: row;
+        justify-content: flex-end;
+        align-items: center;
+    }
+
+    .export-select {
+        width: auto;
+        max-width: 220px;
+    }
+}
+
+@media (min-width: 969px) {
+    .generator-layout {
+        grid-template-columns: 400px 1fr;
+        grid-template-areas:
+            "controls preview"
+            "controls actions";
+        gap: 64px;
+        align-items: start;
+        margin-top: 64px;
+    }
+
+    .controls {
+        position: sticky;
+        top: 120px;
+    }
+
+    .qr-preview-wrapper {
+        justify-content: flex-end;
+    }
+}
