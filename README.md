@@ -11,7 +11,7 @@
 <div align="center">
 <br />
  <p>
-    <strong>Helpful Design Tools for Figma</strong><br />
+    <strong>Helpful Design Tools</strong><br />
     No accounts. No subscriptions.
   </p>
 
