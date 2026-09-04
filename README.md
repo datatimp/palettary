@@ -98,6 +98,27 @@
     </ul>
   </div>
 
+ <br/><hr/><br/>
+
+  <h3>🏁 QR Code Generator</h3>
+  <p>Create clean, permanent QR codes for free. Your link is encoded directly into the code — no redirects, no expiration, no tracking.</p>
+  
+  <img src="src/assets/images/palettary-qr-code-screen.png" width="60%">
+  <br/>
+
+  <a href="https://datatimp.github.io/palettary/qr.html">
+    <img src="https://img.shields.io/badge/Launch_App-QR_Code_Generator-orange" alt="Launch QR Code App" />
+  </a>
+
+  <div align="left" style="max-width: 400px;">
+    <ul>
+      <li>Custom dot, corner, and background colors, including transparent</li>
+      <li>Square, rounded, and circular module styles</li>
+      <li>Embed a logo, with optional auto-recolor to match</li>
+      <li>Export as true vector SVG or PNG</li>
+    </ul>
+  </div>
+
 </div>
 
 <br />
