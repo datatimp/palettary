@@ -8,6 +8,9 @@ const statusConfig = {
     'deprecated': { label: 'Deprecated', cssClass: 'thumb-badge--deprecated' }
 };
 
+// Logo box height: 154px header minus 30px padding top and bottom
+const LOGO_MAX_HEIGHT = 94;
+
 // Custom logo state
 let customLogoBase64 = null;
 let customLogoDimensions = { width: 0, height: 0, ratio: 0 };
@@ -64,11 +67,10 @@ const iconPaths = {
 // Update download button state based on status and format selection
 function updateDownloadButtonState() {
     const downloadBtn = document.getElementById('downloadBtn');
-    const status = document.getElementById('status').value;
     const exportFormat = document.getElementById('exportFormat').value;
 
-    // Enable only if status and format are selected
-    downloadBtn.disabled = !(status && exportFormat);
+    // Status is optional (no status = no badge); only the export format is required
+    downloadBtn.disabled = !exportFormat;
 }
 
 function generateThumbnails() {
@@ -96,8 +98,18 @@ function generateThumbnails() {
     const showLaptop = document.getElementById('platformLaptop').checked;
     const showDesktop = document.getElementById('platformDesktop').checked;
 
-    // Get status info, fallback to default placeholder if none selected
-    const statusInfo = statusConfig[status] || { label: 'File Status', cssClass: 'thumb-badge--default' };
+    // Status badge is omitted entirely when no status is selected
+    const statusInfo = statusConfig[status] || null;
+
+    // Size the logo in absolute pixels rather than leaving it to the CSS
+    // height:100% chain. html2canvas rasterises a cloned copy of the document,
+    // and percentage heights are the first thing to break in that clone.
+    const logoWidth = customLogoDimensions.ratio
+        ? Math.round(LOGO_MAX_HEIGHT * customLogoDimensions.ratio)
+        : 0;
+    const logoSizeAttrs = logoWidth
+        ? ` width="${logoWidth}" height="${LOGO_MAX_HEIGHT}" style="width: ${logoWidth}px; height: ${LOGO_MAX_HEIGHT}px;"`
+        : ` style="height: ${LOGO_MAX_HEIGHT}px; width: auto;"`;
 
     // Build OS icons HTML
     let iconsHtml = '';
@@ -128,7 +140,7 @@ function generateThumbnails() {
                 <div class="thumb-top-container">
                     <div class="thumb-header">
                         <div class="thumb-logo">
-                            ${customLogoBase64 ? `<img src="${customLogoBase64}" alt="Logo">` : ''}
+                            ${customLogoBase64 ? `<img src="${customLogoBase64}" alt="Logo"${logoSizeAttrs}>` : ''}
                         </div>
                     </div>
                     <div class="thumb-text-group">
@@ -141,7 +153,7 @@ function generateThumbnails() {
                 <div class="thumb-footer-row">
                     <div class="thumb-divider"></div>
                     <div class="thumb-status-row">
-                        <div class="thumb-badge ${statusInfo.cssClass}">${statusInfo.label}</div>
+                        ${statusInfo ? `<div class="thumb-badge ${statusInfo.cssClass}">${statusInfo.label}</div>` : ''}
                         <div class="thumb-platforms">
                             ${iconsHtml}
                         </div>
@@ -234,16 +246,17 @@ function downloadAsSVG(filename, downloadBtn, originalText) {
     const computedStyles = getComputedStyle(document.documentElement);
 
     // Get CSS variable values
-    const colorTextDefault = computedStyles.getPropertyValue('--color-text-default').trim() || '#222323';
+    const colorTextDefault = computedStyles.getPropertyValue('--color-text-default-primary').trim() || '#1f2937';
     const colorTextWhite = computedStyles.getPropertyValue('--color-text-white').trim() || '#ffffff';
-    const colorTextNeutralMedium = computedStyles.getPropertyValue('--color-text-neutral-medium').trim() || '#515151';
+    const colorTextNeutralMedium = computedStyles.getPropertyValue('--color-text-neutral-medium').trim() || '#414141';
+    const colorBgNeutralLight = computedStyles.getPropertyValue('--color-background-neutral-light').trim() || '#e5e5e5';
     const colorBgNeutralMedium = computedStyles.getPropertyValue('--color-background-neutral-medium').trim() || '#a5a5a5';
-    const colorBgNeutralDark = computedStyles.getPropertyValue('--color-background-neutral-dark').trim() || '#515151';
-    const colorBgSuccessDark = computedStyles.getPropertyValue('--color-background-success-dark').trim() || '#166534';
+    const colorBgNeutralDark = computedStyles.getPropertyValue('--color-background-neutral-dark').trim() || '#414141';
+    const colorBgSuccessDark = computedStyles.getPropertyValue('--color-background-success-dark').trim() || '#15803d';
     const colorBgAlertMedium = computedStyles.getPropertyValue('--color-background-alert-medium').trim() || '#e0c872';
     const colorBgPurpleMedium = computedStyles.getPropertyValue('--color-background-purple-medium').trim() || '#8b23b3';
     const colorBgBlueDark = computedStyles.getPropertyValue('--color-background-blue-dark').trim() || '#1e3a8a';
-    const colorBgTealMedium = computedStyles.getPropertyValue('--color-background-teal-medium').trim() || '#5eafa0';
+    const colorBgTealMedium = computedStyles.getPropertyValue('--color-background-teal-medium').trim() || '#85c7bb';
 
     // Get current form values
     const designSystemName = document.getElementById('designSystemName').value || 'Design System Name';
@@ -256,20 +269,20 @@ function downloadAsSVG(filename, downloadBtn, originalText) {
     const showProjectType = document.getElementById('showProjectType').checked;
     const showDescription = document.getElementById('showDescription').checked;
 
-    const statusInfo = statusConfig[status] || { label: 'File Status', cssClass: 'thumb-badge--default' };
+    const statusInfo = statusConfig[status] || null;
 
     // Status badge colors based on variant
     const badgeColors = {
-        'thumb-badge--default': { bg: colorBgNeutralMedium, text: colorTextDefault },
-        'thumb-badge--archived': { bg: colorBgNeutralMedium, text: colorTextDefault },
-        'thumb-badge--deprecated': { bg: colorBgNeutralMedium, text: colorTextNeutralMedium },
+        'thumb-badge--default': { bg: colorBgNeutralLight, text: colorTextDefault },
+        'thumb-badge--archived': { bg: colorBgNeutralLight, text: colorTextDefault },
+        'thumb-badge--deprecated': { bg: colorBgNeutralLight, text: colorTextNeutralMedium },
         'thumb-badge--completed': { bg: colorBgSuccessDark, text: colorTextWhite },
         'thumb-badge--in-progress': { bg: colorBgAlertMedium, text: colorTextDefault },
         'thumb-badge--review': { bg: colorBgPurpleMedium, text: colorTextWhite },
         'thumb-badge--paused': { bg: colorBgBlueDark, text: colorTextWhite },
         'thumb-badge--dev': { bg: colorBgTealMedium, text: colorTextDefault }
     };
-    const badgeColor = badgeColors[statusInfo.cssClass] || badgeColors['thumb-badge--default'];
+    const badgeColor = (statusInfo && badgeColors[statusInfo.cssClass]) || badgeColors['thumb-badge--default'];
 
     // Calculate text positions dynamically
     // SVG text y = baseline position. For proper layout, we position baselines.
@@ -290,7 +303,7 @@ function downloadAsSVG(filename, downloadBtn, originalText) {
 
     if (showProjectType) {
         textY += 46; // Baseline offset for 56px font
-        textElements.push(`<text x="90" y="${textY}" font-family="Roboto Mono, monospace" font-weight="500" font-size="56" fill="${colorTextDefault}" letter-spacing="2.8">${escapeXml(projectType.toUpperCase())}</text>`);
+        textElements.push(`<text x="90" y="${textY}" font-family="Fira Code, monospace" font-weight="500" font-size="56" fill="${colorTextDefault}" letter-spacing="2">${escapeXml(projectType.toUpperCase())}</text>`);
         textY += 42; // Gap after project type
     }
 
@@ -334,16 +347,25 @@ function downloadAsSVG(filename, downloadBtn, originalText) {
 
     activeIcons.forEach((iconType) => {
         iconX -= iconSize;
-        platformIcons.push(`<g transform="translate(${iconX}, ${iconY})">${iconPathData[iconType]}</g>`);
+        // Icon tiles are authored with a hardcoded grey; swap in the live token so
+        // the export tracks the same value the preview renders.
+        const iconMarkup = iconPathData[iconType].replace('fill="#A5A5A5"', `fill="${colorBgNeutralMedium}"`);
+        platformIcons.push(`<g transform="translate(${iconX}, ${iconY})">${iconMarkup}</g>`);
         iconX -= iconGap;
     });
 
-    // Calculate badge width based on text length
-    const badgeText = statusInfo.label.toUpperCase();
-    const badgeCharWidth = 24; // Approximate width per character at 40px font
-    const badgePadding = 84; // 42px padding on each side
-    const badgeWidth = (badgeText.length * badgeCharWidth) + badgePadding;
-    const badgeHeight = 80; // 20px padding top/bottom + ~40px text
+    // Calculate badge width based on text length (skipped when no status is selected)
+    let badgeMarkup = '';
+    if (statusInfo) {
+        const badgeText = statusInfo.label.toUpperCase();
+        const badgeCharWidth = 24; // Approximate width per character at 40px font
+        const badgePadding = 84; // 42px padding on each side
+        const badgeWidth = (badgeText.length * badgeCharWidth) + badgePadding;
+        const badgeHeight = 80; // 20px padding top/bottom + ~40px text
+
+        badgeMarkup = `<rect x="90" y="${iconY}" width="${badgeWidth}" height="${badgeHeight}" rx="40" fill="${badgeColor.bg}"/>
+    <text x="${90 + badgeWidth / 2}" y="${iconY + 52}" font-family="Fira Code, monospace" font-weight="500" font-size="40" fill="${badgeColor.text}" text-anchor="middle">${escapeXml(badgeText)}</text>`;
+    }
 
     // SVG Header Definition
     let headerDefs = '';
@@ -390,8 +412,7 @@ function downloadAsSVG(filename, downloadBtn, originalText) {
     <rect x="90" y="928" width="1740" height="3" fill="${colorBgNeutralDark}"/>
 
     <!-- Status badge -->
-    <rect x="90" y="${iconY}" width="${badgeWidth}" height="${badgeHeight}" rx="40" fill="${badgeColor.bg}"/>
-    <text x="${90 + badgeWidth/2}" y="${iconY + 52}" font-family="Roboto Mono, monospace" font-weight="500" font-size="40" fill="${badgeColor.text}" text-anchor="middle">${escapeXml(badgeText)}</text>
+    ${badgeMarkup}
 
     <!-- Platform icons -->
     ${platformIcons.join('\n    ')}
@@ -560,24 +581,98 @@ initHeaderControls();
 const logoInput = document.getElementById('logoUpload');
 const clearLogoBtn = document.getElementById('clearLogoBtn');
 
+// An SVG that carries only a viewBox has no intrinsic size, so the browser
+// reports the CSS default object size (300x150) for naturalWidth/naturalHeight.
+// The preview survives that because CSS sizes the <img> from the viewBox ratio,
+// but the exports do not: html2canvas samples a 300x150 source rect out of a
+// letterboxed raster, and the SVG exporter derives a 2:1 box from the bogus
+// ratio. Stamping real width/height onto the uploaded SVG fixes both.
+function normalizeSvgLogo(svgText) {
+    const doc = new DOMParser().parseFromString(svgText, 'image/svg+xml');
+    const svg = doc.documentElement;
+
+    if (!svg || svg.nodeName.toLowerCase() !== 'svg' || doc.querySelector('parsererror')) {
+        return null;
+    }
+
+    // Only absolute lengths count as intrinsic; percentages resolve against the
+    // viewport and leave the image sizeless.
+    const parseLength = (value) => {
+        if (!value || /%\s*$/.test(value)) return 0;
+        const n = parseFloat(value);
+        return Number.isFinite(n) && n > 0 ? n : 0;
+    };
+
+    let width = parseLength(svg.getAttribute('width'));
+    let height = parseLength(svg.getAttribute('height'));
+    const viewBox = (svg.getAttribute('viewBox') || '').trim().split(/[\s,]+/).map(parseFloat);
+    const hasViewBox = viewBox.length === 4 && viewBox.every(Number.isFinite) && viewBox[2] > 0 && viewBox[3] > 0;
+
+    if ((!width || !height) && hasViewBox) {
+        width = viewBox[2];
+        height = viewBox[3];
+    }
+
+    if (!width || !height) return null;
+
+    svg.setAttribute('width', width);
+    svg.setAttribute('height', height);
+    if (!hasViewBox) {
+        svg.setAttribute('viewBox', `0 0 ${width} ${height}`);
+    }
+
+    return { width, height, dataUri: svgToDataUri(new XMLSerializer().serializeToString(svg)) };
+}
+
+function svgToDataUri(svgText) {
+    const bytes = new TextEncoder().encode(svgText);
+    let binary = '';
+    bytes.forEach(byte => { binary += String.fromCharCode(byte); });
+    return 'data:image/svg+xml;base64,' + btoa(binary);
+}
+
 logoInput.addEventListener('change', function(e) {
     const file = e.target.files[0];
-    if (file) {
-        document.getElementById('logoFileName').textContent = file.name;
-        const reader = new FileReader();
-        reader.onload = function(event) {
-            customLogoBase64 = event.target.result;
-            
-            // Get dimensions for SVG export
-            const img = new Image();
-            img.onload = function() {
-                customLogoDimensions.width = img.naturalWidth;
-                customLogoDimensions.height = img.naturalHeight;
-                customLogoDimensions.ratio = img.naturalWidth / img.naturalHeight;
+    if (!file) return;
+
+    document.getElementById('logoFileName').textContent = file.name;
+
+    const isSvg = file.type === 'image/svg+xml' || /\.svg$/i.test(file.name);
+    const reader = new FileReader();
+
+    reader.onload = function(event) {
+        if (isSvg) {
+            const normalized = normalizeSvgLogo(event.target.result);
+            if (normalized) {
+                customLogoBase64 = normalized.dataUri;
+                customLogoDimensions = {
+                    width: normalized.width,
+                    height: normalized.height,
+                    ratio: normalized.width / normalized.height
+                };
                 generateThumbnails();
-            };
-            img.src = customLogoBase64;
+                return;
+            }
+            // Unparseable SVG: fall through and let the browser measure it
+            customLogoBase64 = svgToDataUri(event.target.result);
+        } else {
+            customLogoBase64 = event.target.result;
+        }
+
+        // Get dimensions for SVG export
+        const img = new Image();
+        img.onload = function() {
+            customLogoDimensions.width = img.naturalWidth;
+            customLogoDimensions.height = img.naturalHeight;
+            customLogoDimensions.ratio = img.naturalWidth / img.naturalHeight;
+            generateThumbnails();
         };
+        img.src = customLogoBase64;
+    };
+
+    if (isSvg) {
+        reader.readAsText(file);
+    } else {
         reader.readAsDataURL(file);
     }
 });
@@ -593,18 +688,17 @@ clearLogoBtn.addEventListener('click', function() {
 function getSvgLogoMarkup() {
     if (!customLogoBase64) return '';
 
-    // Calculate dimensions to fit within 94px height (154px header - 30px padding * 2)
-    // while maintaining aspect ratio
-    const maxHeight = 94;
-    
+    // Fit within the logo box height while maintaining aspect ratio
+    const maxHeight = LOGO_MAX_HEIGHT;
+
     // Use the stored ratio
-    let width = maxHeight * customLogoDimensions.ratio;
-    let height = maxHeight;
+    const width = customLogoDimensions.ratio ? maxHeight * customLogoDimensions.ratio : maxHeight;
+    const height = maxHeight;
 
     // Center vertically in the header (y=64, height=154). 
     // Logo padding is 30px, so it starts at y=94.
     const x = 120; // 30px padding left of header (x=90) -> 90+30=120
     const y = 94;  // 30px padding top of header (y=64) -> 64+30=94
 
-    return `<image x="${x}" y="${y}" width="${width}" height="${height}" href="${customLogoBase64}" />`;
+    return `<image x="${x}" y="${y}" width="${width}" height="${height}" preserveAspectRatio="xMinYMid meet" href="${customLogoBase64}" />`;
 }

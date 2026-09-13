@@ -42,11 +42,13 @@ html {
     --color-neutral-550: rgb(163, 163, 163);
     --color-neutral-600: rgb(107, 114, 128);
     --color-neutral-700: rgb(81, 81, 81);
+    --color-neutral-750: rgb(65, 65, 65);
     --color-neutral-800: rgb(49, 49, 49);
     --color-neutral-900: rgb(31, 41, 55);
 
     /* Green */
     --color-green-500: rgb(81, 122, 92);
+    --color-green-700: rgb(21, 128, 61);
     --color-green-800: rgb(22, 101, 52);
     --color-green-900: rgb(27, 58, 34);
 

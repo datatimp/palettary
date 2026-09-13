@@ -368,7 +368,9 @@
     padding: 30px;
     justify-content: center;
     align-items: center;
-    height: 100%;
+    /* Explicit height, not 100%: percentage heights are unreliable inside the
+       cloned document html2canvas rasterises for the PNG export. */
+    height: 154px;
     box-sizing: border-box;
 }
 
@@ -498,12 +500,14 @@
 .thumb-platforms {
     display: flex;
     gap: 12px;
+    margin-left: auto; /* stay right-aligned when no status badge is rendered */
 }
 
 .thumb-platform-icon {
     width: 72px;
     height: 72px;
-    padding: 8px;
+    /* No padding: the icon assets already include their own 72x72 tile, so any
+       padding here shrinks the glyph relative to the SVG export. */
     background: var(--color-background-neutral-medium);
     border-radius: 8px;
     display: flex;
