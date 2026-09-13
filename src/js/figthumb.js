@@ -14,6 +14,8 @@ const LOGO_MAX_HEIGHT = 94;
 // Custom logo state
 let customLogoBase64 = null;
 let customLogoDimensions = { width: 0, height: 0, ratio: 0 };
+// Inlineable vector form of an SVG logo, used by the SVG export
+let customLogoVector = null;
 
 // Header Config State
 let headerConfig = {
@@ -322,8 +324,15 @@ function downloadAsSVG(filename, downloadBtn, originalText) {
 
     const iconSize = 72;
     const iconGap = 12;
-    let iconX = 1830; // Start from right side
-    const iconY = 968; // Footer row Y position
+    const iconRowRight = 1830; // Right edge of the content area
+    let iconX = iconRowRight;
+
+    // Footer geometry, mirroring the preview: the 80px status row sits on the
+    // 64px bottom padding, with a 24px gap above it for the 3px divider.
+    const badgeHeight = 80;
+    const footerRowTop = 1080 - 64 - badgeHeight; // 936
+    const dividerY = footerRowTop - 24 - 3;       // 909
+    const iconY = footerRowTop + (badgeHeight - iconSize) / 2; // centred in the row
     const platformIcons = [];
 
     // Icon path data (extracted from SVG files - these are designed at 72x72)
@@ -336,22 +345,27 @@ function downloadAsSVG(filename, downloadBtn, originalText) {
         android: '<rect width="72" height="72" rx="8" fill="#A5A5A5"/><path fill-rule="evenodd" clip-rule="evenodd" d="M24.3016 11.3377C24.4084 11.2306 24.5352 11.1457 24.6749 11.0878C24.8145 11.0298 24.9642 11 25.1154 11C25.2666 11 25.4163 11.0298 25.5559 11.0878C25.6955 11.1457 25.8224 11.2306 25.9291 11.3377L28.4693 13.8801C30.438 12.7418 32.6731 12.1454 34.9472 12.1514H36.5701C38.8459 12.1452 41.0828 12.7425 43.0526 13.8824L45.5973 11.3377C45.8131 11.1222 46.1057 11.0012 46.4107 11.0014C46.7157 11.0016 47.0082 11.123 47.2237 11.3388C47.4392 11.5546 47.5601 11.8472 47.5599 12.1522C47.5597 12.4572 47.4383 12.7497 47.2225 12.9652L44.9606 15.2272C46.4003 16.4453 47.5569 17.9629 48.3498 19.6741C49.1426 21.3853 49.5526 23.2489 49.5512 25.1348C49.5506 25.3496 49.4648 25.5554 49.3127 25.7071C49.1606 25.8588 48.9545 25.944 48.7397 25.944H22.7776C22.5623 25.944 22.3559 25.8585 22.2038 25.7063C22.0516 25.5541 21.9661 25.3477 21.9661 25.1325C21.9661 21.1603 23.7499 17.6041 26.5636 15.2249L24.3016 12.9652C24.1946 12.8584 24.1097 12.7316 24.0517 12.592C23.9938 12.4523 23.964 12.3026 23.964 12.1514C23.964 12.0002 23.9938 11.8506 24.0517 11.7109C24.1097 11.5713 24.1946 11.4444 24.3016 11.3377ZM32.3105 19.6224C32.3105 20.0796 32.1289 20.5182 31.8055 20.8415C31.4822 21.1648 31.0437 21.3465 30.5864 21.3465C30.1292 21.3465 29.6907 21.1648 29.3673 20.8415C29.044 20.5182 28.8624 20.0796 28.8624 19.6224C28.8624 19.1651 29.044 18.7266 29.3673 18.4033C29.6907 18.08 30.1292 17.8983 30.5864 17.8983C31.0437 17.8983 31.4822 18.08 31.8055 18.4033C32.1289 18.7266 32.3105 19.1651 32.3105 19.6224ZM40.8711 21.3465C41.3283 21.3465 41.7668 21.1648 42.0902 20.8415C42.4135 20.5182 42.5951 20.0796 42.5951 19.6224C42.5951 19.1651 42.4135 18.7266 42.0902 18.4033C41.7668 18.08 41.3283 17.8983 40.8711 17.8983C40.4138 17.8983 39.9753 18.08 39.652 18.4033C39.3286 18.7266 39.147 19.1651 39.147 19.6224C39.147 20.0796 39.3286 20.5182 39.652 20.8415C39.9753 21.1648 40.4138 21.3465 40.8711 21.3465Z" fill="white"/><path d="M17.3686 28.1209C16.7589 28.1209 16.1742 28.3631 15.7431 28.7942C15.312 29.2253 15.0698 29.81 15.0698 30.4196V44.2122C15.0698 44.8218 15.312 45.4065 15.7431 45.8377C16.1742 46.2687 16.7589 46.5109 17.3686 46.5109C17.9782 46.5109 18.5629 46.2687 18.994 45.8377C19.4251 45.4065 19.6673 44.8218 19.6673 44.2122V30.4196C19.6673 29.81 19.4251 29.2253 18.994 28.7942C18.5629 28.3631 17.9782 28.1209 17.3686 28.1209ZM24.2648 28.1209C23.6552 28.1209 23.0705 28.3631 22.6394 28.7942C22.2083 29.2253 21.9661 29.81 21.9661 30.4196V51.1085C21.9661 51.7181 22.2083 52.3028 22.6394 52.7339C23.0705 53.165 23.6552 53.4072 24.2648 53.4072H47.2524C47.8621 53.4072 48.4468 53.165 48.8779 52.7339C49.309 52.3028 49.5512 51.7181 49.5512 51.1085V30.4196C49.5512 29.81 49.309 29.2253 48.8779 28.7942C48.4468 28.3631 47.8621 28.1209 47.2524 28.1209H24.2648ZM52.3327 30.4196C52.3327 29.81 52.5749 29.2253 53.006 28.7942C53.4371 28.3631 54.0217 28.1209 54.6314 28.1209C55.2411 28.1209 55.8258 28.3631 56.2569 28.7942C56.688 29.2253 56.9302 29.81 56.9302 30.4196V44.2122C56.9302 44.8218 56.688 45.4065 56.2569 45.8377C55.8258 46.2687 55.2411 46.5109 54.6314 46.5109C54.0217 46.5109 53.4371 46.2687 53.006 45.8377C52.5749 45.4065 52.3327 44.8218 52.3327 44.2122V30.4196ZM26.0878 55.8278C25.9991 55.8278 25.9113 55.8453 25.8295 55.8793C25.7476 55.9133 25.6733 55.9631 25.6107 56.0259C25.5481 56.0887 25.4985 56.1632 25.4648 56.2452C25.4311 56.3272 25.4139 56.415 25.4142 56.5036V56.9772C25.4142 58.0441 25.8381 59.0673 26.5925 59.8217C27.3469 60.5762 28.3701 61 29.437 61C30.504 61 31.5272 60.5762 32.2816 59.8217C33.036 59.0673 33.4599 58.0441 33.4599 56.9772V56.5036C33.4602 56.415 33.443 56.3272 33.4093 56.2452C33.3756 56.1632 33.326 56.0887 33.2634 56.0259C33.2008 55.9631 33.1265 55.9133 33.0446 55.8793C32.9628 55.8453 32.875 55.8278 32.7863 55.8278H26.0878ZM38.0574 56.5036C38.0574 56.1289 38.3585 55.8278 38.7309 55.8278H45.4272C45.8019 55.8278 46.103 56.1289 46.103 56.5036V56.9772C46.103 58.0441 45.6792 59.0673 44.9248 59.8217C44.1703 60.5762 43.1471 61 42.0802 61C41.0133 61 39.9901 60.5762 39.2356 59.8217C38.4812 59.0673 38.0574 58.0441 38.0574 56.9772V56.5036Z" fill="white"/>'
     };
 
-    // Build icons right-to-left
+    // Same order the preview emits: OS first, then platforms largest to smallest
     const activeIcons = [];
+    if (showIos) activeIcons.push('ios');
+    if (showAndroid) activeIcons.push('android');
     if (showDesktop) activeIcons.push('desktop');
     if (showLaptop) activeIcons.push('laptop');
     if (showMobile) activeIcons.push('mobile');
     if (showWatch) activeIcons.push('watch');
-    if (showAndroid) activeIcons.push('android');
-    if (showIos) activeIcons.push('ios');
+
+    // The row is right-aligned, so find the left edge and lay out forwards
+    const iconRowWidth = activeIcons.length
+        ? (activeIcons.length * iconSize) + ((activeIcons.length - 1) * iconGap)
+        : 0;
+    iconX = iconRowRight - iconRowWidth;
 
     activeIcons.forEach((iconType) => {
-        iconX -= iconSize;
         // Icon tiles are authored with a hardcoded grey; swap in the live token so
         // the export tracks the same value the preview renders.
         const iconMarkup = iconPathData[iconType].replace('fill="#A5A5A5"', `fill="${colorBgNeutralMedium}"`);
         platformIcons.push(`<g transform="translate(${iconX}, ${iconY})">${iconMarkup}</g>`);
-        iconX -= iconGap;
+        iconX += iconSize + iconGap;
     });
 
     // Calculate badge width based on text length (skipped when no status is selected)
@@ -361,10 +375,9 @@ function downloadAsSVG(filename, downloadBtn, originalText) {
         const badgeCharWidth = 24; // Approximate width per character at 40px font
         const badgePadding = 84; // 42px padding on each side
         const badgeWidth = (badgeText.length * badgeCharWidth) + badgePadding;
-        const badgeHeight = 80; // 20px padding top/bottom + ~40px text
 
-        badgeMarkup = `<rect x="90" y="${iconY}" width="${badgeWidth}" height="${badgeHeight}" rx="40" fill="${badgeColor.bg}"/>
-    <text x="${90 + badgeWidth / 2}" y="${iconY + 52}" font-family="Fira Code, monospace" font-weight="500" font-size="40" fill="${badgeColor.text}" text-anchor="middle">${escapeXml(badgeText)}</text>`;
+        badgeMarkup = `<rect x="90" y="${footerRowTop}" width="${badgeWidth}" height="${badgeHeight}" rx="40" fill="${badgeColor.bg}"/>
+    <text x="${90 + badgeWidth / 2}" y="${footerRowTop + 52}" font-family="Fira Code, monospace" font-weight="500" font-size="40" fill="${badgeColor.text}" text-anchor="middle">${escapeXml(badgeText)}</text>`;
     }
 
     // SVG Header Definition
@@ -393,7 +406,7 @@ function downloadAsSVG(filename, downloadBtn, originalText) {
 
     // Create SVG with native elements
     const svg = `<?xml version="1.0" encoding="UTF-8"?>
-<svg width="1920" height="1080" viewBox="0 0 1920 1080" xmlns="http://www.w3.org/2000/svg">
+<svg width="1920" height="1080" viewBox="0 0 1920 1080" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
     ${headerDefs}
 
     <!-- Background -->
@@ -409,7 +422,7 @@ function downloadAsSVG(filename, downloadBtn, originalText) {
     ${textElements.join('\n    ')}
 
     <!-- Divider line -->
-    <rect x="90" y="928" width="1740" height="3" fill="${colorBgNeutralDark}"/>
+    <rect x="90" y="${dividerY}" width="1740" height="3" fill="${colorBgNeutralDark}"/>
 
     <!-- Status badge -->
     ${badgeMarkup}
@@ -613,15 +626,99 @@ function normalizeSvgLogo(svgText) {
         height = viewBox[3];
     }
 
+    // Neither absolute size nor viewBox (e.g. width="100%"): measure the drawn
+    // artwork itself, so the logo can still be inlined as vector geometry.
+    let measured = null;
+    if (!width || !height) {
+        measured = measureSvgArtwork(svg);
+        if (measured) {
+            width = measured[2];
+            height = measured[3];
+            svg.setAttribute('viewBox', measured.join(' '));
+        }
+    }
+
     if (!width || !height) return null;
 
     svg.setAttribute('width', width);
     svg.setAttribute('height', height);
-    if (!hasViewBox) {
+    if (!hasViewBox && !measured) {
         svg.setAttribute('viewBox', `0 0 ${width} ${height}`);
     }
 
-    return { width, height, dataUri: svgToDataUri(new XMLSerializer().serializeToString(svg)) };
+    const effectiveViewBox = hasViewBox ? viewBox : (measured || [0, 0, width, height]);
+
+    return {
+        width,
+        height,
+        dataUri: svgToDataUri(new XMLSerializer().serializeToString(svg)),
+        vector: buildVectorLogo(svg, effectiveViewBox)
+    };
+}
+
+// Renders the artwork off-screen and reads its bounding box. The only way to
+// get real dimensions out of an SVG that declares none.
+function measureSvgArtwork(svgEl) {
+    const probe = document.importNode(svgEl, true);
+    probe.setAttribute('width', '1000');
+    probe.setAttribute('height', '1000');
+    probe.style.cssText = 'position: absolute; left: -10000px; top: 0; visibility: hidden;';
+    document.body.appendChild(probe);
+
+    let box = null;
+    try {
+        const bbox = probe.getBBox();
+        if (bbox.width > 0 && bbox.height > 0) {
+            box = [bbox.x, bbox.y, bbox.width, bbox.height];
+        }
+    } catch (err) {
+        box = null;
+    }
+
+    document.body.removeChild(probe);
+    return box;
+}
+
+// Presentation attributes on the root <svg> are inherited by its children, so
+// they have to move onto the wrapping <g> when the contents are inlined.
+const INHERITED_SVG_ATTRS = [
+    'fill', 'fill-rule', 'fill-opacity', 'stroke', 'stroke-width', 'stroke-linecap',
+    'stroke-linejoin', 'stroke-dasharray', 'stroke-opacity', 'clip-rule', 'color',
+    'font-family', 'font-size', 'font-weight', 'opacity', 'style'
+];
+
+// Figma's SVG importer will not rasterise an SVG embedded in an <image>, so an
+// SVG logo is inlined into the export as real vector geometry instead.
+function buildVectorLogo(svgEl, viewBox) {
+    const serializer = new XMLSerializer();
+    const clone = svgEl.cloneNode(true);
+
+    // Namespace every id so the logo cannot collide with the export's own defs
+    const renamed = new Map();
+    clone.querySelectorAll('[id]').forEach(el => {
+        const oldId = el.getAttribute('id');
+        if (!oldId || renamed.has(oldId)) return;
+        renamed.set(oldId, `logo-${oldId}`);
+        el.setAttribute('id', renamed.get(oldId));
+    });
+
+    let inner = Array.from(clone.childNodes)
+        .map(node => serializer.serializeToString(node))
+        .join('');
+
+    renamed.forEach((newId, oldId) => {
+        inner = inner.split(`url(#${oldId})`).join(`url(#${newId})`);
+        inner = inner.split(`href="#${oldId}"`).join(`href="#${newId}"`);
+    });
+
+    if (!inner.trim()) return null;
+
+    const rootAttrs = INHERITED_SVG_ATTRS
+        .filter(name => clone.hasAttribute(name))
+        .map(name => ` ${name}="${clone.getAttribute(name)}"`)
+        .join('');
+
+    return { inner, rootAttrs, viewBox };
 }
 
 function svgToDataUri(svgText) {
@@ -645,6 +742,7 @@ logoInput.addEventListener('change', function(e) {
             const normalized = normalizeSvgLogo(event.target.result);
             if (normalized) {
                 customLogoBase64 = normalized.dataUri;
+                customLogoVector = normalized.vector;
                 customLogoDimensions = {
                     width: normalized.width,
                     height: normalized.height,
@@ -654,8 +752,10 @@ logoInput.addEventListener('change', function(e) {
                 return;
             }
             // Unparseable SVG: fall through and let the browser measure it
+            customLogoVector = null;
             customLogoBase64 = svgToDataUri(event.target.result);
         } else {
+            customLogoVector = null;
             customLogoBase64 = event.target.result;
         }
 
@@ -681,6 +781,7 @@ clearLogoBtn.addEventListener('click', function() {
     logoInput.value = ''; // Clear input
     document.getElementById('logoFileName').textContent = 'No file chosen';
     customLogoBase64 = null;
+    customLogoVector = null;
     customLogoDimensions = { width: 0, height: 0, ratio: 0 };
     generateThumbnails();
 });
@@ -700,5 +801,16 @@ function getSvgLogoMarkup() {
     const x = 120; // 30px padding left of header (x=90) -> 90+30=120
     const y = 94;  // 30px padding top of header (y=64) -> 64+30=94
 
-    return `<image x="${x}" y="${y}" width="${width}" height="${height}" preserveAspectRatio="xMinYMid meet" href="${customLogoBase64}" />`;
+    // Vector logo: inline the artwork so Figma imports editable shapes
+    if (customLogoVector) {
+        const [minX, minY, vbWidth, vbHeight] = customLogoVector.viewBox;
+        const scale = height / vbHeight;
+        const transform = `translate(${x}, ${y}) scale(${scale})` +
+            (minX || minY ? ` translate(${-minX}, ${-minY})` : '');
+
+        return `<g transform="${transform}"${customLogoVector.rootAttrs}>${customLogoVector.inner}</g>`;
+    }
+
+    // Raster logo: xlink:href alongside href, for importers that predate SVG 2
+    return `<image x="${x}" y="${y}" width="${width}" height="${height}" preserveAspectRatio="xMinYMid meet" href="${customLogoBase64}" xlink:href="${customLogoBase64}" />`;
 }

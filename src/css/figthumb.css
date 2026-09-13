@@ -441,12 +441,17 @@
     align-items: center;
     justify-content: space-between;
     width: 100%;
+    /* Fixed height: the row is bottom-anchored, so letting it size to its
+       content would shift the divider whenever a badge appears or disappears. */
+    height: 80px;
 }
 
 /* Status badge */
 .thumb-badge {
     display: inline-flex;
-    padding: 12px 42px;
+    height: 80px;
+    padding: 0 42px;
+    line-height: 1;
     justify-content: center;
     align-items: center;
     border-radius: 9999px;
