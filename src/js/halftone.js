@@ -23,6 +23,9 @@ function loadImage(file) {
             offscreenCanvas.width = img.naturalWidth;
             offscreenCanvas.height = img.naturalHeight;
             offscreenCtx = offscreenCanvas.getContext('2d');
+            // Back transparent pixels with white paper; otherwise they read as RGB 0,0,0 (full ink).
+            offscreenCtx.fillStyle = '#fff';
+            offscreenCtx.fillRect(0, 0, img.naturalWidth, img.naturalHeight);
             offscreenCtx.drawImage(img, 0, 0);
 
             document.getElementById('uploadFileName').textContent = file.name;
