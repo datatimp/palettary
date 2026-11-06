@@ -42,6 +42,9 @@ function loadImage(file) {
     reader.readAsDataURL(file);
 }
 
+// Ink below one 8-bit step (1/255) counts as paper white and gets no dot.
+const WHITE_CUTOFF = 1 / 255;
+
 function rgbToLuminance(r, g, b) {
     return (0.2126 * r + 0.7152 * g + 0.0722 * b) / 255;
 }
@@ -120,6 +123,9 @@ function getCirclesDiamond(imageData, cellSize, angleDeg, minR, gamma) {
                 luma(samplePixel(imageData, ix, iy - hs))
             ) / 5;
 
+            // Pure white is bare paper: no dot, even when Min Radius is set.
+            if (channelValue < WHITE_CUTOFF) continue;
+
             const curved = Math.pow(channelValue, gamma);
             const radius = curved * (maxR - minR) + minR;
             if (radius <= 0) continue;
@@ -171,6 +177,9 @@ function getCirclesSquare(sourceCanvas, cellSize, angleDeg, minR, gamma) {
 
             const luma = sampleBilinear(blurredData, ix, iy);
             const density = 1 - luma; // 0 = white/no ink, 1 = black/full ink
+
+            // Pure white is bare paper: no dot, even when Min Radius is set.
+            if (density < WHITE_CUTOFF) continue;
 
             // Gamma curve: >1 opens highlights (smaller dots), <1 pushes heavier.
             const curved = Math.pow(density, gamma);
@@ -269,7 +278,7 @@ function updateDownloadButton() {
 
 document.addEventListener('DOMContentLoaded', () => {
     state.gridType   = document.querySelector('input[name="gridType"]:checked')?.value || 'square';
-    state.dotsPerRow = Math.max(5, parseInt(document.getElementById('dotsPerRow').value) || 40);
+    state.dotsPerRow = Math.min(300, Math.max(5, parseInt(document.getElementById('dotsPerRow').value) || 40));
     state.angle      = parseFloat(document.getElementById('angle').value) || 0;
     state.minRadius  = Math.max(0, parseFloat(document.getElementById('minRadius').value) || 0);
     state.gamma      = Math.max(0.5, parseFloat(document.getElementById('gamma').value) || 1.5);
@@ -319,8 +328,15 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 
     document.getElementById('dotsPerRow').addEventListener('input', (e) => {
-        state.dotsPerRow = Math.max(5, parseInt(e.target.value) || 40);
+        // Typed values bypass the input's max="300", so clamp here too.
+        state.dotsPerRow = Math.min(300, Math.max(5, parseInt(e.target.value) || 40));
         schedulePreview();
+    });
+
+    // On blur or Enter, show the value actually in use (e.g. 6040 → 300, 2 → 5).
+    // Not done on 'input', or typing "60" would snap to 5 after the first digit.
+    document.getElementById('dotsPerRow').addEventListener('change', (e) => {
+        e.target.value = state.dotsPerRow;
     });
 
     document.getElementById('angle').addEventListener('input', (e) => {
