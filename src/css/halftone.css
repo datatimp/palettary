@@ -327,63 +327,117 @@
     border-radius: 4px;
 }
 
-/* Affinity script call to action */
-/* Text, then the button under it, at every width. */
+/* Affinity script card (Figma: Rosette, node 92:3) */
+/* Every size is the mockup's size times --s, so one number scales the whole card,
+   halftone wave included. As wide as its title, not the page. */
 .affinity-cta {
+    --s: 0.6;
     display: flex;
     flex-direction: column;
     align-items: flex-start;
-    gap: 20px;
-    /* As wide as its text, not the page; the text stops at 640px. */
+    gap: calc(40px * var(--s));
     width: fit-content;
     max-width: 100%;
     box-sizing: border-box;
-    padding: 24px;
-    border: 1px solid var(--color-border-default);
-    border-radius: 12px;
-    background: var(--color-neutral-50);
+    padding: calc(50px * var(--s));
+    border: 2px solid #b0b0b0;
+    border-radius: calc(30px * var(--s));
+    background: var(--color-neutral-50) url("../assets/images/affinity-card-halftone.svg") no-repeat
+        right calc(-33px * var(--s)) bottom calc(-4px * var(--s)) / calc(659px * var(--s)) auto;
+    box-shadow: 3px 10px 10px 3px rgba(0, 0, 0, 0.05);
+    /* Figma's Inter has no optical sizes; without this, big text draws narrower than the mockup. */
+    font-optical-sizing: none;
     position: relative;
 }
 
-/* Sits across the card's top edge, near the right corner. */
+/* Announcement pill across the card's top edge, near the right corner. */
 .new-badge {
     position: absolute;
-    top: -11px;
+    top: -10px;
     right: 20px;
-    padding: 3px 10px;
+    padding: 2px 10px;
     border-radius: 999px;
     background: var(--color-gold-500);
     color: var(--color-text-default-primary);
     font-size: 0.7rem;
     font-weight: 700;
+    line-height: normal;
     letter-spacing: 0.06em;
     text-transform: uppercase;
     box-shadow: var(--shadow-sm);
 }
 
 .affinity-cta-text {
-    max-width: 640px;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+}
+
+.affinity-cta-tag {
+    padding: calc(3px * var(--s)) calc(20px * var(--s));
+    border-radius: 999px;
+    background: #d8edda;
+    color: var(--color-green-800);
+    font-family: var(--font-default-mono);
+    font-size: calc(18px * var(--s));
+    font-weight: 600;
+    line-height: normal;
+    text-transform: uppercase;
+    margin-bottom: calc(10px * var(--s));
 }
 
 .affinity-cta-title {
-    font-size: 1.15rem;
-    font-weight: 600;
+    font-size: calc(40px * var(--s));
+    font-weight: 700;
+    line-height: 1;
     color: var(--color-text-default-primary);
-    margin-bottom: 6px;
+    white-space: nowrap;
+    margin-bottom: calc(20px * var(--s));
 }
 
+/* Wraps at the title's width rather than widening the card. */
 .affinity-cta-text p {
+    width: 0;
+    min-width: 100%;
     margin: 0;
-    font-size: 0.95rem;
-    line-height: 1.5;
-    color: var(--color-text-default-secondary);
+    font-size: calc(28px * var(--s));
+    line-height: 1.21;
+    color: var(--color-text-default-primary);
 }
 
 /* A link styled as a button: outranks common.css's a:link, a:visited and a:hover colours. */
-.affinity-cta .btn {
-    color: var(--color-text-white);
+.affinity-cta .affinity-cta-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: calc(10px * var(--s));
+    padding: calc(15px * var(--s)) calc(40px * var(--s));
+    border-radius: calc(12px * var(--s));
+    background: var(--color-brand-primary);
+    color: var(--color-neutral-50);
+    font-size: calc(32px * var(--s));
+    font-weight: 500;
+    line-height: normal;
     text-decoration: none;
     white-space: nowrap;
+    transition: background-color 0.2s;
+}
+
+.affinity-cta .affinity-cta-btn:hover {
+    background: var(--color-brand-primary-dark);
+}
+
+.affinity-cta-btn img {
+    display: block;
+    width: auto;
+    height: calc(30px * var(--s));
+}
+
+/* Phones: the title may wrap rather than push the card past the screen. */
+@media (max-width: 768px) {
+    .affinity-cta-title {
+        white-space: normal;
+        line-height: 1.1;
+    }
 }
 
 .rosette-powered {
