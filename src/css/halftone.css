@@ -327,6 +327,61 @@
     border-radius: 4px;
 }
 
+/* Affinity script call to action */
+.affinity-cta {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+    gap: 24px;
+    padding: 24px;
+    border: 1px solid var(--color-border-default);
+    border-radius: 12px;
+    background: var(--color-neutral-50);
+    position: relative;
+}
+
+/* Sits across the card's top edge, near the right corner. */
+.new-badge {
+    position: absolute;
+    top: -11px;
+    right: 20px;
+    padding: 3px 10px;
+    border-radius: 999px;
+    background: var(--color-gold-500);
+    color: var(--color-text-default-primary);
+    font-size: 0.7rem;
+    font-weight: 700;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    box-shadow: var(--shadow-sm);
+}
+
+.affinity-cta-text {
+    flex: 1 1 320px;
+}
+
+.affinity-cta-title {
+    font-size: 1.15rem;
+    font-weight: 600;
+    color: var(--color-text-default-primary);
+    margin-bottom: 6px;
+}
+
+.affinity-cta-text p {
+    margin: 0;
+    font-size: 0.95rem;
+    line-height: 1.5;
+    color: var(--color-text-default-secondary);
+}
+
+/* A link styled as a button: outranks common.css's a:link, a:visited and a:hover colours. */
+.affinity-cta .btn {
+    color: var(--color-text-white);
+    text-decoration: none;
+    white-space: nowrap;
+}
+
 .rosette-powered {
     /* border: 1px solid var(--color-neutral-500); */
     margin-top: 10px;
