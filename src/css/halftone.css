@@ -340,7 +340,7 @@
     max-width: 100%;
     box-sizing: border-box;
     padding: calc(50px * var(--s));
-    border: 2px solid #b0b0b0;
+    border: 1px solid #b0b0b0;
     border-radius: calc(30px * var(--s));
     background: var(--color-neutral-50) url("../assets/images/affinity-card-halftone.svg") no-repeat
         right calc(-33px * var(--s)) bottom calc(-4px * var(--s)) / calc(659px * var(--s)) auto;
