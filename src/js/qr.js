@@ -115,12 +115,22 @@ function inlineVectorLogo(qrSvgDoc, rawLogoSvgText) {
 /**
  * Build the SVG export, keeping an SVG logo as true vector markup rather than
  * embedding it as a nested-SVG <image> (renders fine in browsers, but isn't
- * supported by other SVG consumers — Illustrator silently drops it).
+ * supported by other SVG consumers — Illustrator silently drops it). Every SVG
+ * export goes through here, with or without a logo, so the Affinity fix applies.
  */
 async function downloadQrSvg(fileName, rawLogoSvgText) {
     const blob = await qrCode.getRawData('svg');
     const svgText = await blob.text();
     const doc = new DOMParser().parseFromString(svgText, 'image/svg+xml');
+
+    // The library writes references as url('#id'). Affinity ignores the quoted
+    // form, so the clip paths are lost and the whole code exports solid black.
+    doc.querySelectorAll('[clip-path], [fill]').forEach(el => {
+        ['clip-path', 'fill'].forEach(attr => {
+            const value = el.getAttribute(attr);
+            if (value) el.setAttribute(attr, value.replace(/url\(\s*['"]([^'"]*)['"]\s*\)/g, 'url($1)'));
+        });
+    });
 
     if (rawLogoSvgText) inlineVectorLogo(doc, rawLogoSvgText);
 
@@ -281,10 +291,13 @@ function initQrGenerator() {
     exportFormat.addEventListener('change', updateDownloadState);
 
     downloadBtn.addEventListener('click', () => {
-        if (exportFormat.value === 'svg' && logoSvgText) {
-            const activeLogoSvg = logoRecolorCheckbox.checked
-                ? recolorSvg(logoSvgText, dotColorInput.value)
-                : logoSvgText;
+        if (exportFormat.value === 'svg') {
+            let activeLogoSvg = null;
+            if (logoSvgText) {
+                activeLogoSvg = logoRecolorCheckbox.checked
+                    ? recolorSvg(logoSvgText, dotColorInput.value)
+                    : logoSvgText;
+            }
             downloadQrSvg('qr-code.svg', activeLogoSvg);
         } else {
             qrCode.download({ name: 'qr-code', extension: exportFormat.value });
